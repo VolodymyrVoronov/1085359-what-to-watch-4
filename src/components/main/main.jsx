@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {title, genre, releaseDate, movieNames} = props;
+  const {title, genre, releaseDate, movieNames, onTitleClickHandler} = props;
 
   return (
     <React.Fragment>
@@ -99,14 +99,14 @@ const Main = (props) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {movieNames.map((movieName) => {
+            {movieNames.map((movieName, index) => {
               return (
-                <article className="small-movie-card catalog__movies-card" key={Date.now() + Math.random()}>
+                <article className="small-movie-card catalog__movies-card" key={index}>
                   <div className="small-movie-card__image">
                     <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt={movieName} width="280" height="175" />
                   </div>
-                  <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{movieName}</a>
+                  <h3 className="small-movie-card__title" >
+                    <a className="small-movie-card__link" href="movie-page.html" onClick={onTitleClickHandler}>{movieName}</a>
                   </h3>
                 </article>
               );
@@ -133,7 +133,6 @@ const Main = (props) => {
         </footer>
       </div>
     </React.Fragment>
-
   );
 };
 
@@ -143,7 +142,8 @@ Main.propTypes = {
   releaseDate: PropTypes.number.isRequired,
   movieNames: PropTypes.arrayOf(
       PropTypes.string.isRequired
-  ).isRequired
+  ).isRequired,
+  onTitleClickHandler: PropTypes.func.isRequired,
 };
 
 export default Main;
