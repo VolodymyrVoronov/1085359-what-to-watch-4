@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Main from "../main/main.jsx";
 
+const titleClickHandler = () => {};
+
 const App = (props) => {
   const {title, genre, releaseDate, movieNames} = props;
 
@@ -11,6 +13,7 @@ const App = (props) => {
       genre={genre}
       releaseDate={releaseDate}
       movieNames={movieNames}
+      onTitleClickHandler={titleClickHandler}
     />
   );
 };
@@ -21,7 +24,7 @@ App.propTypes = {
   releaseDate: PropTypes.number.isRequired,
   movieNames: PropTypes.arrayOf(
       PropTypes.string.isRequired
-  ).isRequired
+  ).isRequired,
 };
 
 export default App;
