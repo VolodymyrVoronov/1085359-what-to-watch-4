@@ -4,27 +4,33 @@ import Main from "../main/main.jsx";
 
 const titleClickHandler = () => {};
 
-const App = (props) => {
-  const {title, genre, releaseDate, movieNames} = props;
+const App = ({currentMovie, films}) => {
 
   return (
     <Main
-      title={title}
-      genre={genre}
-      releaseDate={releaseDate}
-      movieNames={movieNames}
+      currentMovie={currentMovie}
+      films={films}
       onTitleClickHandler={titleClickHandler}
     />
   );
 };
 
 App.propTypes = {
-  title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  movieNames: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  ).isRequired,
+  currentMovie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  }).isRequired,
+
+  films: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    releaseDate: PropTypes.number.isRequired,
+  })).isRequired,
 };
 
 export default App;
