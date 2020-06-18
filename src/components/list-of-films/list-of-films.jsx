@@ -2,6 +2,8 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 
+import {Movies} from "../types-of-props.js";
+
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
@@ -11,6 +13,7 @@ class MoviesList extends PureComponent {
     };
 
     this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
+    this._handleFilmCardClick = this._handleFilmCardClick.bind(this);
   }
 
   _handleFilmCardHover({film}) {
@@ -21,8 +24,14 @@ class MoviesList extends PureComponent {
     });
   }
 
+  _handleFilmCardClick({film}) {
+    const {onTitleClickHandler} = this.props;
+
+    onTitleClickHandler({film});
+  }
+
   render() {
-    const {films, onTitleClickHandler} = this.props;
+    const {films} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -33,7 +42,7 @@ class MoviesList extends PureComponent {
                 key={film.title + film.id}
                 film={film}
                 onHover={this._handleFilmCardHover}
-                onTitleClickHandler={onTitleClickHandler}
+                onClick={this._handleFilmCardClick}
               />
             );
           })
@@ -46,13 +55,7 @@ class MoviesList extends PureComponent {
 MoviesList.propTypes = {
   onTitleClickHandler: PropTypes.func.isRequired,
 
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  })).isRequired,
+  films: Movies.isRequired,
 };
 
 export default MoviesList;

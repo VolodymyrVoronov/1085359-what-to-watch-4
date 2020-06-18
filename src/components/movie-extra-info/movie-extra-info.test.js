@@ -1,4 +1,8 @@
-export const CURRENT_MOVIE = {
+import React from "react";
+import renderer from "react-test-renderer";
+import MovieExtraInfo from "./movie-extra-info.jsx";
+
+const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
   genre: `Drama`,
@@ -18,5 +22,19 @@ export const CURRENT_MOVIE = {
     `Actor 4`,
     `Actor 5`,
   ],
-  runTime: 134,
+  runTime: 200,
 };
+
+const HANDLE_CLICK = () => {};
+
+it(`render should be match markup`, () => {
+
+  const result = renderer
+    .create(<MovieExtraInfo
+      film={CURRENT_MOVIE}
+      onClick={HANDLE_CLICK}
+    />)
+    .toJSON();
+
+  expect(result).toMatchSnapshot();
+});
