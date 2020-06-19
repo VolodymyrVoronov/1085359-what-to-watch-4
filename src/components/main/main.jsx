@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import MoviesList from "../list-of-films/list-of-films.jsx";
 
+import {Movies, Movie} from "../types-of-props.js";
+
 const Main = ({currentMovie, films, onTitleClickHandler}) => {
 
   return (
@@ -129,21 +131,8 @@ const Main = ({currentMovie, films, onTitleClickHandler}) => {
 Main.propTypes = {
   onTitleClickHandler: PropTypes.func.isRequired,
 
-  currentMovie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  }).isRequired,
-
-  films: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  })).isRequired,
+  currentMovie: Movie.isRequired,
+  films: Movies.isRequired,
 };
 
 export default Main;

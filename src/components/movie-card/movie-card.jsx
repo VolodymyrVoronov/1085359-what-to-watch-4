@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import {Movie} from "../types-of-props.js";
+
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
@@ -16,17 +18,20 @@ class MovieCard extends PureComponent {
   }
 
   _handleFilmTitleClick(e) {
-    const {film, onTitleClickHandler} = this.props;
+    const {film, onClick} = this.props;
 
     e.preventDefault();
-    onTitleClickHandler({film});
+    onClick({film});
   }
 
   render() {
     const {film} = this.props;
 
     return (
-      <article className="small-movie-card catalog__movies-card" onMouseEnter={this._handleFilmCardHover}>
+      <article className="small-movie-card catalog__movies-card"
+        onMouseEnter={this._handleFilmCardHover}
+        onClick={this._handleFilmTitleClick}
+      >
         <div className="small-movie-card__image">
           <img src={film.img} alt={film.title} width="280" height="175" />
         </div>
@@ -39,16 +44,10 @@ class MovieCard extends PureComponent {
 }
 
 MovieCard.propTypes = {
-  onTitleClickHandler: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
 
-  film: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    img: PropTypes.string.isRequired,
-    releaseDate: PropTypes.number.isRequired,
-  })
+  film: Movie.isRequired,
 };
 
 export default MovieCard;
