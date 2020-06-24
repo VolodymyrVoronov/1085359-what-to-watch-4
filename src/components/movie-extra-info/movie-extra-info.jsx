@@ -127,7 +127,7 @@ class MovieExtraInfo extends PureComponent {
                 <div className="movie-rating__score">{film.rating}</div>
                 <p className="movie-rating__meta">
                   <span className="movie-rating__level">{getRating(film.rating)}</span>
-                  <span className="movie-rating__count">{film.ratingReviewsCount}</span>
+                  <span className="movie-rating__count">{`${film.ratingReviewsCount} ratings`}</span>
                 </p>
               </div>
 

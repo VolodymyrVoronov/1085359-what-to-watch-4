@@ -24,6 +24,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: ``,
   },
 
   {
@@ -47,6 +48,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: ``,
   },
 
   {
@@ -70,6 +72,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: ``,
   },
 ];
 
@@ -81,7 +84,11 @@ it(`render should be match markup`, () => {
     .create(<MoviesList
       films={MOVIES}
       onTitleClickHandler={HANDLE_CLICK}
-    />)
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(result).toMatchSnapshot();

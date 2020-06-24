@@ -261,15 +261,13 @@ Array [
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Citizen Kane"
-              height="175"
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              width="280"
+            <video
+              className="player__video"
             />
           </div>
           <h3
@@ -288,15 +286,13 @@ Array [
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="Casablanka"
-              height="175"
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              width="280"
+            <video
+              className="player__video"
             />
           </div>
           <h3
@@ -315,15 +311,13 @@ Array [
           className="small-movie-card catalog__movies-card"
           onClick={[Function]}
           onMouseEnter={[Function]}
+          onMouseLeave={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
-            <img
-              alt="The Godfather"
-              height="175"
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              width="280"
+            <video
+              className="player__video"
             />
           </div>
           <h3

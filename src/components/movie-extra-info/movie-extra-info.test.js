@@ -23,6 +23,7 @@ const CURRENT_MOVIE = {
     `Actor 5`,
   ],
   runTime: 200,
+  preview: ``,
 };
 
 const HANDLE_CLICK = () => {};

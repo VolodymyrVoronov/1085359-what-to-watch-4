@@ -3,6 +3,8 @@ import Enzyme, {shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MovieCard from "./movie-card.jsx";
 
+const ID = 0;
+const IS_ACTIVE = false;
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
@@ -24,6 +26,7 @@ const CURRENT_MOVIE = {
     `Actor 5`,
   ],
   runTime: 200,
+  preview: ``,
 };
 
 Enzyme.configure({
@@ -34,11 +37,15 @@ it(`component should be hovered`, () => {
 
   const handleHover = jest.fn();
   const handleClick = jest.fn();
+  const handleLeave = jest.fn();
 
   const result = shallow(<MovieCard
+    id={ID}
+    isPreviewActive={IS_ACTIVE}
     film={CURRENT_MOVIE}
     onHover={handleHover}
     onClick={handleClick}
+    onLeave={handleLeave}
   />);
 
   result
@@ -48,19 +55,45 @@ it(`component should be hovered`, () => {
   expect(handleHover).toHaveBeenCalledTimes(1);
 });
 
+it(`component should be leaved`, () => {
+
+  const handleHover = jest.fn();
+  const handleClick = jest.fn();
+  const handleLeave = jest.fn();
+
+  const result = shallow(<MovieCard
+    id={ID}
+    isPreviewActive={IS_ACTIVE}
+    film={CURRENT_MOVIE}
+    onHover={handleHover}
+    onClick={handleClick}
+    onLeave={handleLeave}
+  />);
+
+  result
+    .find(`.small-movie-card`)
+    .simulate(`mouseLeave`);
+
+  expect(handleLeave).toHaveBeenCalledTimes(1);
+});
+
 it(`title should be clicked`, () => {
 
   const handleHover = jest.fn();
   const handleClick = jest.fn();
+  const handleLeave = jest.fn();
 
   const result = shallow(<MovieCard
+    id={ID}
+    isPreviewActive={IS_ACTIVE}
     film={CURRENT_MOVIE}
     onHover={handleHover}
     onClick={handleClick}
+    onLeave={handleLeave}
   />);
 
   result
-    .find(`.small-movie-card__link`)
+    .find(`.small-movie-card`)
     .simulate(`click`, {
       preventDefault() {}
     });

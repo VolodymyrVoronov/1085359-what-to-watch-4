@@ -19,4 +19,5 @@ export const CURRENT_MOVIE = {
     `Actor 5`,
   ],
   runTime: 134,
+  preview: `video/1.mp4`,
 };
