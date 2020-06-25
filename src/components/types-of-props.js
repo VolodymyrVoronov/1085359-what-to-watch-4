@@ -15,6 +15,7 @@ export const Movies = PropTypes.arrayOf(PropTypes.exact({
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string).isRequired,
   runTime: PropTypes.number.isRequired,
+  preview: PropTypes.string.isRequired
 }));
 
 export const Movie = PropTypes.exact({
@@ -32,4 +33,5 @@ export const Movie = PropTypes.exact({
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string).isRequired,
   runTime: PropTypes.number.isRequired,
+  preview: PropTypes.string.isRequired
 });

@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import MovieCard from "./movie-card.jsx";
 
+const ID = 0;
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
@@ -23,18 +24,27 @@ const CURRENT_MOVIE = {
     `Actor 5`,
   ],
   runTime: 200,
+  preview: `video/1.mp4`,
 };
 
-const HANDLE_CLICK = () => {};
+const IS_PREVIEW_ACTIVE = false;
+const HANDLE_EVENT = () => {};
 
 it(`render should be match markup`, () => {
 
   const result = renderer
     .create(<MovieCard
+      id={ID}
       film={CURRENT_MOVIE}
-      onHover={HANDLE_CLICK}
-      onClick={HANDLE_CLICK}
-    />)
+      isPreviewActive={IS_PREVIEW_ACTIVE}
+      onHover={HANDLE_EVENT}
+      onLeave={HANDLE_EVENT}
+      onClick={HANDLE_EVENT}
+    />, {
+      createNodeMock: () => {
+        return {};
+      }
+    })
     .toJSON();
 
   expect(result).toMatchSnapshot();

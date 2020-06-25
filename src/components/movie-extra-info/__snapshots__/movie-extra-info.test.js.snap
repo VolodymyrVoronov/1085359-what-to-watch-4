@@ -210,7 +210,7 @@ exports[`render should be match markup 1`] = `
             <span
               className="movie-rating__count"
             >
-              10
+              10 ratings
             </span>
           </p>
         </div>

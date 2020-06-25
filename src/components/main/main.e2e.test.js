@@ -24,6 +24,7 @@ const CURRENT_MOVIE = {
     `Actor 5`,
   ],
   runTime: 200,
+  preview: `video/1.mp4`,
 };
 
 const MOVIES = [
@@ -48,6 +49,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: `video/1.mp4`,
   },
 
   {
@@ -71,6 +73,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: `video/1.mp4`,
   },
 
   {
@@ -94,6 +97,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
+    preview: `video/1.mp4`,
   },
 ];
 
