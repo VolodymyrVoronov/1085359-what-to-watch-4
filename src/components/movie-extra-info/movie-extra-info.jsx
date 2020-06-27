@@ -1,4 +1,10 @@
 import React, {PureComponent} from "react";
+import withActiveTab from '../../hocs/with-acitve-tab.jsx';
+import PropTypes from "prop-types";
+import Tabs from "../tabs/tabs.jsx";
+import Overview from "../overview/overview.jsx";
+import Details from "../details/details.jsx";
+import Reviews from "../reviews/reviews.jsx";
 
 import {Movie} from "../types-of-props.js";
 
@@ -42,13 +48,43 @@ const getFilmDuration = (duration) => {
 };
 
 class MovieExtraInfo extends PureComponent {
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  _renderState() {
+    const {film, activeTab} = this.props;
+    
+    if (activeTab === 0) {
+      return (
+        <Overview
+            film={film}
+          />
+      );
+    }
+
+    if (activeTab === 1) {
+      return (
+        <Details
+            film={film}
+          />
+      );
+    }
+
+    if (activeTab === 2) {
+      return (
+        <Reviews
+            film={film}
+          />
+      );
+    }
+
+    return null;
   }
 
   render() {
 
-    const {film} = this.props;
+    const {film, activeTab, onTabClick} = this.props;
 
     return (
       <section className="movie-card movie-card--full">
@@ -109,19 +145,15 @@ class MovieExtraInfo extends PureComponent {
             </div>
 
             <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
+                <Tabs 
+                  currentTab={activeTab}
+                  onTabClick={onTabClick}
+                />
+                {
+                  this._renderState()
+                }
+
+
 
               <div className="movie-rating">
                 <div className="movie-rating__score">{film.rating}</div>
@@ -152,6 +184,7 @@ class MovieExtraInfo extends PureComponent {
                   <span className="movie-card__details-value">{film.releaseDate}</span>
                 </p>
               </div>
+
             </div>
           </div>
         </div>
@@ -162,6 +195,8 @@ class MovieExtraInfo extends PureComponent {
 
 MovieExtraInfo.propTypes = {
   film: Movie.isRequired,
+  // onTabClick: PropTypes.func.isRequired,
+  // activeTab: PropTypes.func.isRequired,
 };
 
 export default MovieExtraInfo;
