@@ -53,6 +53,6 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
   }
 
   return WithActiveItemList;
-}
+};
 
 export default withActiveItemList;

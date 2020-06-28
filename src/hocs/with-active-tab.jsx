@@ -5,7 +5,7 @@ const withActiveTab = (Component) => {
   class WithActiveTab extends PureComponent {
     constructor(props) {
       super(props);
-      
+
       this.state = {
         activeTab: 0,
       };
@@ -31,10 +31,10 @@ const withActiveTab = (Component) => {
       );
     }
   }
-  
+
   WithActiveTab.propTypes = {};
 
   return WithActiveTab;
-}
+};
 
 export default withActiveTab;

@@ -164,27 +164,33 @@ exports[`render should be match markup 1`] = `
             >
               <a
                 className="movie-nav__link"
+                data-index={0}
                 href="#"
+                onClick={[Function]}
               >
                 Overview
               </a>
             </li>
             <li
-              className="movie-nav__item"
+              className="movie-nav__item "
             >
               <a
                 className="movie-nav__link"
+                data-index={1}
                 href="#"
+                onClick={[Function]}
               >
                 Details
               </a>
             </li>
             <li
-              className="movie-nav__item"
+              className="movie-nav__item "
             >
               <a
                 className="movie-nav__link"
+                data-index={2}
                 href="#"
+                onClick={[Function]}
               >
                 Reviews
               </a>
@@ -238,52 +244,6 @@ exports[`render should be match markup 1`] = `
               Starring: 
               Actor 1, Actor 2, Actor 3, Actor 4, Actor 5
             </strong>
-          </p>
-        </div>
-        <div
-          className="movie-card__text-col"
-        >
-          <p
-            className="movie-card__details-item"
-          >
-            <strong
-              className="movie-card__details-name"
-            >
-              Run Time
-            </strong>
-            <span
-              className="movie-card__details-value"
-            >
-              3h 20m
-            </span>
-          </p>
-          <p
-            className="movie-card__details-item"
-          >
-            <strong
-              className="movie-card__details-name"
-            >
-              Genre
-            </strong>
-            <span
-              className="movie-card__details-value"
-            >
-              Drama
-            </span>
-          </p>
-          <p
-            className="movie-card__details-item"
-          >
-            <strong
-              className="movie-card__details-name"
-            >
-              Released
-            </strong>
-            <span
-              className="movie-card__details-value"
-            >
-              2014
-            </span>
           </p>
         </div>
       </div>

@@ -27,7 +27,7 @@ class MoviesList extends PureComponent {
 
   _handleFilmCardHover({film}) {
     clearTimeout(this._timeoutId);
-    this._timeoutId = setTimeout(() => this.setState(() => { 
+    this._timeoutId = setTimeout(() => this.setState(() => {
       return {
         target: film,
       };
@@ -52,7 +52,7 @@ class MoviesList extends PureComponent {
   render() {
     const {target} = this.state;
     const {films} = this.props;
-    
+
     return (
       <div className="catalog__movies-list">
         {
