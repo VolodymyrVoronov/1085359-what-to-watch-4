@@ -17,12 +17,33 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 1260,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Drama`,
+    genre: `Action`,
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     releaseDate: 2014,
 
@@ -35,12 +56,39 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 152,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Drama`,
+    genre: `Action`,
     img: `img/no-country-for-old-men.jpg`,
     releaseDate: 2014,
 
@@ -53,12 +101,39 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 121,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
     id: 4,
     title: `Lawrence Of Arabia`,
-    genre: `Drama`,
+    genre: `Comedy`,
     img: `img/we-need-to-talk-about-kevin.jpg`,
     releaseDate: 2014,
 
@@ -71,6 +146,33 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 133,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
@@ -89,6 +191,33 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 153,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
@@ -107,12 +236,39 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 2311,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
     id: 7,
     title: `On The Waterfront`,
-    genre: `Drama`,
+    genre: `Action`,
     img: `img/midnight-special.jpg`,
     releaseDate: 2014,
 
@@ -125,12 +281,39 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 311,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 
   {
     id: 8,
     title: `Schindler's List`,
-    genre: `Drama`,
+    genre: `Action`,
     img: `img/dardjeeling-limited.jpg`,
     releaseDate: 2014,
 
@@ -143,6 +326,33 @@ export const MOVIES = [
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
     preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
   },
 ];
 

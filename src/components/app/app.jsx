@@ -6,6 +6,11 @@ import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
 
+
+import withActiveTab from "../../hocs/with-active-tab.jsx";
+
+const MovieExtraInfoWrapped = withActiveTab(MovieExtraInfo);
+
 class App extends PureComponent {
   constructor(props) {
     super(props);
@@ -31,8 +36,9 @@ class App extends PureComponent {
 
     if (extraInfoMovie) {
       return (
-        <MovieExtraInfo
+        <MovieExtraInfoWrapped
           film={extraInfoMovie}
+          films={films}
         />
       );
     }
@@ -56,8 +62,9 @@ class App extends PureComponent {
             this._renderState()
           }</Route>
           <Route exact path="/dev-movie-detail-info">
-            <MovieExtraInfo
+            <MovieExtraInfoWrapped
               film={films[0]}
+              films={films}
             />
           </Route>
         </Switch>

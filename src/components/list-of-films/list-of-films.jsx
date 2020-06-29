@@ -34,7 +34,7 @@ class MoviesList extends PureComponent {
     }), PRVIEW_DALAY);
   }
 
-  _handleFilmCardLeave({}) {
+  _handleFilmCardLeave({_film}) {
     clearTimeout(this._timeoutId);
     this.setState(() => {
       return {

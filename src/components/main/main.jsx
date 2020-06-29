@@ -135,4 +135,8 @@ Main.propTypes = {
   films: Movies.isRequired,
 };
 
+Main.defaultProps = {
+  films: [],
+};
+
 export default Main;

@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should be match markup 1`] = `
+<div
+  className="movie-card__reviews movie-card__row"
+>
+  <div
+    className="movie-card__reviews-col"
+  >
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It's ok. but it could be better
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            John
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-02-25T00:22:20.667Z"
+          >
+            February 25, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        5.1
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It's ok. but it could be better
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Max
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-02-25T00:22:20.667Z"
+          >
+            February 25, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        4.1
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It's ok. but it could be better
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Stive
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-02-25T00:22:20.667Z"
+          >
+            February 25, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        10
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It's ok. but it could be better
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Stive
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2020-02-25T00:22:20.667Z"
+          >
+            February 25, 2020
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        10
+      </div>
+    </div>
+  </div>
+</div>
+`;

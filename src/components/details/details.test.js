@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieExtraInfo from "./movie-extra-info.jsx";
+import Details from "./details.jsx";
 
 const CURRENT_MOVIE = {
   id: 0,
@@ -24,6 +24,33 @@ const CURRENT_MOVIE = {
   ],
   runTime: 200,
   preview: ``,
+
+  reviews: [
+    {
+      author: `John`,
+      score: 5.1,
+      text: `It's ok. but it could be better`,
+      date: 1582590140667
+    },
+    {
+      author: `Max`,
+      score: 4.1,
+      text: `It's ok. but it could be better`,
+      date: 1582590140667
+    },
+    {
+      author: `Stive`,
+      score: 10,
+      text: `It's ok. but it could be better`,
+      date: 1582590140667
+    },
+    {
+      author: `Stive`,
+      score: 10,
+      text: `It's ok. but it could be better`,
+      date: 1582590140667
+    }
+  ]
 };
 
 const MOVIES = [
@@ -100,18 +127,12 @@ const MOVIES = [
   },
 ];
 
-const ACTIVE_TAB = 0;
-const HANDLE_CLICK = () => {};
-
 it(`render should be match markup`, () => {
 
   const result = renderer
-    .create(<MovieExtraInfo
+    .create(<Details
       film={CURRENT_MOVIE}
       films={MOVIES}
-      activeTab={ACTIVE_TAB}
-      onClick={HANDLE_CLICK}
-      onTabClick={HANDLE_CLICK}
     />)
     .toJSON();
 
