@@ -23,7 +23,7 @@ export const reducer = (state = initialState, action) => {
 
   // switch (action.type) {
   //   case ActionType.APPLY_GENRE_FILTER:
-  //     return Object.assign({}, state, {genreFilterIndex: action.payload});
+  //     return Object.assign({}, state, {genreFilterIndex: action.playload});
   // }
   // return state;
 };
