@@ -1,11 +1,13 @@
-import React from "react";
-import renderer from "react-test-renderer";
+import React from 'react';
+import {Provider} from 'react-redux';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
 import Main from "./main.jsx";
 
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
-  genre: `Drama`,
+  genres: [`Comedy`, `Sci-Fi`, `Horror`],
   img: `img/bg-the-grand-budapest-hotel.jpg`,
   releaseDate: 2014,
 
@@ -30,7 +32,7 @@ const MOVIES = [
   {
     id: 1,
     title: `Citizen Kane`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -54,7 +56,7 @@ const MOVIES = [
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -78,7 +80,7 @@ const MOVIES = [
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -102,13 +104,22 @@ const MOVIES = [
 
 const HANDLE_CLICK = () => {};
 
-it(`<Should Main render correctly`, () => {
+const mockStore = configureStore([]);
+
+it(`render should be match markup`, () => {
+
+  const store = mockStore({
+    genreFilterIndex: 0,
+  });
+
   const result = renderer
-    .create(<Main
-      currentMovie={CURRENT_MOVIE}
-      films={MOVIES}
-      onTitleClickHandler={HANDLE_CLICK}
-    />, {
+    .create(<Provider store={store}>
+      <Main
+        currentMovie={CURRENT_MOVIE}
+        films={MOVIES}
+        onMovieListItemClick={HANDLE_CLICK}
+      />
+    </Provider>, {
       createNodeMock: () => {
         return {};
       }

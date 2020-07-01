@@ -5,7 +5,7 @@ import MovieExtraInfo from "./movie-extra-info.jsx";
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
-  genre: `Drama`,
+  genres: [`Comedy`, `Sci-Fi`, `Horror`],
   img: `img/bg-the-grand-budapest-hotel.jpg`,
   releaseDate: 2014,
 
@@ -30,7 +30,7 @@ const MOVIES = [
   {
     id: 1,
     title: `Citizen Kane`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -54,7 +54,7 @@ const MOVIES = [
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -78,7 +78,7 @@ const MOVIES = [
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 

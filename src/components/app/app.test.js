@@ -1,11 +1,13 @@
 import React from "react";
+import {Provider} from "react-redux";
 import renderer from "react-test-renderer";
+import configureStore from "redux-mock-store";
 import App from "./app.jsx";
 
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
-  genre: `Drama`,
+  genres: [`Comedy`, `Sci-Fi`, `Horror`],
   img: `img/bg-the-grand-budapest-hotel.jpg`,
   releaseDate: 2014,
 
@@ -30,7 +32,7 @@ const MOVIES = [
   {
     id: 1,
     title: `Citizen Kane`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -54,7 +56,7 @@ const MOVIES = [
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -78,7 +80,7 @@ const MOVIES = [
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -100,12 +102,21 @@ const MOVIES = [
   },
 ];
 
+const mockStore = configureStore([]);
+
 it(`render should be match markup`, () => {
+
+  const store = mockStore({
+    genreFilterIndex: 0,
+  });
+
   const result = renderer
-    .create(<App
-      currentMovie={CURRENT_MOVIE}
-      films={MOVIES}
-    />, {
+    .create(<Provider store={store}>
+      <App
+        currentMovie={CURRENT_MOVIE}
+        films={MOVIES}
+      />
+    </Provider>, {
       createNodeMock: () => {
         return {};
       }

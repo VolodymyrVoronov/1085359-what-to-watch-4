@@ -1,6 +1,8 @@
-import React from "react";
-import renderer from "react-test-renderer";
-import MoviesList from "./list-of-films.jsx";
+import React from 'react';
+import {Provider} from 'react-redux';
+import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+import Catalog from './catalog.jsx';
 
 const MOVIES = [
   {
@@ -24,7 +26,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
-    preview: ``,
+    preview: `video/1.mp4`,
   },
 
   {
@@ -48,7 +50,7 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
-    preview: ``,
+    preview: `video/1.mp4`,
   },
 
   {
@@ -72,19 +74,27 @@ const MOVIES = [
       `Actor 5`,
     ],
     runTime: 200,
-    preview: ``,
+    preview: `video/1.mp4`,
   },
 ];
 
 const HANDLE_CLICK = () => {};
 
+const mockStore = configureStore([]);
+
 it(`render should be match markup`, () => {
 
+  const store = mockStore({
+    genreFilterIndex: 0,
+  });
+
   const result = renderer
-    .create(<MoviesList
-      films={MOVIES}
-      onMovieListItemClick={HANDLE_CLICK}
-    />, {
+    .create(<Provider store={store}>
+      <Catalog
+        films={MOVIES}
+        onMovieListItemClick={HANDLE_CLICK}
+      />
+    </Provider>, {
       createNodeMock: () => {
         return {};
       }
