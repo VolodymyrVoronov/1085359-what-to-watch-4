@@ -47,7 +47,7 @@ class App extends PureComponent {
       <Main
         currentMovie={currentMovie}
         films={films}
-        onTitleClickHandler={this._handleMovieListItemClick}
+        onMovieListItemClick={this._handleMovieListItemClick}
       />
     );
   }

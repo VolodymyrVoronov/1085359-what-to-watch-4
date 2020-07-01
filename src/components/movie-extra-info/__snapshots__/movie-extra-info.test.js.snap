@@ -79,7 +79,7 @@ exports[`render should be match markup 1`] = `
           <span
             className="movie-card__genre"
           >
-            Drama
+            Comedy, Sci-Fi, Horror
           </span>
           <span
             className="movie-card__year"

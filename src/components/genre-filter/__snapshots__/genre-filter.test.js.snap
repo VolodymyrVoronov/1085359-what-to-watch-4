@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render should be match markup 1`] = `
+<ul
+  className="catalog__genres-list"
+>
+  <li
+    className="catalog__genres-item catalog__genres-item--active"
+  >
+    <a
+      className="catalog__genres-link"
+      data-index={0}
+      href="#"
+      onClick={[Function]}
+    >
+      Comedy
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      data-index={1}
+      href="#"
+      onClick={[Function]}
+    >
+      Sci-Fi
+    </a>
+  </li>
+  <li
+    className="catalog__genres-item"
+  >
+    <a
+      className="catalog__genres-link"
+      data-index={2}
+      href="#"
+      onClick={[Function]}
+    >
+      Horror
+    </a>
+  </li>
+</ul>
+`;

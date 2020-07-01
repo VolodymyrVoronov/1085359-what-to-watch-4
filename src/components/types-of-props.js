@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export const Review = PropTypes.exact({
   author: PropTypes.string.isRequired,
@@ -10,7 +10,7 @@ export const Review = PropTypes.exact({
 export const Movies = PropTypes.arrayOf(PropTypes.exact({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   img: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
 
@@ -29,7 +29,7 @@ export const Movies = PropTypes.arrayOf(PropTypes.exact({
 export const Movie = PropTypes.exact({
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   img: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
 

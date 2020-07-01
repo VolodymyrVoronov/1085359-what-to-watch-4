@@ -76,9 +76,7 @@ Array [
         </strong>
         <span
           className="movie-card__details-value"
-        >
-          Drama
-        </span>
+        />
       </p>
       <p
         className="movie-card__details-item"

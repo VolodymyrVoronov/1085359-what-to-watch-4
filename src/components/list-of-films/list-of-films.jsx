@@ -44,9 +44,9 @@ class MoviesList extends PureComponent {
   }
 
   _handleFilmCardClick({film}) {
-    const {onTitleClickHandler} = this.props;
+    const {onMovieListItemClick} = this.props;
 
-    onTitleClickHandler({film});
+    onMovieListItemClick({film});
   }
 
   render() {
@@ -76,7 +76,7 @@ class MoviesList extends PureComponent {
 }
 
 MoviesList.propTypes = {
-  onTitleClickHandler: PropTypes.func.isRequired,
+  onMovieListItemClick: PropTypes.func.isRequired,
 
   films: Movies.isRequired,
 };

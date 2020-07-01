@@ -5,7 +5,7 @@ import Reviews from "./reviews.jsx";
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
-  genre: `Drama`,
+  genres: [`Comedy`, `Sci-Fi`, `Horror`],
   img: `img/bg-the-grand-budapest-hotel.jpg`,
   releaseDate: 2014,
 

@@ -1,12 +1,15 @@
-import React from "react";
-import Enzyme, {shallow} from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
+import React from "react";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import MovieCard from "./../movie-card/movie-card.jsx";
 import Main from "./main.jsx";
 
 const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
-  genre: `Drama`,
+  genres: [`Comedy`, `Sci-Fi`, `Horror`],
   img: `img/bg-the-grand-budapest-hotel.jpg`,
   releaseDate: 2014,
 
@@ -31,7 +34,7 @@ const MOVIES = [
   {
     id: 1,
     title: `Citizen Kane`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -55,7 +58,7 @@ const MOVIES = [
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -79,7 +82,7 @@ const MOVIES = [
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
     img: `img/bg-the-grand-budapest-hotel.jpg`,
     releaseDate: 2014,
 
@@ -105,22 +108,31 @@ Enzyme.configure({
   adapter: new Adapter(),
 });
 
+const mockStore = configureStore([]);
+
 it(`movie card title should be clicked`, () => {
-  const onTitleClickHandler = jest.fn();
 
-  const main = shallow(
-      <Main
-        currentMovie={CURRENT_MOVIE}
-        films={MOVIES}
-        onTitleClickHandler={onTitleClickHandler}
-      />
-  );
+  const handleClick = jest.fn();
 
-  const titleOfTheFilms = main.find(`a.small-movie-card__link`);
-
-  titleOfTheFilms.forEach((element) => {
-    element.props().onClick();
+  const store = mockStore({
+    genreFilterIndex: 0,
   });
 
-  expect(onTitleClickHandler).toHaveBeenCalledTimes(titleOfTheFilms.length);
+  const result = mount(<Provider store={store}>
+    <Main
+      currentMovie={CURRENT_MOVIE}
+      films={MOVIES}
+      onMovieListItemClick={handleClick}
+    />
+  </Provider>);
+
+  result
+    .find(MovieCard)
+    .forEach((value) => {
+      value
+        .find(`.small-movie-card`)
+        .simulate(`click`);
+    });
+
+  expect(handleClick).toHaveBeenCalledTimes(MOVIES.length);
 });

@@ -4,7 +4,7 @@ export const MOVIES = [
   {
     id: 1,
     title: `Citizen Kane`,
-    genre: `Drama`,
+    genres: [`Documentary`, `Kids & Family`, `Romance`],
     img: `img/aviator.jpg`,
     releaseDate: 2014,
 
@@ -43,7 +43,7 @@ export const MOVIES = [
   {
     id: 2,
     title: `Casablanka`,
-    genre: `Action`,
+    genres: [`Drama`, `Horror`, `Crime`],
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
     releaseDate: 2014,
 
@@ -88,7 +88,7 @@ export const MOVIES = [
   {
     id: 3,
     title: `The Godfather`,
-    genre: `Action`,
+    genres: [`Drama`, `Thriller`, `Comedy`],
     img: `img/no-country-for-old-men.jpg`,
     releaseDate: 2014,
 
@@ -133,7 +133,7 @@ export const MOVIES = [
   {
     id: 4,
     title: `Lawrence Of Arabia`,
-    genre: `Comedy`,
+    genres: [`Drama`, `Kids & Family`],
     img: `img/we-need-to-talk-about-kevin.jpg`,
     releaseDate: 2014,
 
@@ -178,7 +178,7 @@ export const MOVIES = [
   {
     id: 5,
     title: `The Wizard Of Oz`,
-    genre: `Drama`,
+    genres: [`Comedy`, `Kids & Family`, `Documentary`],
     img: `img/what-we-do-in-the-shadows.jpg`,
     releaseDate: 2014,
 
@@ -223,7 +223,7 @@ export const MOVIES = [
   {
     id: 6,
     title: `The Graduate`,
-    genre: `Drama`,
+    genres: [`Kids & Family`],
     img: `img/pulp-fiction.jpg`,
     releaseDate: 2014,
 
@@ -268,7 +268,7 @@ export const MOVIES = [
   {
     id: 7,
     title: `On The Waterfront`,
-    genre: `Action`,
+    genres: [`Drama`, `Thriller`],
     img: `img/midnight-special.jpg`,
     releaseDate: 2014,
 
@@ -313,7 +313,7 @@ export const MOVIES = [
   {
     id: 8,
     title: `Schindler's List`,
-    genre: `Action`,
+    genres: [`Comedy`],
     img: `img/dardjeeling-limited.jpg`,
     releaseDate: 2014,
 
