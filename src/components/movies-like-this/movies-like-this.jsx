@@ -2,6 +2,8 @@ import React, {PureComponent} from "react";
 
 import {Movie, Movies} from "../types-of-props.js";
 
+const AMOUNT_OF_MOVIES_LIKE_THIS = 4;
+
 class MoviesLikeThis extends PureComponent {
 
   render() {
@@ -9,7 +11,7 @@ class MoviesLikeThis extends PureComponent {
     const {film, films} = this.props;
     const currentGenre = film.genre;
 
-    let moviesLikeThis = films.filter((currentFilm) => currentFilm.genre === currentGenre);
+    let filmsLikeThis = films.filter((currentFilm) => currentFilm.genre === currentGenre).slice(0, AMOUNT_OF_MOVIES_LIKE_THIS);
 
     return (
       <section className="catalog catalog--like-this">
@@ -17,7 +19,7 @@ class MoviesLikeThis extends PureComponent {
 
         <div className="catalog__movies-list">
           {
-            moviesLikeThis.map((currentFilm, idnex) => {
+            filmsLikeThis.map((currentFilm, idnex) => {
               return (
                 <article key={idnex} className="small-movie-card catalog__movies-card">
                   <div className="small-movie-card__image">

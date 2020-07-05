@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -32,7 +33,7 @@ class App extends PureComponent {
 
   _renderState() {
     const {extraInfoMovie} = this.state;
-    const {currentMovie, films} = this.props;
+    const {currentFilm, films} = this.props;
 
     if (extraInfoMovie) {
       return (
@@ -45,9 +46,9 @@ class App extends PureComponent {
 
     return (
       <Main
-        currentMovie={currentMovie}
+        currentFilm={currentFilm}
         films={films}
-        onMovieListItemClick={this._handleMovieListItemClick}
+        onFilmListItemClick={this._handleMovieListItemClick}
       />
     );
   }
@@ -63,7 +64,6 @@ class App extends PureComponent {
           }</Route>
           <Route exact path="/dev-movie-detail-info">
             <MovieExtraInfoWrapped
-              film={films[0]}
               films={films}
             />
           </Route>
@@ -74,8 +74,15 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  currentMovie: Movie.isRequired,
+  currentFilm: Movie.isRequired,
   films: Movies.isRequired,
 };
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    films: state.catalogFilms,
+    currentMovie: state.currentFilm,
+  };
+}
+export {App};
+export default connect(mapStateToProps)(App);

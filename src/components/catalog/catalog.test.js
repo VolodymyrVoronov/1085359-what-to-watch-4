@@ -78,21 +78,28 @@ const MOVIES = [
   },
 ];
 
+const HAS_MORE_FILMS = true;
 const HANDLE_CLICK = () => {};
+
+const GENRES = [`Drama`, `Comedy`, `Kids & Family`];
+const CURRENT_GENRE = GENRES[0];
 
 const mockStore = configureStore([]);
 
 it(`render should be match markup`, () => {
 
   const store = mockStore({
-    genreFilterIndex: 0,
+    catalogGenres: GENRES,
+    catalogGenre: CURRENT_GENRE,
+    catalogFilms: MOVIES,
+    hasMoreСatalogFilms: HAS_MORE_FILMS,
   });
 
   const result = renderer
     .create(<Provider store={store}>
       <Catalog
-        films={MOVIES}
-        onMovieListItemClick={HANDLE_CLICK}
+        onShowMore={HANDLE_CLICK}
+        onFilmListItemClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {

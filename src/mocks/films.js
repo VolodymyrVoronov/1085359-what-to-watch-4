@@ -354,6 +354,186 @@ export const MOVIES = [
       }
     ]
   },
+
+  {
+    id: 9,
+    title: `Schindler's List`,
+    genres: [`Comedy`],
+    img: `img/dardjeeling-limited.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/dardjeeling-limited.jpg`,  
+    rating: 7.8,
+    ratingReviewsCount: 710,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
+    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+    runTime: 123,
+    preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
+  },
+
+  {
+    id: 10,
+    title: `Schindler's List`,
+    genres: [`Comedy`],
+    img: `img/dardjeeling-limited.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/dardjeeling-limited.jpg`,  
+    rating: 7.8,
+    ratingReviewsCount: 710,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
+    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+    runTime: 123,
+    preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
+  },
+
+  {
+    id: 11,
+    title: `Schindler's List`,
+    genres: [`Comedy`],
+    img: `img/dardjeeling-limited.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/dardjeeling-limited.jpg`,  
+    rating: 7.8,
+    ratingReviewsCount: 710,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
+    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+    runTime: 123,
+    preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
+  },
+
+  {
+    id: 12,
+    title: `Schindler's List`,
+    genres: [`Comedy`],
+    img: `img/dardjeeling-limited.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/dardjeeling-limited.jpg`,  
+    rating: 7.8,
+    ratingReviewsCount: 710,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
+    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+    runTime: 123,
+    preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
+  },
 ];
 
 /* eslint-enable */

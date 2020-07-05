@@ -6,7 +6,7 @@ import {Movies} from "../types-of-props.js";
 
 const PRVIEW_DALAY = 1000;
 
-class MoviesList extends PureComponent {
+class FilmsList extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -44,9 +44,9 @@ class MoviesList extends PureComponent {
   }
 
   _handleFilmCardClick({film}) {
-    const {onMovieListItemClick} = this.props;
+    const {onFilmListItemClick} = this.props;
 
-    onMovieListItemClick({film});
+    onFilmListItemClick({film});
   }
 
   render() {
@@ -75,10 +75,10 @@ class MoviesList extends PureComponent {
   }
 }
 
-MoviesList.propTypes = {
-  onMovieListItemClick: PropTypes.func.isRequired,
+FilmsList.propTypes = {
+  onFilmListItemClick: PropTypes.func.isRequired,
 
   films: Movies.isRequired,
 };
 
-export default MoviesList;
+export default FilmsList;
