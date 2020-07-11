@@ -172,17 +172,6 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Dramas
-          </a>
-        </li>
-        <li
-          className="catalog__genres-item"
-        >
-          <a
-            className="catalog__genres-link"
-            href="#"
-            onClick={[Function]}
-          >
             Comedies
           </a>
         </li>
@@ -194,7 +183,18 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Kids & Family
+            Sci-Fi
+          </a>
+        </li>
+        <li
+          className="catalog__genres-item"
+        >
+          <a
+            className="catalog__genres-link"
+            href="#"
+            onClick={[Function]}
+          >
+            Horror
           </a>
         </li>
       </ul>
@@ -276,17 +276,6 @@ Array [
             </a>
           </h3>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          onClick={[Function]}
-          type="button"
-        >
-          Show more
-        </button>
       </div>
     </section>
     <footer

@@ -103,6 +103,8 @@ const CATALOG_GENRES = [ALL_GENRE].concat(getGenresFromFilms(MOVIES));
 const CATALOG_MOVIES = MOVIES.slice(0, CATALOG_FILMS_PER_PAGE_LIMIT);
 const HAS_MORE_CATALOG_MOVIES = MOVIES.length > CATALOG_FILMS_PER_PAGE_LIMIT;
 
+// const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
+
 const INITIAL_STATE = {
 
   currentFilm: undefined,
@@ -112,7 +114,7 @@ const INITIAL_STATE = {
   catalogGenres: CATALOG_GENRES,
   catalogGenre: CATALOG_GENRE,
   catalogFilms: CATALOG_MOVIES,
-  hasMoreСatalogFilms: HAS_MORE_CATALOG_MOVIES,
+  showCount: HAS_MORE_CATALOG_MOVIES,
 };
 
 const mockStore = configureStore([]);

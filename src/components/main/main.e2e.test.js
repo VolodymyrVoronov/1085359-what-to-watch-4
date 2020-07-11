@@ -80,10 +80,11 @@ const MOVIES = [
   },
 ];
 
-const HAS_MORE_FILMS = true;
+// const HAS_MORE_FILMS = true;
 const CURRENT_FILM = MOVIES[0];
+const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
 
-const GENRES = [`Drama`, `Comedy`, `Kids & Family`];
+const GENRES = [`Comedy`, `Sci-Fi`, `Horror`];
 const CURRENT_GENRE = GENRES[0];
 
 Enzyme.configure({
@@ -100,8 +101,9 @@ it(`movie card title should be clicked`, () => {
     promoFilm: MOVIES[0],
     catalogGenres: GENRES,
     catalogGenre: CURRENT_GENRE,
-    catalogFilms: MOVIES,
-    hasMoreСatalogFilms: HAS_MORE_FILMS,
+    allFilms: MOVIES,
+    // hasMoreСatalogFilms: HAS_MORE_FILMS,
+    showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
   });
 
   const result = mount(<Provider store={store}>
