@@ -101,9 +101,6 @@ const PROMO_FILM = MOVIES[0];
 const CATALOG_GENRE = ALL_GENRE;
 const CATALOG_GENRES = [ALL_GENRE].concat(getGenresFromFilms(MOVIES));
 const CATALOG_MOVIES = MOVIES.slice(0, CATALOG_FILMS_PER_PAGE_LIMIT);
-const HAS_MORE_CATALOG_MOVIES = MOVIES.length > CATALOG_FILMS_PER_PAGE_LIMIT;
-
-// const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
 
 const INITIAL_STATE = {
 
@@ -113,8 +110,7 @@ const INITIAL_STATE = {
   allFilms: CATALOG_MOVIES,
   catalogGenres: CATALOG_GENRES,
   catalogGenre: CATALOG_GENRE,
-  catalogFilms: CATALOG_MOVIES,
-  showCount: HAS_MORE_CATALOG_MOVIES,
+  showCount: 8,
 };
 
 const mockStore = configureStore([]);
@@ -124,8 +120,7 @@ it(`should be switch value of catalogGenre`, () => {
   const store = mockStore(Object.assign({}, INITIAL_STATE));
   const sample = Object.assign({}, INITIAL_STATE, {
     catalogGenre: `Comedy`,
-    catalogFilms: [MOVIES[1]],
-    hasMoreСatalogFilms: false,
+    showCount: 8,
   });
 
   expect(reducer(store.getState(), {
@@ -151,7 +146,7 @@ it(`should be new movies added to movie catalog`, () => {
 
   const store = mockStore(Object.assign({}, INITIAL_STATE));
   const sample = Object.assign({}, INITIAL_STATE, {
-    catalogFilms: MOVIES.slice(0, 2 * CATALOG_FILMS_PER_PAGE_LIMIT),
+    showCount: 16,
   });
 
   expect(reducer(store.getState(), {

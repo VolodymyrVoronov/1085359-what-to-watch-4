@@ -78,8 +78,6 @@ const MOVIES = [
   },
 ];
 
-// const HAS_MORE_FILMS = true;
-
 const GENRES = [`Comedy`, `Sci-Fi`, `Horror`];
 const CURRENT_GENRE = GENRES[0];
 const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
@@ -93,7 +91,6 @@ it(`render should be match markup`, () => {
     catalogGenres: GENRES,
     catalogGenre: CURRENT_GENRE,
     allFilms: MOVIES,
-    // hasMoreСatalogFilms: HAS_MORE_FILMS,
     showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
   });
 
