@@ -36,8 +36,7 @@ const initialState = {
   allFilms: MOVIES,
   catalogGenres: [ALL_GENRE].concat(getGenresFromFilms(MOVIES)),
   catalogGenre: ALL_GENRE,
-  catalogFilms: MOVIES.slice(0, CATALOG_FILMS_PER_PAGE_LIMIT),
-  hasMoreСatalogFilms: MOVIES.length > CATALOG_FILMS_PER_PAGE_LIMIT,
+  showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
 };
 
 const store = createStore(
@@ -49,7 +48,6 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={store}>
       <App
-        currentFilm={MOVIES[0]}
         films={MOVIES}
       />
     </Provider>,

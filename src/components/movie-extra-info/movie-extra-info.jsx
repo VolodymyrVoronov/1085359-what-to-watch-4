@@ -19,7 +19,6 @@ class MovieExtraInfo extends PureComponent {
       return (
         <Overview
           film={film}
-          films={films}
         />
       );
     }
@@ -37,7 +36,6 @@ class MovieExtraInfo extends PureComponent {
       return (
         <Reviews
           film={film}
-          films={films}
         />
       );
     }

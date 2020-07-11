@@ -1,12 +1,10 @@
 import React, {PureComponent} from "react";
-import {connect} from "react-redux";
 import Main from "../main/main.jsx";
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 
-import {Movies, Movie} from "../types-of-props.js";
-
+import {Movies} from "../types-of-props.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
@@ -33,7 +31,7 @@ class App extends PureComponent {
 
   _renderState() {
     const {extraInfoMovie} = this.state;
-    const {currentFilm, films} = this.props;
+    const {films} = this.props;
 
     if (extraInfoMovie) {
       return (
@@ -46,8 +44,6 @@ class App extends PureComponent {
 
     return (
       <Main
-        currentFilm={currentFilm}
-        films={films}
         onFilmListItemClick={this._handleMovieListItemClick}
       />
     );
@@ -74,15 +70,7 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  currentFilm: Movie.isRequired,
   films: Movies.isRequired,
 };
 
-function mapStateToProps(state) {
-  return {
-    films: state.catalogFilms,
-    currentMovie: state.currentFilm,
-  };
-}
-export {App};
-export default connect(mapStateToProps)(App);
+export default App;

@@ -1,11 +1,4 @@
-
-import {ALL_GENRE} from "./components/const.js";
-
 const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
-
-const getFimsByGenre = (source, genre, exclude = []) => {
-  return source.filter((film) => film.genres.includes(genre) && !exclude.includes(film));
-};
 
 export const ActionCreator = {
   setCurrentFilm: (film) => {
@@ -39,27 +32,17 @@ const _setCurrentFilm = (state, film) => {
 };
 
 const _setCatalogGenre = (state, genre) => {
-
-  const {allFilms} = state;
-  const genreFilms = genre === ALL_GENRE ? allFilms : getFimsByGenre(allFilms, genre);
-  const pageFilms = genreFilms.slice(0, CATALOG_FILMS_PER_PAGE_LIMIT);
   const update = {
     catalogGenre: genre,
-    catalogFilms: pageFilms,
-    hasMoreСatalogFilms: pageFilms.length < genreFilms.length,
+    showCount: CATALOG_FILMS_PER_PAGE_LIMIT
   };
 
   return Object.assign({}, state, update);
 };
 
 const _getMoreCatalogFilms = (state) => {
-
-  const {catalogGenre, catalogFilms, allFilms} = state;
-  const genreFilms = catalogGenre === ALL_GENRE ? allFilms : getFimsByGenre(allFilms, catalogGenre);
-  const pageFilms = genreFilms.slice(0, catalogFilms.length + CATALOG_FILMS_PER_PAGE_LIMIT);
   const update = {
-    catalogFilms: pageFilms,
-    hasMoreСatalogFilms: pageFilms.length < genreFilms.length,
+    showCount: state.showCount + CATALOG_FILMS_PER_PAGE_LIMIT
   };
 
   return Object.assign({}, state, update);

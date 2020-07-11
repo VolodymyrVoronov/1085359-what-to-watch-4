@@ -100,7 +100,6 @@ it(`render should be match markup`, () => {
     .create(<Provider store={store}>
       <App
         promoFilm={MOVIES[0]}
-        currentFilm={MOVIES[0]}
         films={MOVIES}
       />
     </Provider>, {

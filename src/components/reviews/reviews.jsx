@@ -20,16 +20,16 @@ class Reviews extends PureComponent {
     return (
       <div className="movie-card__reviews movie-card__row">
         {
-          reviewsInColumns.map((reviewsInColumns, index) => {
+          reviewsInColumns.map((reviewsInColumnsItems, index) => {
             return (
               <div className="movie-card__reviews-col" key={index + Math.random() + Math.random()}>
                 {
-                  reviewsInColumns.map((review, index) => {
+                  reviewsInColumnsItems.map((review, indexItem) => {
 
                     const date = new Date(review.date);
 
                     return (
-                      <div key={index} className="review">
+                      <div key={indexItem} className="review">
                         <blockquote className="review__quote">
                           <p className="review__text">{review.text}</p>
                           <footer className="review__details">

@@ -25,82 +25,75 @@ const getGenresFromFilms = (source) => {
 
 const MOVIES = [
   {
-    title: `movie 1`,
-    genres: [`Drama`],
-    year: 2014,
-    poster: `img/the-grand-budapest-hotel-poster.jpg`,
-    frames: [`img/the-grand-budapest-hotel-poster.jpg`],
-    ratingScore: 8.9,
-    ratingReviewsCount: 240,
-    preview: `./samples/sintel_trailer-480p.mp4`,
-    description: `description`,
-    story: `story`,
-    director: `Wes Andreson`,
-    duration: 99,
+    id: 1,
+    title: `Citizen Kane`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
+    img: `img/bg-the-grand-budapest-hotel.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    rating: 7.8,
+    ratingReviewsCount: 10,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
     actors: [
-      `Some Actor 1`,
-      `Some Actor 2`,
+      `Actor 1`,
+      `Actor 2`,
+      `Actor 3`,
+      `Actor 4`,
+      `Actor 5`,
     ],
-    reviews: [
-      {
-        author: `Some Reviewer`,
-        score: 8.2,
-        text: `Awesome text for The Grand Budapest Hotel...`,
-        date: 1582590140667,
-      }
-    ]
+    runTime: 200,
+    preview: `video/1.mp4`,
   },
+
   {
-    title: `movie 2`,
-    genres: [`Comedy`],
-    year: 2014,
-    poster: `img/the-grand-budapest-hotel-poster.jpg`,
-    frames: [`img/the-grand-budapest-hotel-poster.jpg`],
-    ratingScore: 8.9,
-    ratingReviewsCount: 240,
-    preview: `./samples/sintel_trailer-480p.mp4`,
-    description: `description`,
-    story: `story`,
-    director: `Wes Andreson`,
-    duration: 99,
+    id: 2,
+    title: `Casablanka`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
+    img: `img/bg-the-grand-budapest-hotel.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    rating: 7.8,
+    ratingReviewsCount: 10,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
     actors: [
-      `Some Actor 1`,
-      `Some Actor 2`,
+      `Actor 1`,
+      `Actor 2`,
+      `Actor 3`,
+      `Actor 4`,
+      `Actor 5`,
     ],
-    reviews: [
-      {
-        author: `Some Reviewer`,
-        score: 8.2,
-        text: `Awesome text for The Grand Budapest Hotel...`,
-        date: 1582590140667,
-      }
-    ]
+    runTime: 200,
+    preview: `video/1.mp4`,
   },
+
   {
-    title: `movie 3`,
-    genres: [`Kids & Family`],
-    year: 2014,
-    poster: `img/the-grand-budapest-hotel-poster.jpg`,
-    frames: [`img/the-grand-budapest-hotel-poster.jpg`],
-    ratingScore: 8.9,
-    ratingReviewsCount: 240,
-    preview: `./samples/sintel_trailer-480p.mp4`,
-    description: `description`,
-    story: `story`,
-    director: `Wes Andreson`,
-    duration: 99,
+    id: 3,
+    title: `The Godfather`,
+    genres: [`Comedy`, `Sci-Fi`, `Horror`],
+    img: `img/bg-the-grand-budapest-hotel.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/bg-the-grand-budapest-hotel.jpg`,
+    rating: 7.8,
+    ratingReviewsCount: 10,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
     actors: [
-      `Some Actor 1`,
-      `Some Actor 2`,
+      `Actor 1`,
+      `Actor 2`,
+      `Actor 3`,
+      `Actor 4`,
+      `Actor 5`,
     ],
-    reviews: [
-      {
-        author: `Some Reviewer`,
-        score: 8.2,
-        text: `Awesome text for The Grand Budapest Hotel...`,
-        date: 1582590140667,
-      }
-    ]
+    runTime: 200,
+    preview: `video/1.mp4`,
   },
 ];
 

@@ -7,12 +7,16 @@ import GenreFilterList from "../genre-filter-list/genre-filter-list.jsx";
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 
 import {Movies} from "../types-of-props.js";
+import {ALL_GENRE} from "../const.js";
+
+const getFimsByGenre = (films, genre, exclude = []) => {
+  return films.filter((film) => film.genres.includes(genre) && !exclude.includes(film));
+};
 
 class Catalog extends PureComponent {
 
   render() {
     const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilms, onShowMore} = this.props;
-
     return (
       <React.Fragment>
         <GenreFilterList
@@ -44,11 +48,14 @@ Catalog.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
+  const {catalogGenres, catalogGenre, allFilms, showCount} = state;
+  const genreFilms = catalogGenre === ALL_GENRE ? allFilms : getFimsByGenre(allFilms, catalogGenre);
+  const films = genreFilms.slice(0, showCount);
   return {
-    genres: state.catalogGenres,
-    currentGenre: state.catalogGenre,
-    films: state.catalogFilms,
-    hasMoreFilms: state.hasMoreСatalogFilms,
+    genres: catalogGenres,
+    currentGenre: catalogGenre,
+    films,
+    hasMoreFilms: showCount < genreFilms.length
   };
 };
 
