@@ -1,71 +1,56 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
-import {connect} from 'react-redux';
-import {ActionCreator} from '../../reducer.js';
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
+
+import {GENRE_ALIASES} from "../const.js";
+
+const getGenreLabels = () => {
+  return Object.assign({}, GENRE_ALIASES);
+};
 
 class GenreFilter extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._handleItemClick = this._handleItemClick.bind(this);
+    this._handleClick = this._handleClick.bind(this);
   }
 
-  _handleItemClick(e) {
+  _handleClick(e) {
 
-    const {onGenreItemClick} = this.props;
-    const index = +e.currentTarget.dataset.index;
+    const {genre, onSelect} = this.props;
 
     e.preventDefault();
-    onGenreItemClick(index);
+    onSelect(genre);
   }
 
   render() {
-
-    const {genres, currentGenreIndex} = this.props;
+    const {genre} = this.props;
+    const genreLabels = getGenreLabels();
 
     return (
-      <ul className="catalog__genres-list">
-        {
-          genres.map((tab, index) => {
-            return (
-              <li key={tab}
-                className={`catalog__genres-item${index === currentGenreIndex ? ` catalog__genres-item--active` : ``}`}
-              >
-                <a
-                  data-index={index}
-                  href="#"
-                  className="catalog__genres-link"
-                  onClick={this._handleItemClick}
-                >{tab}</a>
-              </li>
-            );
-          })
-        }
-      </ul>
+      <a
+        href="#"
+        className="catalog__genres-link"
+        onClick={this._handleClick}
+      >{genreLabels[genre] || genre}</a>
     );
   }
 }
 
 GenreFilter.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentGenreIndex: PropTypes.number,
-  onGenreItemClick: PropTypes.func,
+  genre: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired,
 };
-
-function mapStateToProps(state) {
-  return {
-    currentGenreIndex: state.genreFilterIndex,
-  };
-}
 
 function mapDispatchToProps(dispatch) {
   return {
-    onGenreItemClick: (index) => {
-      dispatch(ActionCreator.applyGenreFilter(index));
+    onSelect: (genre) => {
+      dispatch(ActionCreator.setCatalogGenre(genre));
     }
   };
 }
 
 export {GenreFilter};
-export default connect(mapStateToProps, mapDispatchToProps)(GenreFilter);
+export default connect(null, mapDispatchToProps)(GenreFilter);

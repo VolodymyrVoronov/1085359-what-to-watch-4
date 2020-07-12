@@ -1,9 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Catalog from "../catalog/catalog.jsx";
-import {Movies, Movie} from "../types-of-props.js";
+import {Movie} from "../types-of-props.js";
 
-const Main = ({currentMovie, films, onMovieListItemClick}) => {
+const Main = ({promoFilm, onFilmListItemClick}) => {
 
   return (
     <React.Fragment>
@@ -33,14 +34,14 @@ const Main = ({currentMovie, films, onMovieListItemClick}) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={currentMovie.img} alt={`${currentMovie.title} poster`} width="218" height="327" />
+              <img src={promoFilm.img} alt={`${promoFilm.title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{currentMovie.title}</h2>
+              <h2 className="movie-card__title">{promoFilm.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{currentMovie.genres.join(`, `)}</span>
-                <span className="movie-card__year">{currentMovie.releaseDate}</span>
+                <span className="movie-card__genre">{promoFilm.genres.join(`, `)}</span>
+                <span className="movie-card__year">{promoFilm.releaseDate}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -49,6 +50,9 @@ const Main = ({currentMovie, films, onMovieListItemClick}) => {
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
+                  <svg id="play-s" viewBox="0 0 19 19">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                  </svg>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
@@ -66,8 +70,7 @@ const Main = ({currentMovie, films, onMovieListItemClick}) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <Catalog
-            films={films}
-            onMovieListItemClick={onMovieListItemClick}
+            onFilmListItemClick={onFilmListItemClick}
           />
         </section>
 
@@ -90,14 +93,20 @@ const Main = ({currentMovie, films, onMovieListItemClick}) => {
 };
 
 Main.propTypes = {
-  onMovieListItemClick: PropTypes.func.isRequired,
+  onFilmListItemClick: PropTypes.func.isRequired,
 
-  currentMovie: Movie.isRequired,
-  films: Movies.isRequired,
+  promoFilm: Movie.isRequired,
 };
 
 Main.defaultProps = {
   films: [],
 };
 
-export default Main;
+function mapStateToProps(state) {
+  return {
+    promoFilm: state.promoFilm,
+  };
+}
+
+export {Main};
+export default connect(mapStateToProps)(Main);

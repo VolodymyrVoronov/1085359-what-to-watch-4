@@ -79,20 +79,28 @@ const MOVIES = [
 ];
 
 const HANDLE_CLICK = () => {};
+const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
+
+const GENRES = [`Drama`, `Comedy`, `Kids & Family`];
+const CURRENT_GENRE = GENRES[0];
 
 const mockStore = configureStore([]);
 
 it(`render should be match markup`, () => {
 
   const store = mockStore({
-    genreFilterIndex: 0,
+    promoFilm: MOVIES[0],
+    catalogGenres: GENRES,
+    catalogGenre: CURRENT_GENRE,
+    allFilms: MOVIES,
+    showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
   });
 
   const result = renderer
     .create(<Provider store={store}>
       <Catalog
-        films={MOVIES}
-        onMovieListItemClick={HANDLE_CLICK}
+        onShowMore={HANDLE_CLICK}
+        onFilmListItemClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviesList from "./list-of-films.jsx";
+import FilmsList from "./list-of-films.jsx";
 
 const MOVIES = [
   {
@@ -81,9 +81,9 @@ const HANDLE_CLICK = () => {};
 it(`render should be match markup`, () => {
 
   const result = renderer
-    .create(<MoviesList
+    .create(<FilmsList
       films={MOVIES}
-      onMovieListItemClick={HANDLE_CLICK}
+      onFilmListItemClick={HANDLE_CLICK}
     />, {
       createNodeMock: () => {
         return {};

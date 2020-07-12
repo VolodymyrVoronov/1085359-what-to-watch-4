@@ -19,7 +19,6 @@ class MovieExtraInfo extends PureComponent {
       return (
         <Overview
           film={film}
-          films={films}
         />
       );
     }
@@ -37,7 +36,6 @@ class MovieExtraInfo extends PureComponent {
       return (
         <Reviews
           film={film}
-          films={films}
         />
       );
     }
@@ -88,6 +86,9 @@ class MovieExtraInfo extends PureComponent {
                     <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
+                  <svg id="play-s" viewBox="0 0 19 19">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                  </svg>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">

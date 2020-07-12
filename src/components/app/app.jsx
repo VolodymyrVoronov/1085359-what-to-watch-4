@@ -4,8 +4,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 
-import {Movies, Movie} from "../types-of-props.js";
-
+import {Movies} from "../types-of-props.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
@@ -32,7 +31,7 @@ class App extends PureComponent {
 
   _renderState() {
     const {extraInfoMovie} = this.state;
-    const {currentMovie, films} = this.props;
+    const {films} = this.props;
 
     if (extraInfoMovie) {
       return (
@@ -45,9 +44,7 @@ class App extends PureComponent {
 
     return (
       <Main
-        currentMovie={currentMovie}
-        films={films}
-        onMovieListItemClick={this._handleMovieListItemClick}
+        onFilmListItemClick={this._handleMovieListItemClick}
       />
     );
   }
@@ -63,7 +60,6 @@ class App extends PureComponent {
           }</Route>
           <Route exact path="/dev-movie-detail-info">
             <MovieExtraInfoWrapped
-              film={films[0]}
               films={films}
             />
           </Route>
@@ -74,7 +70,6 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  currentMovie: Movie.isRequired,
   films: Movies.isRequired,
 };
 
