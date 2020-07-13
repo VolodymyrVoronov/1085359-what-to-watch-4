@@ -6,12 +6,14 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
     constructor(props) {
       super(props);
 
+      // this._timeoutId = undefined;
       this.state = {
         activeItemId: -1,
       };
 
       this._handleItemHover = this._handleItemHover.bind(this);
       this._handleItemLeave = this._handleItemLeave.bind(this);
+      this._handleItemClick = this._handleItemClick.bind(this);
     }
 
     componentDidUpdate() {
@@ -22,11 +24,11 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
       clearTimeout(this._timeoutId);
     }
 
-    _handleItemHover({id}) {
+    _handleItemHover({film}) {
       clearTimeout(this._timeoutId);
       this._timeoutId = setTimeout(() => {
         this.setState({
-          activeItemId: id,
+          activeItemId: film.id,
         });
       }, setActiveTimeDelay);
     }
@@ -38,19 +40,30 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
       });
     }
 
+    _handleItemClick({film}) {
+      this.setState({
+        activeItemId: film.id,
+      });
+    }
+
     render() {
 
       const {activeItemId} = this.state;
+      const {films} = this.props;
 
       return (
         <Component {...this.props}
+          films={films}
           activeItemId={activeItemId}
-          onItemHover={this._handleItemHover}
-          onItemLeave={this._handleItemLeave}
+          onHover={this._handleItemHover}
+          onLeave={this._handleItemLeave}
+          onClick={this._handleItemClick}
         />
       );
     }
   }
+  
+  withActiveItemList.propTypes = {};
 
   return WithActiveItemList;
 };

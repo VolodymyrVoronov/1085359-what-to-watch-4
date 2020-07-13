@@ -65,8 +65,6 @@ class Player extends PureComponent {
 Player.propTypes = {
   id: PropTypes.number.isRequired,
   isActive: PropTypes.bool.isRequired,
-  onPlay: PropTypes.func.isRequired,
-  onEnd: PropTypes.func.isRequired,
   poster: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   isMuted: PropTypes.bool,

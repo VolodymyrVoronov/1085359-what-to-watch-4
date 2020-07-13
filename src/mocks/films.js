@@ -2,7 +2,7 @@
 
 export const MOVIES = [
   {
-    id: 1,
+    id: 0,
     title: `Citizen Kane`,
     genres: [`Documentary`, `Kids & Family`, `Romance`],
     img: `img/aviator.jpg`,
@@ -41,7 +41,7 @@ export const MOVIES = [
   },
 
   {
-    id: 2,
+    id: 1,
     title: `Casablanka`,
     genres: [`Drama`, `Horror`, `Crime`],
     img: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -86,7 +86,7 @@ export const MOVIES = [
   },
 
   {
-    id: 3,
+    id: 2,
     title: `The Godfather`,
     genres: [`Drama`, `Thriller`, `Comedy`],
     img: `img/no-country-for-old-men.jpg`,
@@ -131,7 +131,7 @@ export const MOVIES = [
   },
 
   {
-    id: 4,
+    id: 3,
     title: `Lawrence Of Arabia`,
     genres: [`Drama`, `Kids & Family`],
     img: `img/we-need-to-talk-about-kevin.jpg`,
@@ -176,7 +176,7 @@ export const MOVIES = [
   },
 
   {
-    id: 5,
+    id: 4,
     title: `The Wizard Of Oz`,
     genres: [`Comedy`, `Kids & Family`, `Documentary`],
     img: `img/what-we-do-in-the-shadows.jpg`,
@@ -221,7 +221,7 @@ export const MOVIES = [
   },
 
   {
-    id: 6,
+    id: 5,
     title: `The Graduate`,
     genres: [`Kids & Family`],
     img: `img/pulp-fiction.jpg`,
@@ -266,7 +266,7 @@ export const MOVIES = [
   },
 
   {
-    id: 7,
+    id: 6,
     title: `On The Waterfront`,
     genres: [`Drama`, `Thriller`],
     img: `img/midnight-special.jpg`,
@@ -280,6 +280,51 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 311,
+    preview: `video/1.mp4`,
+
+    reviews : [
+      {
+        author: `John`,
+        score: 5.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Max`,
+        score: 4.1,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      },
+      {
+        author: `Stive`,
+        score: 10,
+        text: `It's ok. but it could be better`,
+        date: 1582590140667
+      }
+    ]
+  },
+
+  {
+    id: 7,
+    title: `Schindler's List`,
+    genres: [`Comedy`],
+    img: `img/dardjeeling-limited.jpg`,
+    releaseDate: 2014,
+
+    poster: `img/dardjeeling-limited.jpg`,  
+    rating: 7.8,
+    ratingReviewsCount: 710,
+    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
+    director: `Director`,
+    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+    runTime: 123,
     preview: `video/1.mp4`,
 
     reviews : [
@@ -447,51 +492,6 @@ export const MOVIES = [
 
   {
     id: 11,
-    title: `Schindler's List`,
-    genres: [`Comedy`],
-    img: `img/dardjeeling-limited.jpg`,
-    releaseDate: 2014,
-
-    poster: `img/dardjeeling-limited.jpg`,  
-    rating: 7.8,
-    ratingReviewsCount: 710,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    director: `Director`,
-    actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
-    runTime: 123,
-    preview: `video/1.mp4`,
-
-    reviews : [
-      {
-        author: `John`,
-        score: 5.1,
-        text: `It's ok. but it could be better`,
-        date: 1582590140667
-      },
-      {
-        author: `Max`,
-        score: 4.1,
-        text: `It's ok. but it could be better`,
-        date: 1582590140667
-      },
-      {
-        author: `Stive`,
-        score: 10,
-        text: `It's ok. but it could be better`,
-        date: 1582590140667
-      },
-      {
-        author: `Stive`,
-        score: 10,
-        text: `It's ok. but it could be better`,
-        date: 1582590140667
-      }
-    ]
-  },
-
-  {
-    id: 12,
     title: `Schindler's List`,
     genres: [`Comedy`],
     img: `img/dardjeeling-limited.jpg`,
