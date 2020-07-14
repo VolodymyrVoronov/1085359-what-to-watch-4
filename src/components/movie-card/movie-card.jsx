@@ -34,7 +34,7 @@ class MovieCard extends PureComponent {
 
   render() {
     const {id, film, isPreviewActive} = this.props;
-    console.log(isPreviewActive);
+
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter={this._handleFilmCardHover}
@@ -50,7 +50,7 @@ class MovieCard extends PureComponent {
           />
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
+          <a className="small-movie-card__link" href="movie-page.html" onClick={this._handleFilmCardClick}>{film.title}</a>
         </h3>
       </article>
     );
@@ -59,7 +59,7 @@ class MovieCard extends PureComponent {
 
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
-  isPreviewActive: PropTypes.bool.isRequired,
+  isPreviewActive: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,

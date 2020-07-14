@@ -10,8 +10,6 @@ const PRVIEW_DALAY = 1000;
 
 const MovieCardWrapped = withActiveItemList(MovieCard, PRVIEW_DALAY);
 
-
-
 class FilmsList extends PureComponent {
   // constructor(props) {
   //   super(props);
@@ -57,8 +55,7 @@ class FilmsList extends PureComponent {
 
   render() {
     // const {target} = this.state; 
-    const {films, activeItemId, onItemHover, onItemLeave, onItemClick} = this.props;
-
+    const {films, activeItemId, onItemHover, onItemLeave, onFilmListItemClick} = this.props;
     return (
       <div className="catalog__movies-list">
         {
@@ -71,7 +68,7 @@ class FilmsList extends PureComponent {
                 isPreviewActive={activeItemId === index}
                 onHover={onItemHover}
                 onLeave={onItemLeave}
-                onClick={onItemClick}
+                onClick={onFilmListItemClick}
               />
             );
           })

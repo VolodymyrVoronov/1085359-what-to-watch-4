@@ -13,7 +13,7 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
 
       this._handleItemHover = this._handleItemHover.bind(this);
       this._handleItemLeave = this._handleItemLeave.bind(this);
-      this._handleItemClick = this._handleItemClick.bind(this);
+      // this._handleItemClick = this._handleItemClick.bind(this);
     }
 
     componentDidUpdate() {
@@ -40,24 +40,22 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
       });
     }
 
-    _handleItemClick({film}) {
-      this.setState({
-        activeItemId: film.id,
-      });
-    }
+    // _handleItemClick({film}) {
+    //   this.setState({
+    //     activeItemId: film.id,
+    //   });
+    // }
 
     render() {
 
       const {activeItemId} = this.state;
-      const {films} = this.props;
 
       return (
         <Component {...this.props}
-          films={films}
-          activeItemId={activeItemId}
+          isPreviewActive={activeItemId}
           onHover={this._handleItemHover}
           onLeave={this._handleItemLeave}
-          onClick={this._handleItemClick}
+          // onClick={this._handleItemClick}
         />
       );
     }
