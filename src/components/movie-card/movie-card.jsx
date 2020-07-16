@@ -29,7 +29,7 @@ class MovieCard extends PureComponent {
     const {film, onClick} = this.props;
 
     e.preventDefault();
-    onClick({film});
+    onClick(film);
   }
 
   render() {
@@ -59,7 +59,7 @@ class MovieCard extends PureComponent {
 
 MovieCard.propTypes = {
   id: PropTypes.number.isRequired,
-  isPreviewActive: PropTypes.number.isRequired,
+  isPreviewActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,

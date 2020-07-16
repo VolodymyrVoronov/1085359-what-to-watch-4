@@ -6,17 +6,12 @@ class Player extends PureComponent {
     super(props);
 
     this._videoRef = React.createRef();
-
-    // this._handleVideoPlay = this._handleVideoPlay.bind(this);
-    // this._handleVideoEnd = this._handleVideoEnd.bind(this);
   }
 
   componentDidMount() {
     const {poster, isMuted, src} = this.props;
     const video = this._videoRef.current;
 
-    // video.onplay = this._handleVideoPlay;
-    // video.onend = this._handleVideoEnd;
     video.preload = `none`;
     video.poster = poster;
     video.muted = isMuted;
@@ -26,8 +21,6 @@ class Player extends PureComponent {
   componentWillUnmount() {
     const video = this._videoRef.current;
 
-    // video.onplay = null;
-    // video.onend = null;
     video.poster = ``;
     video.src = ``;
   }
@@ -43,18 +36,6 @@ class Player extends PureComponent {
     }
   }
 
-  // _handleVideoPlay() {
-  //   const {id, onPlay} = this.props;
-
-  //   onPlay({id});
-  // }
-
-  // _handleVideoEnd() {
-  //   const {id, onEnd} = this.props;
-
-  //   onEnd({id});
-  // }
-
   render() {
     return (
       <video ref={this._videoRef} className="player__video" poster={this.poster}></video>
@@ -64,7 +45,7 @@ class Player extends PureComponent {
 
 Player.propTypes = {
   id: PropTypes.number.isRequired,
-  isActive: PropTypes.number.isRequired,
+  isActive: PropTypes.bool.isRequired,
   poster: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   isMuted: PropTypes.bool,

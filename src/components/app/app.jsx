@@ -2,11 +2,12 @@ import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer.js";
+import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 
-import {Movies} from "../types-of-props.js";
+import {Movies, Movie} from "../types-of-props.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
@@ -15,28 +16,10 @@ const MovieExtraInfoWrapped = withActiveTab(MovieExtraInfo);
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   extraInfoFilm: undefined,
-    // };
-
-    // this._handleMovieListItemClick = this._handleMovieListItemClick.bind(this);
   }
 
-  // _handleMovieListItemClick({film}) {
-  //   this.setState(() => {
-  //     return {
-  //       extraInfoFilm: film,
-  //     };
-  //   });
-  // }
-
   _renderState() {
-    // const {extraInfoFilm} = this.state;
     const {films, extraInfoFilm, handleMovieCardClick} = this.props;
-    console.log(this.props);
-    console.log(extraInfoFilm);
-    
     if (extraInfoFilm) {
       return (
         <MovieExtraInfoWrapped
@@ -75,6 +58,9 @@ class App extends PureComponent {
 
 App.propTypes = {
   films: Movies.isRequired,
+  extraInfoFilm: Movie.isRequired,
+
+  handleMovieCardClick: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -89,5 +75,3 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {App};
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// export default App;

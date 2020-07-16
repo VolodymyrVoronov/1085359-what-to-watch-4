@@ -1,19 +1,19 @@
 import React, {PureComponent} from "react";
 
+import {Movie} from "../components/types-of-props.js";
+
 const withActiveItemList = (Component, setActiveTimeDelay) => {
 
   class WithActiveItemList extends PureComponent {
     constructor(props) {
       super(props);
 
-      // this._timeoutId = undefined;
       this.state = {
         activeItemId: -1,
       };
 
       this._handleItemHover = this._handleItemHover.bind(this);
       this._handleItemLeave = this._handleItemLeave.bind(this);
-      // this._handleItemClick = this._handleItemClick.bind(this);
     }
 
     componentDidUpdate() {
@@ -34,34 +34,30 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
     }
 
     _handleItemLeave() {
-      clearTimeout(this.timeoutId);
+      clearTimeout(this._timeoutId);
       this.setState({
         activeItemId: -1,
       });
     }
 
-    // _handleItemClick({film}) {
-    //   this.setState({
-    //     activeItemId: film.id,
-    //   });
-    // }
-
     render() {
 
       const {activeItemId} = this.state;
+      const {film} = this.props;
 
       return (
         <Component {...this.props}
-          isPreviewActive={activeItemId}
+          isPreviewActive={activeItemId === film.id}
           onHover={this._handleItemHover}
           onLeave={this._handleItemLeave}
-          // onClick={this._handleItemClick}
         />
       );
     }
   }
-  
-  withActiveItemList.propTypes = {};
+
+  WithActiveItemList.propTypes = {
+    film: Movie.isRequired,
+  };
 
   return WithActiveItemList;
 };

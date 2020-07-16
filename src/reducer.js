@@ -56,7 +56,7 @@ export const ActionCreator = {
     return {
       type: ActionType.GET_MOVIE_CARD,
       payload: film,
-    }
+    };
   },
 };
 
