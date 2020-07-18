@@ -113,9 +113,7 @@ class MovieExtraInfo extends PureComponent {
                 currentTab={activeTab}
                 onTabClick={onTabClick}
               />
-              {
-                this._renderState()
-              }
+              {this._renderState()}
             </div>
           </div>
         </div>

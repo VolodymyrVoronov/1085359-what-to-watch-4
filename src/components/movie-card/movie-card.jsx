@@ -9,9 +9,8 @@ class MovieCard extends PureComponent {
     super(props);
 
     this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
-    this._handleFilmTitleClick = this._handleFilmTitleClick.bind(this);
-
     this._handleFilmCardLeave = this._handleFilmCardLeave.bind(this);
+    this._handleFilmCardClick = this._handleFilmCardClick.bind(this);
   }
 
   _handleFilmCardHover() {
@@ -26,11 +25,11 @@ class MovieCard extends PureComponent {
     onLeave({film});
   }
 
-  _handleFilmTitleClick(e) {
+  _handleFilmCardClick(e) {
     const {film, onClick} = this.props;
 
     e.preventDefault();
-    onClick({film});
+    onClick(film);
   }
 
   render() {
@@ -39,21 +38,19 @@ class MovieCard extends PureComponent {
     return (
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter={this._handleFilmCardHover}
-        onClick={this._handleFilmTitleClick}
         onMouseLeave={this._handleFilmCardLeave}
+        onClick={this._handleFilmCardClick}
       >
         <div className="small-movie-card__image">
           <Player
             id={id}
             isActive={isPreviewActive}
-            onPlay={() => {}}
-            onEnd={() => {}}
             poster={film.poster}
             src={film.preview}
           />
         </div>
         <h3 className="small-movie-card__title">
-          <a className="small-movie-card__link" href="movie-page.html" onClick={this._handleFilmTitleClick}>{film.title}</a>
+          <a className="small-movie-card__link" href="movie-page.html" onClick={this._handleFilmCardClick}>{film.title}</a>
         </h3>
       </article>
     );
@@ -61,12 +58,12 @@ class MovieCard extends PureComponent {
 }
 
 MovieCard.propTypes = {
+  id: PropTypes.number.isRequired,
   isPreviewActive: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
   onHover: PropTypes.func.isRequired,
   onLeave: PropTypes.func.isRequired,
 
-  id: PropTypes.number.isRequired,
   film: Movie.isRequired,
 };
 

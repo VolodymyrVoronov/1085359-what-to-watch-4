@@ -1,10 +1,13 @@
 import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
+import PropTypes from "prop-types";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 
-import {Movies} from "../types-of-props.js";
+import {Movies, Movie} from "../types-of-props.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 
@@ -13,30 +16,14 @@ const MovieExtraInfoWrapped = withActiveTab(MovieExtraInfo);
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      extraInfoMovie: undefined,
-    };
-
-    this._handleMovieListItemClick = this._handleMovieListItemClick.bind(this);
-  }
-
-  _handleMovieListItemClick({film}) {
-    this.setState(() => {
-      return {
-        extraInfoMovie: film,
-      };
-    });
   }
 
   _renderState() {
-    const {extraInfoMovie} = this.state;
-    const {films} = this.props;
-
-    if (extraInfoMovie) {
+    const {films, extraInfoFilm, handleMovieCardClick} = this.props;
+    if (extraInfoFilm) {
       return (
         <MovieExtraInfoWrapped
-          film={extraInfoMovie}
+          film={extraInfoFilm}
           films={films}
         />
       );
@@ -44,7 +31,7 @@ class App extends PureComponent {
 
     return (
       <Main
-        onFilmListItemClick={this._handleMovieListItemClick}
+        onFilmListItemClick={handleMovieCardClick}
       />
     );
   }
@@ -55,9 +42,9 @@ class App extends PureComponent {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">{
-            this._renderState()
-          }</Route>
+          <Route exact path="/">
+            {this._renderState()}
+          </Route>
           <Route exact path="/dev-movie-detail-info">
             <MovieExtraInfoWrapped
               films={films}
@@ -71,6 +58,20 @@ class App extends PureComponent {
 
 App.propTypes = {
   films: Movies.isRequired,
+  extraInfoFilm: Movie.isRequired,
+
+  handleMovieCardClick: PropTypes.func.isRequired,
 };
 
-export default App;
+const mapStateToProps = (state) => ({
+  extraInfoFilm: state.extraInfoFilm,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  handleMovieCardClick(film) {
+    dispatch(ActionCreator.getFilmCard(film));
+  }
+});
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

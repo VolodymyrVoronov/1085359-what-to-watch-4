@@ -1,5 +1,7 @@
 import React, {PureComponent} from "react";
 
+import {Movie} from "../components/types-of-props.js";
+
 const withActiveItemList = (Component, setActiveTimeDelay) => {
 
   class WithActiveItemList extends PureComponent {
@@ -22,17 +24,17 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
       clearTimeout(this._timeoutId);
     }
 
-    _handleItemHover({id}) {
+    _handleItemHover({film}) {
       clearTimeout(this._timeoutId);
       this._timeoutId = setTimeout(() => {
         this.setState({
-          activeItemId: id,
+          activeItemId: film.id,
         });
       }, setActiveTimeDelay);
     }
 
     _handleItemLeave() {
-      clearTimeout(this.timeoutId);
+      clearTimeout(this._timeoutId);
       this.setState({
         activeItemId: -1,
       });
@@ -41,16 +43,21 @@ const withActiveItemList = (Component, setActiveTimeDelay) => {
     render() {
 
       const {activeItemId} = this.state;
+      const {film} = this.props;
 
       return (
         <Component {...this.props}
-          activeItemId={activeItemId}
-          onItemHover={this._handleItemHover}
-          onItemLeave={this._handleItemLeave}
+          isPreviewActive={activeItemId === film.id}
+          onHover={this._handleItemHover}
+          onLeave={this._handleItemLeave}
         />
       );
     }
   }
+
+  WithActiveItemList.propTypes = {
+    film: Movie.isRequired,
+  };
 
   return WithActiveItemList;
 };
