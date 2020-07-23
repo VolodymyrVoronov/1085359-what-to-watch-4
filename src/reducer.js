@@ -30,7 +30,8 @@ const initialState = {
   catalogGenres: [ALL_GENRE].concat(getGenresFromFilms(MOVIES)),
   catalogGenre: ALL_GENRE,
   showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
-  extraInfoFilm: null
+  extraInfoFilm: null,
+  isFullScreenOn: false,
 };
 
 export const ActionCreator = {
@@ -40,24 +41,32 @@ export const ActionCreator = {
       payload: film,
     };
   },
+
   setCatalogGenre: (genre) => {
     return {
       type: ActionType.SET_CATALOG_GENRE,
       payload: genre,
     };
   },
+
   getMoreCatalogFilms: () => {
     return {
       type: ActionType.GET_MORE_CATALOG_FILMS,
       payload: undefined,
     };
   },
+
   getFilmCard: (film) => {
     return {
       type: ActionType.GET_MOVIE_CARD,
       payload: film,
     };
   },
+
+  toggleFullScreenPlayer: (flag) => ({
+    type: ActionType.SET_FULL_SCREEN,
+    payload: flag,
+  }),
 };
 
 export const ActionType = {
@@ -65,6 +74,7 @@ export const ActionType = {
   GET_MORE_CATALOG_FILMS: `GET_MORE_CATALOG_FILMS`,
   SET_CURRENT_FILM: `SET_CURRENT_FILM`,
   GET_MOVIE_CARD: `GET_MOVIE_CARD`,
+  SET_FULL_SCREEN: `SET_FULL_SCREEN`,
 };
 
 const _setCurrentFilm = (state, film) => {
@@ -92,19 +102,31 @@ const _getFilmCard = (state, film) => {
   return Object.assign({}, state, {extraInfoFilm: film});
 };
 
+const _setFullScreen = (state, film) => {
+  return Object.assign({}, state, {isFullScreenOn: film});
+}
+
 export const reducer = (state = initialState, action) => {
 
   if (action.type === ActionType.SET_CURRENT_FILM) {
     return _setCurrentFilm(state, action.payload);
   }
+
   if (action.type === ActionType.SET_CATALOG_GENRE) {
     return _setCatalogGenre(state, action.payload);
   }
+
   if (action.type === ActionType.GET_MORE_CATALOG_FILMS) {
     return _getMoreCatalogFilms(state);
   }
+
   if (action.type === ActionType.GET_MOVIE_CARD) {
     return _getFilmCard(state, action.payload);
   }
+
+  if (action.type === ActionType.SET_FULL_SCREEN) {
+    return _setFullScreen(state, action.payload);
+  }
+
   return state;
 };
