@@ -22,7 +22,7 @@ class App extends PureComponent {
   }
 
   _renderState() {
-    const {films, extraInfoFilm, currentFilm, promoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
+    const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
     if (extraInfoFilm && !isFullScreenOn) {
       return (
         <MovieExtraInfoWrapped
@@ -36,7 +36,7 @@ class App extends PureComponent {
     if (isFullScreenOn) {
       return (
         <FullPlayerWrapped
-          film={extraInfoFilm}
+          film={films[0]}
           onExitButtonClick={handleExitButtonClick}
         />
       );
@@ -52,7 +52,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {films, extraInfoFilm, handlePlayButtonClick, handleExitButtonClick} = this.props;
+    const {films, extraInfoFilm, handlePlayButtonClick} = this.props;
 
     return (
       <BrowserRouter>
@@ -68,13 +68,6 @@ class App extends PureComponent {
               onPlayButtonClick={handlePlayButtonClick}
             />
           </Route>
-
-          <Route exact path="/full-player">
-            <FullPlayerWrapped
-              film={extraInfoFilm}
-              onExitButtonClick={handleExitButtonClick}
-            />
-          </Route>
         </Switch>
       </BrowserRouter>
     );
@@ -86,6 +79,9 @@ App.propTypes = {
   extraInfoFilm: Movie.isRequired,
 
   handleMovieCardClick: PropTypes.func.isRequired,
+  handlePlayButtonClick: PropTypes.func.isRequired,
+  handleExitButtonClick: PropTypes.func.isRequired,
+  isFullScreenOn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({

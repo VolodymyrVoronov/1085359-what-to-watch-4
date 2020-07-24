@@ -104,7 +104,7 @@ const _getFilmCard = (state, film) => {
 
 const _setFullScreen = (state, film) => {
   return Object.assign({}, state, {isFullScreenOn: film});
-}
+};
 
 export const reducer = (state = initialState, action) => {
 

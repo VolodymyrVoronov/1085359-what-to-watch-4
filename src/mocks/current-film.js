@@ -5,17 +5,17 @@ export const CURRENT_MOVIE = {
   img: `img/aviator.jpg`,
   releaseDate: 2014,
 
-  poster: `img/aviator.jpg`,  
+  poster: `img/aviator.jpg`,
   rating: 10,
   ratingReviewsCount: 120,
   description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
   story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
   director: `Director`,
-  actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
+  actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`],
   runTime: 1260,
-  preview: `http://img0.joyreactor.cc/pics/post/webm/%D0%B3%D0%B8%D1%84%D0%BA%D0%B8-%D1%81%D0%BE%D0%B1%D0%B0%D0%BA%D0%B0-%D1%85%D0%B0%D1%81%D0%BA%D0%B8-6062954.webm`,
+  preview: `http://img1.joyreactor.cc/pics/post/webm/%D0%B3%D0%B8%D1%84%D0%BA%D0%B8-%D1%84%D0%BE%D0%BA%D1%83%D1%81-%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D0%BA-%D0%A0%D0%B5%D0%B9%D0%BC%D0%BE%D0%BD%D0%B4-%D0%A2%D0%B5%D0%BB%D0%BB%D0%B5%D1%80-6063047.webm`,
 
-  reviews : [
+  reviews: [
     {
       author: `John`,
       score: 5.1,

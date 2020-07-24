@@ -94,6 +94,7 @@ const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
 
 Main.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
 
   promoFilm: Movie.isRequired,
 };

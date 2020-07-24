@@ -1,4 +1,7 @@
 import React, {PureComponent, createRef} from "react";
+import PropTypes from "prop-types";
+
+import {Movie} from "../components/types-of-props.js";
 
 const withFullPlayer = (Component) => {
   class WithFullPlayer extends PureComponent {
@@ -111,6 +114,11 @@ const withFullPlayer = (Component) => {
       );
     }
   }
+
+  WithFullPlayer.propTypes = {
+    film: Movie.isRequired,
+    onExitButtonClick: PropTypes.func.isRequired,
+  };
 
   return WithFullPlayer;
 };

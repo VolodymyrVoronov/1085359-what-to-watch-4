@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 import {Movie} from "../types-of-props.js";
 
-const getTimeLeft = (videoDuration) => {
-  const seconds = Math.trunc(videoDuration % 60);
-  const minutes = Math.trunc(videoDuration / 60);
+const getTimeLeft = (duration) => {
+  const seconds = Math.trunc(duration % 60);
+  const minutes = Math.trunc(duration / 60);
   const hours = Math.trunc(minutes / 60);
 
   return [
@@ -16,15 +16,16 @@ const getTimeLeft = (videoDuration) => {
 };
 
 const FullPlayer = (props) => {
+
   const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, onExitButtonClick, film, children} = props;
-  
+
   const timeLeft = getTimeLeft(duration - progress);
 
   return (
     <React.Fragment>
       <div className="player">
         {children}
-        {/* <video src="#" class="player__video" poster={film.img}></video> */}
+
         <button onClick={onExitButtonClick} type="button" className="player__exit">Exit</button>
 
         <div className="player__controls">
@@ -75,7 +76,12 @@ FullPlayer.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
   onFullScreenButtonClick: PropTypes.func.isRequired,
   onExitButtonClick: PropTypes.func.isRequired,
-  film: Movie.isRequired
-}
+  film: Movie.isRequired,
+
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+};
 
 export default FullPlayer;
