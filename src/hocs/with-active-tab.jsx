@@ -22,7 +22,6 @@ const withActiveTab = (Component) => {
     render() {
 
       const {activeTab} = this.state;
-
       return (
         <Component {...this.props}
           activeTab={activeTab}

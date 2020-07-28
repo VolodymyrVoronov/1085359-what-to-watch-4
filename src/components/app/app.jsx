@@ -44,7 +44,7 @@ class App extends PureComponent {
 
     return (
       <Main
-        film={extraInfoFilm}
+        film={films[0]}
         onFilmListItemClick={handleMovieCardClick}
         onPlayButtonClick={handlePlayButtonClick}
       />
@@ -76,7 +76,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   films: Movies.isRequired,
-  extraInfoFilm: Movie.isRequired,
+  extraInfoFilm: Movie,
 
   handleMovieCardClick: PropTypes.func.isRequired,
   handlePlayButtonClick: PropTypes.func.isRequired,

@@ -92,6 +92,7 @@ it(`render should be match markup`, () => {
     catalogGenre: CURRENT_GENRE,
     allFilms: MOVIES,
     showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
+    isFullScreenOn: false,
   });
 
   const result = renderer
@@ -99,6 +100,7 @@ it(`render should be match markup`, () => {
       <App
         promoFilm={MOVIES[0]}
         films={MOVIES}
+        isFullScreenOn={false}
       />
     </Provider>, {
       createNodeMock: () => {

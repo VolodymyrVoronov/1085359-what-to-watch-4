@@ -82,13 +82,10 @@ class MovieExtraInfo extends PureComponent {
 
               <div className="movie-card__buttons">
                 <button className="btn btn--play movie-card__button" type="button" onClick={onPlayButtonClick}>
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                  <svg id="play-s" viewBox="0 0 19 19">
+                  <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
                     <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
                   </svg>
+                  <span>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
                   <svg viewBox="0 0 19 20" width="19" height="20">
