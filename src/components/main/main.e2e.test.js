@@ -108,6 +108,7 @@ it(`movie card title should be clicked`, () => {
     <Main
       promoFilm={CURRENT_FILM}
       onFilmListItemClick={handleClick}
+      onPlayButtonClick={handleClick}
     />
   </Provider>);
 

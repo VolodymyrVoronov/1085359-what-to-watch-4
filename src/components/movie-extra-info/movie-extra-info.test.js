@@ -112,6 +112,7 @@ it(`render should be match markup`, () => {
       activeTab={ACTIVE_TAB}
       onClick={HANDLE_CLICK}
       onTabClick={HANDLE_CLICK}
+      onPlayButtonClick={HANDLE_CLICK}
     />)
     .toJSON();
 

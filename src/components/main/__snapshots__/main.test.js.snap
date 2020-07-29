@@ -102,23 +102,14 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
                 height="19"
-                viewBox="0 0 19 19"
-                width="19"
-              >
-                <use
-                  xlinkHref="#play-s"
-                />
-              </svg>
-              <span>
-                Play
-              </span>
-              <svg
                 id="play-s"
                 viewBox="0 0 19 19"
+                width="19"
               >
                 <path
                   clipRule="evenodd"
@@ -127,6 +118,9 @@ Array [
                   fillRule="evenodd"
                 />
               </svg>
+              <span>
+                Play
+              </span>
             </button>
             <button
               className="btn btn--list movie-card__button"

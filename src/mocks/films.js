@@ -16,7 +16,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 1260,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -55,7 +55,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 152,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -100,7 +100,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 121,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -145,7 +145,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 133,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -190,7 +190,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 153,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -235,7 +235,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 2311,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -280,7 +280,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 311,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -325,7 +325,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -370,7 +370,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -415,7 +415,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -460,7 +460,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {
@@ -505,7 +505,7 @@ export const MOVIES = [
     director: `Director`,
     actors: [`Actor 1`, `Actor 2`, `Actor 3`, `Actor 4`, `Actor 5`,],
     runTime: 123,
-    preview: `video/1.mp4`,
+    preview: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
 
     reviews : [
       {

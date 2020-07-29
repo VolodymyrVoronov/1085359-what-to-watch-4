@@ -1,3 +1,7 @@
+import React from "react";
+import renderer from "react-test-renderer";
+import FullPlayer from "./full-player.jsx";
+
 export const CURRENT_MOVIE = {
   id: 0,
   title: `Citizen Kane`,
@@ -36,3 +40,20 @@ export const CURRENT_MOVIE = {
     }
   ]
 };
+it(`Full Player should render correctly`, () => {
+  const tree = renderer
+    .create(<FullPlayer
+      isPlaying={false}
+      progress={10}
+      duration={99}
+      onPlayButtonClick={() => {}}
+      onFullScreenButtonClick={() => {}}
+      onExitButtonClick={() => {}}
+      film={CURRENT_MOVIE}
+    >
+      <video />
+    </FullPlayer>)
+    .toJSON();
+
+  expect(tree).toMatchSnapshot();
+});

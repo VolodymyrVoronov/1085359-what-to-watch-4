@@ -102,6 +102,7 @@ it(`render should be match markup`, () => {
       <Main
         promoFilm={CURRENT_FILM}
         onFilmListItemClick={HANDLE_CLICK}
+        onPlayButtonClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {
