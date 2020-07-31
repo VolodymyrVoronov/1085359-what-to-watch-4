@@ -52,7 +52,7 @@ class Details extends PureComponent {
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Genre</strong>
-              <span className="movie-card__details-value">{film.genre}</span>
+              <span className="movie-card__details-value">{film.genres.join(`, `)}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Released</strong>

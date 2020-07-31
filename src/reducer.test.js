@@ -103,8 +103,6 @@ const CATALOG_GENRES = [ALL_GENRE].concat(getGenresFromFilms(MOVIES));
 const CATALOG_MOVIES = MOVIES.slice(0, CATALOG_FILMS_PER_PAGE_LIMIT);
 
 const INITIAL_STATE = {
-
-  currentFilm: undefined,
   promoFilm: PROMO_FILM,
 
   allFilms: CATALOG_MOVIES,
@@ -130,10 +128,10 @@ it(`should be switch value of catalogGenre`, () => {
     .toEqual(sample);
 });
 
-it(`should be switch value of currentFilm`, () => {
+it(`should be switch value of promoFilm`, () => {
 
   const store = mockStore(Object.assign({}, INITIAL_STATE));
-  const sample = Object.assign({}, INITIAL_STATE, {currentFilm: MOVIES[0]});
+  const sample = Object.assign({}, INITIAL_STATE, {promoFilm: MOVIES[0]});
 
   expect(reducer(store.getState(), {
     type: ActionType.SET_CURRENT_FILM,

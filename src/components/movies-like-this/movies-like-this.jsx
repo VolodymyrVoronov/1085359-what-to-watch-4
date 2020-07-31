@@ -11,7 +11,7 @@ class MoviesLikeThis extends PureComponent {
     const {film, films} = this.props;
     const currentGenre = film.genre;
 
-    let filmsLikeThis = films.filter((currentFilm) => currentFilm.genre === currentGenre).slice(0, AMOUNT_OF_MOVIES_LIKE_THIS);
+    let filmsLikeThis = films.filter((film) => film.genre === currentGenre).slice(0, AMOUNT_OF_MOVIES_LIKE_THIS);
 
     return (
       <section className="catalog catalog--like-this">
@@ -19,14 +19,14 @@ class MoviesLikeThis extends PureComponent {
 
         <div className="catalog__movies-list">
           {
-            filmsLikeThis.map((currentFilm, idnex) => {
+            filmsLikeThis.map((film, idnex) => {
               return (
                 <article key={idnex} className="small-movie-card catalog__movies-card">
                   <div className="small-movie-card__image">
-                    <img src={currentFilm.img} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+                    <img src={film.img} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
                   </div>
                   <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{currentFilm.title}</a>
+                    <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>
                   </h3>
                 </article>
               );

@@ -10,6 +10,9 @@ import FullPlayer from "../full-player/full-player.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
 
+import {getPromoFilm, getFilms} from "../../reducer/data/selectors.js";
+import {getShownFilmCards, getCurrentFilmCard, getIsFullScreenOn} from "../../reducer/app/selectors.js";
+
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 import withFullPlayer from "../../hocs/with-active-full-player.jsx";
 
@@ -23,6 +26,10 @@ class App extends PureComponent {
 
   _renderState() {
     const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
+
+    console.log(films);
+    console.log(extraInfoFilm);
+
     if (extraInfoFilm && !isFullScreenOn) {
       return (
         <MovieExtraInfoWrapped
@@ -54,6 +61,9 @@ class App extends PureComponent {
   render() {
     const {films, extraInfoFilm, handlePlayButtonClick} = this.props;
 
+    console.log(films);
+    console.log(extraInfoFilm);
+
     return (
       <BrowserRouter>
         <Switch>
@@ -75,18 +85,20 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  films: Movies.isRequired,
-  extraInfoFilm: Movie,
+  // films: Movies.isRequired,
+  // extraInfoFilm: Movie,
 
   handleMovieCardClick: PropTypes.func.isRequired,
   handlePlayButtonClick: PropTypes.func.isRequired,
   handleExitButtonClick: PropTypes.func.isRequired,
-  isFullScreenOn: PropTypes.bool.isRequired,
+  // isFullScreenOn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  extraInfoFilm: state.extraInfoFilm,
-  isFullScreenOn: state.isFullScreenOn,
+  films: getFilms(state),
+  promoFilm: getPromoFilm(state),
+  extraInfoFilm: getCurrentFilmCard(state),
+  isFullScreenOn: getIsFullScreenOn(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

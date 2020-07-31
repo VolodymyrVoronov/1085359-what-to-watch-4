@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import Catalog from "../catalog/catalog.jsx";
 import {Movie} from "../types-of-props.js";
 
+import {getPromoFilm} from "../../reducer/data/selectors.js";
+
 const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
 
   return (
@@ -93,7 +95,7 @@ Main.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
 
-  promoFilm: Movie.isRequired,
+  // promoFilm: Movie.isRequired,
 };
 
 Main.defaultProps = {
@@ -102,7 +104,7 @@ Main.defaultProps = {
 
 function mapStateToProps(state) {
   return {
-    promoFilm: state.promoFilm,
+    promoFilm: getPromoFilm(state),
   };
 }
 
