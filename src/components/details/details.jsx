@@ -48,11 +48,11 @@ class Details extends PureComponent {
           <div className="movie-card__text-col">
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Run Time</strong>
-              <span className="movie-card__details-value">{getFilmDuration(film.runTime)}</span>
+              <span className="movie-card__details-value">{getFilmDuration(film.runtime)}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Genre</strong>
-              <span className="movie-card__details-value">{film.genres.join(`, `)}</span>
+              <span className="movie-card__details-value">{film.genre}</span>
             </p>
             <p className="movie-card__details-item">
               <strong className="movie-card__details-name">Released</strong>

@@ -10,8 +10,9 @@ import FullPlayer from "../full-player/full-player.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
 
-import {getPromoFilm, getFilms} from "../../reducer/data/selectors.js";
-import {getShownFilmCards, getCurrentFilmCard, getIsFullScreenOn} from "../../reducer/app/selectors.js";
+import {getPromoFilm, getFilms, getReviews} from "../../reducer/data/selectors.js";
+import {getCurrentFilmCard, getIsFullScreenOn} from "../../reducer/app/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 import withFullPlayer from "../../hocs/with-active-full-player.jsx";
@@ -26,9 +27,6 @@ class App extends PureComponent {
 
   _renderState() {
     const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
-
-    console.log(films);
-    console.log(extraInfoFilm);
 
     if (extraInfoFilm && !isFullScreenOn) {
       return (
@@ -61,9 +59,6 @@ class App extends PureComponent {
   render() {
     const {films, extraInfoFilm, handlePlayButtonClick} = this.props;
 
-    console.log(films);
-    console.log(extraInfoFilm);
-
     return (
       <BrowserRouter>
         <Switch>
@@ -73,8 +68,8 @@ class App extends PureComponent {
 
           <Route exact path="/movie-detail-info">
             <MovieExtraInfoWrapped
-              films={films}
               film={extraInfoFilm}
+              films={films}
               onPlayButtonClick={handlePlayButtonClick}
             />
           </Route>
@@ -85,18 +80,19 @@ class App extends PureComponent {
 }
 
 App.propTypes = {
-  // films: Movies.isRequired,
-  // extraInfoFilm: Movie,
+  films: Movies.isRequired,
+  extraInfoFilm: Movie,
 
   handleMovieCardClick: PropTypes.func.isRequired,
   handlePlayButtonClick: PropTypes.func.isRequired,
   handleExitButtonClick: PropTypes.func.isRequired,
-  // isFullScreenOn: PropTypes.bool.isRequired,
+  isFullScreenOn: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   promoFilm: getPromoFilm(state),
+  reviews: getReviews(state),
   extraInfoFilm: getCurrentFilmCard(state),
   isFullScreenOn: getIsFullScreenOn(state),
 });
@@ -104,6 +100,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleMovieCardClick(film) {
     dispatch(ActionCreator.getFilmCard(film));
+    dispatch(DataOperation.loadReviews(film.id));
   },
   handlePlayButtonClick() {
     dispatch(ActionCreator.toggleFullScreenPlayer(true));

@@ -23,7 +23,7 @@ class MoviesLikeThis extends PureComponent {
               return (
                 <article key={idnex} className="small-movie-card catalog__movies-card">
                   <div className="small-movie-card__image">
-                    <img src={film.img} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+                    <img src={film.poster} alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
                   </div>
                   <h3 className="small-movie-card__title">
                     <a className="small-movie-card__link" href="movie-page.html">{film.title}</a>

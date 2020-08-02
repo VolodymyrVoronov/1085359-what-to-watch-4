@@ -37,16 +37,15 @@ class Overview extends PureComponent {
     return (
       <React.Fragment>
         <div className="movie-rating">
-          <div className="movie-rating__score">{film.rating}</div>
+          <div className="movie-rating__score">{film.rating.score}</div>
           <p className="movie-rating__meta">
-            <span className="movie-rating__level">{getRating(film.rating)}</span>
-            <span className="movie-rating__count">{`${film.ratingReviewsCount} ratings`}</span>
+            <span className="movie-rating__level">{getRating(film.rating.score)}</span>
+            <span className="movie-rating__count">{`${film.rating.count} ratings`}</span>
           </p>
         </div>
 
         <div className="movie-card__text">
           <p>{film.description}</p>
-          <p>{film.story}</p>
           <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
           <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `)}</strong></p>
         </div>

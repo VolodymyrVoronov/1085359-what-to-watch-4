@@ -1,6 +1,5 @@
 import React, {PureComponent} from "react";
-
-import {Movie} from "../types-of-props.js";
+import PropTypes from "prop-types";
 
 const DIVIDER = 2;
 
@@ -10,9 +9,7 @@ const DIVIDER = 2;
 
 class Reviews extends PureComponent {
   render() {
-    const {film} = this.props;
-    const {reviews} = film;
-
+    const {reviews} = this.props;
     const reviewsOne = reviews.slice(reviews.length / DIVIDER);
     const reviewsTwo = reviews.slice(0, reviews.length / DIVIDER);
     const reviewsInColumns = [reviewsOne, reviewsTwo];
@@ -31,15 +28,15 @@ class Reviews extends PureComponent {
                     return (
                       <div key={indexItem} className="review">
                         <blockquote className="review__quote">
-                          <p className="review__text">{review.text}</p>
+                          <p className="review__text">{review.comment}</p>
                           <footer className="review__details">
-                            <cite className="review__author">{review.author}</cite>
+                            <cite className="review__author">{review.user.name}</cite>
                             <time className="review__date" dateTime={date.toISOString()}>{
                               date.toLocaleDateString(`en-US`, {month: `long`, day: `numeric`, year: `numeric`})
                             }</time>
                           </footer>
                         </blockquote>
-                        <div className="review__rating">{review.score}</div>
+                        <div className="review__rating">{review.rating}</div>
                       </div>
                     );
                   })
@@ -54,7 +51,7 @@ class Reviews extends PureComponent {
 }
 
 Reviews.propTypes = {
-  film: Movie.isRequired,
+  reviews: PropTypes.array.isRequired,
 };
 
 export default Reviews;

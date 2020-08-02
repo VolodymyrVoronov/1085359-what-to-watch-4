@@ -1,6 +1,5 @@
 import NameSpace from "../name-space.js";
-import {createSelector} from 'reselect';
-// import {ALL_GENRES} from "../../const.js";
+import {GENRES} from "../../components/const.js";
 
 export const getFilms = (state) => {
   return state[NameSpace.DATA].films;
@@ -18,4 +17,19 @@ export const getIsError = (state) => {
   return state[NameSpace.DATA].isError;
 };
 
+export const getGenresFromFilms = (state) => {
+  const films = getFilms(state);
+  const genres = [];
 
+
+  films.forEach(({genre}) => {
+    const alias = GENRES.label || genre;
+
+    if (genres.includes(alias)) {
+      return;
+    }
+    genres.push(alias);
+  });
+
+  return genres;
+}

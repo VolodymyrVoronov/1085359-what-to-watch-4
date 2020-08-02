@@ -24,6 +24,5 @@ export const createFilm = (film) => {
 };
 
 export const createFilms = (films) => {
-  console.log(films);
   return films.map((film) => createFilm(film));
 };

@@ -6,8 +6,8 @@ const extend = (a, b) => {
 
 const initialState = {
   films: [],
-  promoFilm: {},
-  reviews: [],
+  promoFilm: null,
+  reviews: null,
   isError: false,
 };
 
