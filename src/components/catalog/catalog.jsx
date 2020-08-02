@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import PropTypes from "prop-types";
 import FilmsList from "../list-of-films/list-of-films.jsx";
 import GenreFilterList from "../genre-filter-list/genre-filter-list.jsx";

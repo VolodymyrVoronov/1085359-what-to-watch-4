@@ -7,7 +7,7 @@ import {Movie} from "../types-of-props.js";
 import {getPromoFilm} from "../../reducer/data/selectors.js";
 
 const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
-
+  console.log(promoFilm);
   return (
     <React.Fragment>
       <section className="movie-card">
