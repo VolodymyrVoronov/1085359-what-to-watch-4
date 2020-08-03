@@ -1,4 +1,3 @@
-// import {MOVIES} from "./mocks/films.js";
 import {ALL_GENRE} from "../../components/const.js";
 
 const CATALOG_FILMS_PER_PAGE_LIMIT = 8;

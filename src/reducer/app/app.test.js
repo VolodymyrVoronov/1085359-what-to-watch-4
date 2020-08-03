@@ -11,7 +11,7 @@ const filmCard =
     backgroundImage: `https://loremflickr.com/cache/resized/65535_49876816733_f1ba86707f_h_1280_543_nofilter.jpg`,
     backgroundColor: `#A6B7AC`,
     poster: `https://loremflickr.com/cache/resized/65535_49824720108_18907b74af_z_273_410_nofilter.jpg`,
-    genre: `Fantasy`,
+    genre: `Comedy`,
     releaseDate: 2018,
     description: `The plot follows Newt Scamander and Albus Dumbledore as they attempt to take down the dark wizard Gellert Grindelwald while facing new threats in a more divided wizarding world.`,
     rating: {
@@ -42,15 +42,17 @@ it(`Reducer should change current genre`, () => {
     payload: Genres.DRAMA,
   })).toEqual({
     catalogGenre: Genres.DRAMA,
+    showCount: 8,
   });
 
   expect(reducer({
-    catalogGenre: Genres.THRILLER
+    catalogGenre: Genres.THRILLER,
   }, {
     type: ActionType.SET_CATALOG_GENRE,
     payload: Genres.COMEDY,
   })).toEqual({
     catalogGenre: Genres.COMEDY,
+    showCount: 8,
   });
 });
 
