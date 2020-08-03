@@ -36,21 +36,21 @@ it(`Reducer without additional parameters should return initial state`, () => {
 
 it(`Reducer should change current genre`, () => {
   expect(reducer({
-    genre: ALL_GENRE,
+    catalogGenre: ALL_GENRE,
   }, {
     type: ActionType.SET_CATALOG_GENRE,
     payload: Genres.DRAMA,
   })).toEqual({
-    genre: Genres.DRAMA,
+    catalogGenre: Genres.DRAMA,
   });
 
   expect(reducer({
-    genre: Genres.THRILLER
+    catalogGenre: Genres.THRILLER
   }, {
     type: ActionType.SET_CATALOG_GENRE,
     payload: Genres.COMEDY,
   })).toEqual({
-    genre: Genres.COMEDY,
+    catalogGenre: Genres.COMEDY,
   });
 });
 
