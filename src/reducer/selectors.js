@@ -4,29 +4,33 @@ import {getFilms} from "./data/selectors.js";
 import {ALL_GENRE} from "../components/const.js";
 
 const getFilmsByGenre = (films, genre, exclude = []) => {
-  return films.filter((film) => film.genre == genre && !exclude.includes(film));
+  return films.filter((film) => film.genre === genre && !exclude.includes(film));
 };
 
 const getGenreFilms = createSelector(
-	getFilms,
-	getGenre,
-	(allFilms, genre) => {
-		const genreFilms = (genre === ALL_GENRE) ? allFilms : getFilmsByGenre(allFilms, genre);
-		return genreFilms;
-	}
+    getFilms,
+    getGenre,
+    (allFilms, genre) => {
+      const genreFilms = (genre === ALL_GENRE) ? allFilms : getFilmsByGenre(allFilms, genre);
+      return genreFilms;
+    }
 );
 
-const getShowFilms = (state) => {
-	const genreFilms = getGenreFilms(state);
-	const count = getShownFilmCards(state);
-  const films = genreFilms.slice(0, count);
-  return films
-}
+const getShowFilms = createSelector(
+    getGenreFilms,
+    getShownFilmCards,
+    (getGenreFilmsItem, count) => {
+      const films = getGenreFilmsItem.slice(0, count);
+      return films;
+    }
+);
 
-const hasMoreFilms = (state) => {
-	const genreFilms = getGenreFilms(state);
-	const count = getShownFilmCards(state);
-	return genreFilms.length > count;
-}
+const hasMoreFilms = createSelector(
+    getGenreFilms,
+    getShownFilmCards,
+    (getGenreFilmsItem, getShownFilmCardsItem) => {
+      return getGenreFilmsItem.length > getShownFilmCardsItem;
+    }
+);
 
 export {getShowFilms, hasMoreFilms};

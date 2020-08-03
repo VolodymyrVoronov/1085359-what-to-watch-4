@@ -13,34 +13,85 @@ Array [
         href="#"
         onClick={[Function]}
       >
+        All genres
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
+        Fantasy
+      </a>
+    </li>
+    <li
+      className="catalog__genres-item"
+    >
+      <a
+        className="catalog__genres-link"
+        href="#"
+        onClick={[Function]}
+      >
         Dramas
-      </a>
-    </li>
-    <li
-      className="catalog__genres-item"
-    >
-      <a
-        className="catalog__genres-link"
-        href="#"
-        onClick={[Function]}
-      >
-        Comedies
-      </a>
-    </li>
-    <li
-      className="catalog__genres-item"
-    >
-      <a
-        className="catalog__genres-link"
-        href="#"
-        onClick={[Function]}
-      >
-        Kids & Family
       </a>
     </li>
   </ul>,
   <div
     className="catalog__movies-list"
-  />,
+  >
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          className="player__video"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+          onClick={[Function]}
+        >
+          Fantastic Beasts: The Crimes of Grindelwald
+        </a>
+      </h3>
+    </article>
+    <article
+      className="small-movie-card catalog__movies-card"
+      onClick={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      <div
+        className="small-movie-card__image"
+      >
+        <video
+          className="player__video"
+        />
+      </div>
+      <h3
+        className="small-movie-card__title"
+      >
+        <a
+          className="small-movie-card__link"
+          href="movie-page.html"
+          onClick={[Function]}
+        >
+          Bohemian Rhapsody
+        </a>
+      </h3>
+    </article>
+  </div>,
 ]
 `;

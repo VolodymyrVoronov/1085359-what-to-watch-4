@@ -2,62 +2,74 @@ import React from "react";
 import renderer from "react-test-renderer";
 import Reviews from "./reviews.jsx";
 
-const CURRENT_MOVIE = {
-  id: 0,
-  title: `Citizen Kane`,
-  genres: [`Comedy`, `Sci-Fi`, `Horror`],
-  img: `img/bg-the-grand-budapest-hotel.jpg`,
-  releaseDate: 2014,
-
-  poster: `img/bg-the-grand-budapest-hotel.jpg`,
-  rating: 7.8,
-  ratingReviewsCount: 10,
-  description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-  story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-  director: `Director`,
-  actors: [
-    `Actor 1`,
-    `Actor 2`,
-    `Actor 3`,
-    `Actor 4`,
-    `Actor 5`,
-  ],
-  runTime: 200,
-  preview: ``,
-
-  reviews: [
-    {
-      author: `John`,
-      score: 5.1,
-      text: `It's ok. but it could be better`,
-      date: 1582590140667
+const REVIEWS = [
+  {
+    id: 1,
+    user: {
+      id: 1,
+      name: `Kate Muir`,
     },
-    {
-      author: `Max`,
-      score: 4.1,
-      text: `It's ok. but it could be better`,
-      date: 1582590140667
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    date: `December 24, 2016`,
+    rating: 8.9,
+  },
+  {
+    id: 2,
+    user: {
+      id: 2,
+      name: `Bill Goodykoontz`,
     },
-    {
-      author: `Stive`,
-      score: 10,
-      text: `It's ok. but it could be better`,
-      date: 1582590140667
+    comment: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+    date: `November 18, 2015`,
+    rating: 8.0,
+  },
+  {
+    id: 3,
+    user: {
+      id: 3,
+      name: `Amanda Greever`,
     },
-    {
-      author: `Stive`,
-      score: 10,
-      text: `It's ok. but it could be better`,
-      date: 1582590140667
-    }
-  ]
-};
+    comment: `I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.`,
+    date: `November 18, 2015`,
+    rating: 8.0,
+  },
+  {
+    id: 4,
+    user: {
+      id: 4,
+      name: `Matthew Lickona`,
+    },
+    comment: `The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.`,
+    date: `December 20, 2016`,
+    rating: 7.2,
+  },
+  {
+    id: 5,
+    user: {
+      id: 5,
+      name: `Paula Fleri-Soler`,
+    },
+    comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`,
+    date: `December 20, 2016`,
+    rating: 7.6,
+  },
+  {
+    id: 6,
+    user: {
+      id: 6,
+      name: `Paula Fleri-Soler`,
+    },
+    comment: `It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.`,
+    date: `December 20, 2016`,
+    rating: 7.0,
+  },
+];
 
 it(`render should be match markup`, () => {
 
   const result = renderer
     .create(<Reviews
-      film={CURRENT_MOVIE}
+      reviews={REVIEWS}
     />)
     .toJSON();
 

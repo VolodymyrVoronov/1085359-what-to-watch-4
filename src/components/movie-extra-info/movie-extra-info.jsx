@@ -126,7 +126,7 @@ MovieExtraInfo.propTypes = {
   films: Movies.isRequired,
   reviews: PropTypes.array,
   onTabClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func,
   activeTab: PropTypes.number.isRequired,
 };
 

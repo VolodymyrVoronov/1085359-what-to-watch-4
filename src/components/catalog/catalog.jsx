@@ -15,7 +15,7 @@ import {Movies} from "../types-of-props.js";
 class Catalog extends PureComponent {
 
   render() {
-    const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilms, onShowMore} = this.props;
+    const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilmsItem, onShowMore} = this.props;
     return (
       <React.Fragment>
         <GenreFilterList
@@ -26,7 +26,7 @@ class Catalog extends PureComponent {
           films={films}
           onFilmListItemClick={onFilmListItemClick}
         />
-        {hasMoreFilms && <BtnShowMore onClick={onShowMore} />}
+        {hasMoreFilmsItem && <BtnShowMore onClick={onShowMore} />}
       </React.Fragment>
     );
   }
@@ -38,8 +38,8 @@ Catalog.propTypes = {
 
   films: Movies.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentGenre: PropTypes.string.isRequired,
-  hasMoreFilms: PropTypes.bool.isRequired,
+  currentGenre: PropTypes.string,
+  hasMoreFilmsItem: PropTypes.bool.isRequired,
 };
 
 Catalog.defaultProps = {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
     genres: getGenresFromFilms(state),
     currentGenre: getGenre(state),
     films: getShowFilms(state),
-    hasMoreFilms: hasMoreFilms(state)
+    hasMoreFilmsItem: hasMoreFilms(state)
   };
 };
 

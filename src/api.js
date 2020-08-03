@@ -29,4 +29,4 @@ export function createAPI(onUnauthorizedUserAction) {
   api.interceptors.response.use(onSuccess, onFail);
 
   return api;
-};
+}

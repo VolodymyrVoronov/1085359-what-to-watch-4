@@ -8,7 +8,7 @@ import {getPromoFilm} from "../../reducer/data/selectors.js";
 import {Movie} from "../types-of-props.js";
 
 const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
-  if(!promoFilm){
+  if (!promoFilm) {
     return null;
   }
   return (

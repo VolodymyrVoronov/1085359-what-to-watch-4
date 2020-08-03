@@ -1,10 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import {MOVIES} from "./mocks/films.js";
 
 import reducer from "./reducer/reducer.js";
-import {createStore, applyMiddleware, compose} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
@@ -15,9 +14,9 @@ import {createAPI} from "./api.js";
 const api = createAPI(() => {});
 
 const store = createStore(
-  reducer,
-  composeWithDevTools(
-      applyMiddleware(thunk.withExtraArgument(api)),
+    reducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
     )
 );
 

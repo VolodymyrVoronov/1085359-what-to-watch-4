@@ -1,32 +1,9 @@
 // import {MOVIES} from "./mocks/films.js";
-import {ALL_GENRE, GENRES} from "../../components/const.js";
+import {ALL_GENRE} from "../../components/const.js";
 
 const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
 
-const getGenresFromFilms = (source) => {
-
-  const genres = [];
-
-  source.forEach((film) => {
-    film.genres.forEach((genre) => {
-
-      const alias = GENRES.label || genre;
-
-      if (genres.includes(alias)) {
-        return;
-      }
-      genres.push(alias);
-    });
-  });
-
-  return genres;
-};
-
 const initialState = {
-  // promoFilm: MOVIES[0],
-
-  // allFilms: MOVIES,
-  // catalogGenres: [ALL_GENRE].concat(getGenresFromFilms(MOVIES)),
   catalogGenre: ALL_GENRE,
   showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
   extraInfoFilm: null,

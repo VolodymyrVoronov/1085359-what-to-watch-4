@@ -19,7 +19,7 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Director
+          Wes Anderson
         </span>
       </p>
       <p
@@ -33,19 +33,16 @@ Array [
         <span
           className="movie-card__details-value"
         >
-          Actor 1
+          Michael Fassbender
           , 
           <br />
-          Actor 2
+          Marion Cotillard
           , 
           <br />
-          Actor 3
+          Paddy Considine
           , 
           <br />
-          Actor 4
-          , 
-          <br />
-          Actor 5
+          Sean Harris
         </span>
       </p>
     </div>
@@ -76,7 +73,9 @@ Array [
         </strong>
         <span
           className="movie-card__details-value"
-        />
+        >
+          Drama
+        </span>
       </p>
       <p
         className="movie-card__details-item"
@@ -114,7 +113,7 @@ Array [
           <img
             alt="Fantastic Beasts: The Crimes of Grindelwald"
             height="175"
-            src="img/bg-the-grand-budapest-hotel.jpg"
+            src="https://loremflickr.com/cache/resized/65535_50001660108_922f0950ea_z_273_410_nofilter.jpg"
             width="280"
           />
         </div>
@@ -125,55 +124,7 @@ Array [
             className="small-movie-card__link"
             href="movie-page.html"
           >
-            Citizen Kane
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald"
-            height="175"
-            src="img/bg-the-grand-budapest-hotel.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            Casablanka
-          </a>
-        </h3>
-      </article>
-      <article
-        className="small-movie-card catalog__movies-card"
-      >
-        <div
-          className="small-movie-card__image"
-        >
-          <img
-            alt="Fantastic Beasts: The Crimes of Grindelwald"
-            height="175"
-            src="img/bg-the-grand-budapest-hotel.jpg"
-            width="280"
-          />
-        </div>
-        <h3
-          className="small-movie-card__title"
-        >
-          <a
-            className="small-movie-card__link"
-            href="movie-page.html"
-          >
-            The Godfather
+            Bohemian Rhapsody
           </a>
         </h3>
       </article>

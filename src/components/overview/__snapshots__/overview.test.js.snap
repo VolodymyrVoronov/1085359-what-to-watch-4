@@ -8,7 +8,7 @@ Array [
     <div
       className="movie-rating__score"
     >
-      7.8
+      9.3
     </div>
     <p
       className="movie-rating__meta"
@@ -21,7 +21,7 @@ Array [
       <span
         className="movie-rating__count"
       >
-        10 ratings
+        250 ratings
       </span>
     </p>
   </div>,
@@ -29,17 +29,14 @@ Array [
     className="movie-card__text"
   >
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.
+      The Grand Budapest Hotel is a 2014 comedy-drama film written and directed by Wes Anderson, which explores tragedy, war, fascism, nostalgia, friendship, and loyalty.
     </p>
     <p
       className="movie-card__director"
     >
       <strong>
         Director: 
-        Director
+        Wes Anderson
       </strong>
     </p>
     <p
@@ -47,7 +44,7 @@ Array [
     >
       <strong>
         Starring: 
-        Actor 1, Actor 2, Actor 3, Actor 4, Actor 5
+        Michael Fassbender, Marion Cotillard, Paddy Considine, Sean Harris
       </strong>
     </p>
   </div>,

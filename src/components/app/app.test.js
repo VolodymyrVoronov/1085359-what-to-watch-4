@@ -3,104 +3,102 @@ import {Provider} from "react-redux";
 import renderer from "react-test-renderer";
 import configureStore from "redux-mock-store";
 import App from "./app.jsx";
+import NameSpace from '../../reducer/name-space.js';
 
-const MOVIES = [
+const films = [
   {
     id: 1,
-    title: `Citizen Kane`,
-    genres: [`Comedy`, `Sci-Fi`, `Horror`],
-    img: `img/bg-the-grand-budapest-hotel.jpg`,
-    releaseDate: 2014,
-
-    poster: `img/bg-the-grand-budapest-hotel.jpg`,
-    rating: 7.8,
-    ratingReviewsCount: 10,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    director: `Director`,
-    actors: [
-      `Actor 1`,
-      `Actor 2`,
-      `Actor 3`,
-      `Actor 4`,
-      `Actor 5`,
-    ],
-    runTime: 200,
-    preview: `video/1.mp4`,
+    previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    title: `Fantastic Beasts: The Crimes of Grindelwald`,
+    backgroundImage: `https://loremflickr.com/cache/resized/65535_49876816733_f1ba86707f_h_1280_543_nofilter.jpg`,
+    backgroundColor: `#A6B7AC`,
+    poster: `https://loremflickr.com/cache/resized/65535_49824720108_18907b74af_z_273_410_nofilter.jpg`,
+    genre: `Fantasy`,
+    releaseDate: 2018,
+    description: `The plot follows Newt Scamander and Albus Dumbledore as they attempt to take down the dark wizard Gellert Grindelwald while facing new threats in a more divided wizarding world.`,
+    rating: {
+      score: 8.9,
+      count: 240,
+    },
+    director: `David Yates`,
+    actors: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`],
+    runtime: 200,
+    isFavorite: false,
   },
-
   {
     id: 2,
-    title: `Casablanka`,
-    genres: [`Comedy`, `Sci-Fi`, `Horror`],
-    img: `img/bg-the-grand-budapest-hotel.jpg`,
-    releaseDate: 2014,
-
-    poster: `img/bg-the-grand-budapest-hotel.jpg`,
-    rating: 7.8,
-    ratingReviewsCount: 10,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    director: `Director`,
-    actors: [
-      `Actor 1`,
-      `Actor 2`,
-      `Actor 3`,
-      `Actor 4`,
-      `Actor 5`,
-    ],
-    runTime: 200,
-    preview: `video/1.mp4`,
-  },
-
-  {
-    id: 3,
-    title: `The Godfather`,
-    genres: [`Comedy`, `Sci-Fi`, `Horror`],
-    img: `img/bg-the-grand-budapest-hotel.jpg`,
-    releaseDate: 2014,
-
-    poster: `img/bg-the-grand-budapest-hotel.jpg`,
-    rating: 7.8,
-    ratingReviewsCount: 10,
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    story: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.`,
-    director: `Director`,
-    actors: [
-      `Actor 1`,
-      `Actor 2`,
-      `Actor 3`,
-      `Actor 4`,
-      `Actor 5`,
-    ],
-    runTime: 200,
-    preview: `video/1.mp4`,
+    previewImage: `img/bohemian-rhapsody.jpg`,
+    previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    title: `Bohemian Rhapsody`,
+    backgroundImage: `https://loremflickr.com/cache/resized/65535_49768198796_957c97bc00_h_1280_543_nofilter.jpg`,
+    backgroundColor: `#A6B7AC`,
+    poster: `https://loremflickr.com/cache/resized/65535_50001660108_922f0950ea_z_273_410_nofilter.jpg`,
+    genre: `Drama`,
+    releaseDate: 2018,
+    description: `A British-American venture, the film was produced by 20th Century Fox, Regency Enterprises, GK Films, and Queen Films, with Fox serving as distributor. The film follows the singer's life from the formation of the band up to their 1985 Live Aid performance at the original Wembley Stadium.`,
+    rating: {
+      score: 9.0,
+      count: 250,
+    },
+    director: `Bryan Singer`,
+    actors: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`],
+    runtime: 200,
+    isFavorite: false,
   },
 ];
 
-const GENRES = [`Comedy`, `Sci-Fi`, `Horror`];
-const CURRENT_GENRE = GENRES[0];
-const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
+const reviews = [
+  {
+    id: 1,
+    user: {
+      id: 1,
+      name: `Kate Muir`,
+    },
+    comment: `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+    date: `2020-07-19T16:06:01.831Z`,
+    rating: 8.9,
+  },
+  {
+    id: 2,
+    user: {
+      id: 2,
+      name: `Bill Goodykoontz`,
+    },
+    comment: `Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.`,
+    date: `2020-07-19T16:06:01.831Z`,
+    rating: 8.0,
+  },
+];
+
+const HANDLE_CLICK = () => {};
 
 const mockStore = configureStore([]);
 
 it(`render should be match markup`, () => {
 
   const store = mockStore({
-    promoFilm: MOVIES[0],
-    catalogGenres: GENRES,
-    catalogGenre: CURRENT_GENRE,
-    allFilms: MOVIES,
-    showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
-    isFullScreenOn: false,
+    [NameSpace.DATA]: {
+      promoFilm: films[1],
+      films,
+      reviews,
+    },
+    [NameSpace.APP]: {
+      currentMovieCard: films[0],
+      isFullScreenOn: false,
+      isError: false,
+    },
   });
 
   const result = renderer
     .create(<Provider store={store}>
       <App
-        promoFilm={MOVIES[0]}
-        films={MOVIES}
+        promoFilm={films[1]}
+        films={films}
         isFullScreenOn={false}
+        onPlayButtonClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {
