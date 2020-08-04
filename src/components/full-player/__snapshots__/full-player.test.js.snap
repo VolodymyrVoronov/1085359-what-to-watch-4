@@ -67,7 +67,7 @@ exports[`Full Player should render correctly 1`] = `
       <div
         className="player__name"
       >
-        Citizen Kane
+        The Grand Budapest Hotel
       </div>
       <button
         className="player__full-screen"

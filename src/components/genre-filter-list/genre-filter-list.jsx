@@ -23,7 +23,7 @@ const GenreFilterList = ({genres, currentGenre}) => {
 
 GenreFilterList.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentGenre: PropTypes.string.isRequired,
+  currentGenre: PropTypes.string,
 };
 
 export default GenreFilterList;

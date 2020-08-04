@@ -22,7 +22,7 @@ exports[`render should be match markup 1`] = `
       href="movie-page.html"
       onClick={[Function]}
     >
-      Citizen Kane
+      The Grand Budapest Hotel
     </a>
   </h3>
 </article>

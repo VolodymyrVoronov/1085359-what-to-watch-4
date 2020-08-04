@@ -3,6 +3,11 @@
 exports[`render should be match markup 1`] = `
 <section
   className="movie-card movie-card--full"
+  style={
+    Object {
+      "background": "#A6B7AC",
+    }
+  }
 >
   <div
     className="movie-card__hero"
@@ -11,8 +16,8 @@ exports[`render should be match markup 1`] = `
       className="movie-card__bg"
     >
       <img
-        alt="Citizen Kane poster"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Bohemian Rhapsody poster"
+        src="https://loremflickr.com/cache/resized/65535_49768198796_957c97bc00_h_1280_543_nofilter.jpg"
       />
     </div>
     <h1
@@ -71,7 +76,7 @@ exports[`render should be match markup 1`] = `
         <h2
           className="movie-card__title"
         >
-          Citizen Kane
+          Bohemian Rhapsody
         </h2>
         <p
           className="movie-card__meta"
@@ -79,12 +84,12 @@ exports[`render should be match markup 1`] = `
           <span
             className="movie-card__genre"
           >
-            Comedy, Sci-Fi, Horror
+            Drama
           </span>
           <span
             className="movie-card__year"
           >
-            2014
+            2018
           </span>
         </p>
         <div
@@ -92,7 +97,6 @@ exports[`render should be match markup 1`] = `
         >
           <button
             className="btn btn--play movie-card__button"
-            onClick={[Function]}
             type="button"
           >
             <svg
@@ -149,9 +153,9 @@ exports[`render should be match markup 1`] = `
         className="movie-card__poster movie-card__poster--big"
       >
         <img
-          alt="Citizen Kane poster"
+          alt="Bohemian Rhapsody poster"
           height="327"
-          src="img/bg-the-grand-budapest-hotel.jpg"
+          src="https://loremflickr.com/cache/resized/65535_50001660108_922f0950ea_z_273_410_nofilter.jpg"
           width="218"
         />
       </div>
@@ -208,7 +212,7 @@ exports[`render should be match markup 1`] = `
           <div
             className="movie-rating__score"
           >
-            7.8
+            9
           </div>
           <p
             className="movie-rating__meta"
@@ -221,7 +225,7 @@ exports[`render should be match markup 1`] = `
             <span
               className="movie-rating__count"
             >
-              10 ratings
+              250 ratings
             </span>
           </p>
         </div>
@@ -229,17 +233,14 @@ exports[`render should be match markup 1`] = `
           className="movie-card__text"
         >
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis natus ipsa ut     possimus laudantium excepturi magni! Soluta doloribus facere quaerat, optio ab ratione quas provident nobis. Accusamus incidunt unde dicta.
+            A British-American venture, the film was produced by 20th Century Fox, Regency Enterprises, GK Films, and Queen Films, with Fox serving as distributor. The film follows the singer's life from the formation of the band up to their 1985 Live Aid performance at the original Wembley Stadium.
           </p>
           <p
             className="movie-card__director"
           >
             <strong>
               Director: 
-              Director
+              Bryan Singer
             </strong>
           </p>
           <p
@@ -247,7 +248,7 @@ exports[`render should be match markup 1`] = `
           >
             <strong>
               Starring: 
-              Actor 1, Actor 2, Actor 3, Actor 4, Actor 5
+              Michael Fassbender, Marion Cotillard, Paddy Considine, Sean Harris
             </strong>
           </p>
         </div>

@@ -1,11 +1,33 @@
-import React from "react";
-import {Provider} from 'react-redux';
-import renderer from "react-test-renderer";
-import configureStore from 'redux-mock-store';
-import MovieExtraInfo from "./movie-extra-info.jsx";
-import NameSpace from '../../reducer/name-space.js';
+import MockAdapter from "axios-mock-adapter";
+import {createAPI} from "../../api.js";
+import {initialState, reducer, ActionType, Operation} from "./data.js";
+import {createFilm, createFilms} from "../../adapter.js";
 
-const films = [
+const api = createAPI(() => {});
+
+const PROMO_FILM = {
+  id: 1,
+  previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  previewVideo: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  videoLink: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+  title: `The Grand Budapest Hotel`,
+  backgroundImage: `img/bg-the-grand-budapest-hotel.jpg`,
+  backgroundColor: `#A6B7AC`,
+  poster: `https://loremflickr.com/cache/resized/65535_49824720108_18907b74af_z_273_410_nofilter.jpg`,
+  genre: `Drama`,
+  releaseDate: 2014,
+  description: `The Grand Budapest Hotel is a 2014 comedy-drama film written and directed by Wes Anderson, which explores tragedy, war, fascism, nostalgia, friendship, and loyalty.`,
+  rating: {
+    score: 9.3,
+    count: 250,
+  },
+  director: `Wes Anderson`,
+  actors: [`Michael Fassbender`, `Marion Cotillard`, `Paddy Considine`, `Sean Harris`],
+  runtime: 200,
+  isFavorite: false,
+};
+
+const FILMS = [
   {
     id: 1,
     previewImage: `img/fantastic-beasts-the-crimes-of-grindelwald.jpg`,
@@ -50,7 +72,7 @@ const films = [
   },
 ];
 
-const reviews = [
+const testReviews = [
   {
     id: 1,
     user: {
@@ -113,36 +135,109 @@ const reviews = [
   },
 ];
 
-const ACTIVE_TAB = 0;
-const HANDLE_CLICK = () => {};
+it(`Reducer without additional parameters should return initial state`, () => {
+  expect(reducer(void 0, {})).toEqual(initialState);
+});
 
-const mockStore = configureStore([]);
+it(`Reducer should load films`, () => {
+  expect(reducer({
+    films: [],
+  }, {
+    type: ActionType.LOAD_FILMS,
+    payload: FILMS,
+  })).toEqual({
+    films: FILMS,
+  });
+});
 
-it(`render should be match markup`, () => {
+it(`Reducer should load promo movie`, () => {
+  expect(reducer({
+    promoFilm: {},
+  }, {
+    type: ActionType.LOAD_PROMO_FILM,
+    payload: PROMO_FILM,
+  })).toEqual({
+    promoFilm: PROMO_FILM,
+  });
+});
 
-  const store = mockStore({
-    [NameSpace.DATA]: {
-      films,
-      reviews
-    }
+it(`Reducer should load reviews`, () => {
+  expect(reducer({
+    reviews: [],
+  }, {
+    type: ActionType.LOAD_REVIEWS,
+    payload: testReviews,
+  })).toEqual({
+    reviews: testReviews,
+  });
+});
+
+it(`Reducer should catch errors`, () => {
+  expect(reducer({
+    isError: false,
+  }, {
+    type: ActionType.CATCH_ERROR,
+    payload: true,
+  })).toEqual({
+    isError: true,
+  });
+});
+
+describe(`Operation works correctly`, () => {
+  it(`Should make a correct API call to /films`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const moviesLoader = Operation.loadFilms();
+
+    apiMock
+    .onGet(`/films`)
+    .reply(200, [{fake: true}]);
+
+    return moviesLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith({
+          type: ActionType.LOAD_FILMS,
+          payload: createFilms([{fake: true}]),
+        });
+      });
   });
 
-  const result = renderer
-    .create(<Provider store={store}>
-      <MovieExtraInfo
-        film={films[1]}
-        films={films}
-        activeTab={ACTIVE_TAB}
-        onClick={HANDLE_CLICK}
-        onTabClick={HANDLE_CLICK}
-        reviews={reviews}
-      />
-    </Provider>, {
-      createNodeMock: () => {
-        return {};
-      }
-    })
-    .toJSON();
+  it(`Should make a correct API call to /films/promo`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const moviesLoader = Operation.loadPromoFilm();
 
-  expect(result).toMatchSnapshot();
+    apiMock
+    .onGet(`/films/promo`)
+    .reply(200, [{fake: true}]);
+
+    return moviesLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith({
+          type: ActionType.LOAD_PROMO_FILM,
+          payload: createFilm([{fake: true}]),
+        });
+      });
+  });
+
+  it(`Should make a correct API call to /comments/1`, function () {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const moviesLoader = Operation.loadReviews(1);
+
+    apiMock
+    .onGet(`/comments/1`)
+    .reply(200, [{fake: true}]);
+
+    return moviesLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenCalledWith({
+          type: ActionType.LOAD_REVIEWS,
+          payload: [{fake: true}],
+        });
+      });
+  });
 });

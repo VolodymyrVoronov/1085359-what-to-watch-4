@@ -1,6 +1,6 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import Tabs from './tabs.jsx';
+import React from "react";
+import renderer from "react-test-renderer";
+import Tabs from "./tabs.jsx";
 
 const ACTIVE_TAB = 0;
 const CURRENT_TAB = 0;

@@ -16,7 +16,7 @@ exports[`render should be match markup 1`] = `
         <p
           className="review__text"
         >
-          It's ok. but it could be better
+          The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.
         </p>
         <footer
           className="review__details"
@@ -24,20 +24,20 @@ exports[`render should be match markup 1`] = `
           <cite
             className="review__author"
           >
-            Stive
+            Matthew Lickona
           </cite>
           <time
             className="review__date"
-            dateTime="2020-02-25T00:22:20.667Z"
+            dateTime="2016-12-19T23:00:00.000Z"
           >
-            February 25, 2020
+            December 20, 2016
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        10
+        7.2
       </div>
     </div>
     <div
@@ -49,7 +49,7 @@ exports[`render should be match markup 1`] = `
         <p
           className="review__text"
         >
-          It's ok. but it could be better
+          It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
         </p>
         <footer
           className="review__details"
@@ -57,20 +57,53 @@ exports[`render should be match markup 1`] = `
           <cite
             className="review__author"
           >
-            Stive
+            Paula Fleri-Soler
           </cite>
           <time
             className="review__date"
-            dateTime="2020-02-25T00:22:20.667Z"
+            dateTime="2016-12-19T23:00:00.000Z"
           >
-            February 25, 2020
+            December 20, 2016
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        10
+        7.6
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Paula Fleri-Soler
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2016-12-19T23:00:00.000Z"
+          >
+            December 20, 2016
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        7
       </div>
     </div>
   </div>
@@ -86,7 +119,7 @@ exports[`render should be match markup 1`] = `
         <p
           className="review__text"
         >
-          It's ok. but it could be better
+          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.
         </p>
         <footer
           className="review__details"
@@ -94,20 +127,20 @@ exports[`render should be match markup 1`] = `
           <cite
             className="review__author"
           >
-            John
+            Kate Muir
           </cite>
           <time
             className="review__date"
-            dateTime="2020-02-25T00:22:20.667Z"
+            dateTime="2016-12-23T23:00:00.000Z"
           >
-            February 25, 2020
+            December 24, 2016
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        5.1
+        8.9
       </div>
     </div>
     <div
@@ -119,7 +152,7 @@ exports[`render should be match markup 1`] = `
         <p
           className="review__text"
         >
-          It's ok. but it could be better
+          Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
         </p>
         <footer
           className="review__details"
@@ -127,20 +160,53 @@ exports[`render should be match markup 1`] = `
           <cite
             className="review__author"
           >
-            Max
+            Bill Goodykoontz
           </cite>
           <time
             className="review__date"
-            dateTime="2020-02-25T00:22:20.667Z"
+            dateTime="2015-11-17T23:00:00.000Z"
           >
-            February 25, 2020
+            November 18, 2015
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        4.1
+        8
+      </div>
+    </div>
+    <div
+      className="review"
+    >
+      <blockquote
+        className="review__quote"
+      >
+        <p
+          className="review__text"
+        >
+          I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.
+        </p>
+        <footer
+          className="review__details"
+        >
+          <cite
+            className="review__author"
+          >
+            Amanda Greever
+          </cite>
+          <time
+            className="review__date"
+            dateTime="2015-11-17T23:00:00.000Z"
+          >
+            November 18, 2015
+          </time>
+        </footer>
+      </blockquote>
+      <div
+        className="review__rating"
+      >
+        8
       </div>
     </div>
   </div>

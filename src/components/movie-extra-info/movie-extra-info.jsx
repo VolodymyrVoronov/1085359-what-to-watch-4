@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import Tabs from "../tabs/tabs.jsx";
 import Overview from "../overview/overview.jsx";
 import Details from "../details/details.jsx";
@@ -7,14 +8,15 @@ import PropTypes from "prop-types";
 
 import {Movie, Movies} from "../types-of-props.js";
 
+import {getReviews} from "../../reducer/data/selectors.js";
+
 class MovieExtraInfo extends PureComponent {
   constructor(props) {
     super(props);
   }
 
   _renderState() {
-    const {film, films, activeTab} = this.props;
-
+    const {film, films, reviews, activeTab} = this.props;
     if (activeTab === 0) {
       return (
         <Overview
@@ -35,7 +37,7 @@ class MovieExtraInfo extends PureComponent {
     if (activeTab === 2) {
       return (
         <Reviews
-          film={film}
+          reviews={reviews}
         />
       );
     }
@@ -48,10 +50,10 @@ class MovieExtraInfo extends PureComponent {
     const {film, activeTab, onTabClick, onPlayButtonClick} = this.props;
 
     return (
-      <section className="movie-card movie-card--full">
+      <section className="movie-card movie-card--full" style={{background: film.backgroundColor}}>
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={film.img} alt={`${film.title} poster`} />
+            <img src={film.backgroundImage} alt={`${film.title} poster`} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -76,7 +78,7 @@ class MovieExtraInfo extends PureComponent {
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{film.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{film.genres.join(`, `)}</span>
+                <span className="movie-card__genre">{film.genre}</span>
                 <span className="movie-card__year">{film.releaseDate}</span>
               </p>
 
@@ -102,7 +104,7 @@ class MovieExtraInfo extends PureComponent {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={film.img} alt={`${film.title} poster`} width="218" height="327" />
+              <img src={film.poster} alt={`${film.title} poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
@@ -122,9 +124,15 @@ class MovieExtraInfo extends PureComponent {
 MovieExtraInfo.propTypes = {
   film: Movie.isRequired,
   films: Movies.isRequired,
+  reviews: PropTypes.array,
   onTabClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func,
   activeTab: PropTypes.number.isRequired,
 };
 
-export default MovieExtraInfo;
+const mapStateToProps = (state) => ({
+  reviews: getReviews(state),
+});
+
+export {MovieExtraInfo};
+export default connect(mapStateToProps)(MovieExtraInfo);

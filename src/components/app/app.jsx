@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
 import Main from "../main/main.jsx";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
@@ -9,6 +9,10 @@ import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 import FullPlayer from "../full-player/full-player.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
+
+import {getPromoFilm, getFilms, getReviews} from "../../reducer/data/selectors.js";
+import {getCurrentFilmCard, getIsFullScreenOn} from "../../reducer/app/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 import withFullPlayer from "../../hocs/with-active-full-player.jsx";
@@ -23,6 +27,7 @@ class App extends PureComponent {
 
   _renderState() {
     const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
+
     if (extraInfoFilm && !isFullScreenOn) {
       return (
         <MovieExtraInfoWrapped
@@ -63,8 +68,8 @@ class App extends PureComponent {
 
           <Route exact path="/movie-detail-info">
             <MovieExtraInfoWrapped
-              films={films}
               film={extraInfoFilm}
+              films={films}
               onPlayButtonClick={handlePlayButtonClick}
             />
           </Route>
@@ -85,13 +90,17 @@ App.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  extraInfoFilm: state.extraInfoFilm,
-  isFullScreenOn: state.isFullScreenOn,
+  films: getFilms(state),
+  promoFilm: getPromoFilm(state),
+  reviews: getReviews(state),
+  extraInfoFilm: getCurrentFilmCard(state),
+  isFullScreenOn: getIsFullScreenOn(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleMovieCardClick(film) {
     dispatch(ActionCreator.getFilmCard(film));
+    dispatch(DataOperation.loadReviews(film.id));
   },
   handlePlayButtonClick() {
     dispatch(ActionCreator.toggleFullScreenPlayer(true));

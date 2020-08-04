@@ -1,22 +1,21 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/app/app.js";
 import PropTypes from "prop-types";
 import FilmsList from "../list-of-films/list-of-films.jsx";
 import GenreFilterList from "../genre-filter-list/genre-filter-list.jsx";
 import BtnShowMore from "../btn-show-more/btn-show-more.jsx";
 
-import {Movies} from "../types-of-props.js";
-import {ALL_GENRE} from "../const.js";
+import {getShowFilms, hasMoreFilms} from "../../reducer/selectors.js";
+import {getGenresFromFilms} from "../../reducer/data/selectors.js";
+import {getGenre} from "../../reducer/app/selectors.js";
 
-const getFimsByGenre = (films, genre, exclude = []) => {
-  return films.filter((film) => film.genres.includes(genre) && !exclude.includes(film));
-};
+import {Movies} from "../types-of-props.js";
 
 class Catalog extends PureComponent {
 
   render() {
-    const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilms, onShowMore} = this.props;
+    const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilmsItem, onShowMore} = this.props;
     return (
       <React.Fragment>
         <GenreFilterList
@@ -27,7 +26,7 @@ class Catalog extends PureComponent {
           films={films}
           onFilmListItemClick={onFilmListItemClick}
         />
-        {hasMoreFilms && <BtnShowMore onClick={onShowMore} />}
+        {hasMoreFilmsItem && <BtnShowMore onClick={onShowMore} />}
       </React.Fragment>
     );
   }
@@ -39,8 +38,8 @@ Catalog.propTypes = {
 
   films: Movies.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentGenre: PropTypes.string.isRequired,
-  hasMoreFilms: PropTypes.bool.isRequired,
+  currentGenre: PropTypes.string,
+  hasMoreFilmsItem: PropTypes.bool.isRequired,
 };
 
 Catalog.defaultProps = {
@@ -48,14 +47,11 @@ Catalog.defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-  const {catalogGenres, catalogGenre, allFilms, showCount} = state;
-  const genreFilms = catalogGenre === ALL_GENRE ? allFilms : getFimsByGenre(allFilms, catalogGenre);
-  const films = genreFilms.slice(0, showCount);
   return {
-    genres: catalogGenres,
-    currentGenre: catalogGenre,
-    films,
-    hasMoreFilms: showCount < genreFilms.length
+    genres: getGenresFromFilms(state),
+    currentGenre: getGenre(state),
+    films: getShowFilms(state),
+    hasMoreFilmsItem: hasMoreFilms(state)
   };
 };
 

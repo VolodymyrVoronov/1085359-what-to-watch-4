@@ -46,7 +46,7 @@ class MovieCard extends PureComponent {
             id={id}
             isActive={isPreviewActive}
             poster={film.poster}
-            src={film.preview}
+            src={film.previewVideo}
           />
         </div>
         <h3 className="small-movie-card__title">
