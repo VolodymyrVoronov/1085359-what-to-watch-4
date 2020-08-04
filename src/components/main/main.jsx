@@ -2,15 +2,21 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import Catalog from "../catalog/catalog.jsx";
+import Header from "../header/header.jsx";
+import Footer from "../footer/footer.jsx";
 
 import {getPromoFilm} from "../../reducer/data/selectors.js";
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
+import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 import {Movie} from "../types-of-props.js";
 
-const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
+const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick, authorizationStatus, authInfo, onSignInClick}) => {
   if (!promoFilm) {
     return null;
   }
+
   return (
     <React.Fragment>
       <section className="movie-card">
@@ -20,21 +26,11 @@ const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header
+          authorizationStatus={authorizationStatus}
+          authInfo={authInfo}
+          onSignInClick={onSignInClick}
+        />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -76,19 +72,7 @@ const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick}) => {
           />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <a className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </React.Fragment>
   );
@@ -99,6 +83,10 @@ Main.propTypes = {
   onPlayButtonClick: PropTypes.func.isRequired,
 
   promoFilm: Movie,
+
+  authorizationStatus: PropTypes.string.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
+  authInfo: PropTypes.object.isRequired,
 };
 
 Main.defaultProps = {
@@ -108,8 +96,19 @@ Main.defaultProps = {
 function mapStateToProps(state) {
   return {
     promoFilm: getPromoFilm(state),
+    isSignedIn: getIsSignedIn(state),
+    isSignInError: getIsSignInError(state),
   };
 }
 
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
+  onSignInClick() {
+    dispatch(UserActionCreator.signIn(true));
+  }
+});
+
 export {Main};
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

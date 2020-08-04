@@ -1,18 +1,24 @@
 import React, {PureComponent} from "react";
-import Main from "../main/main.jsx";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer/app/app.js";
 import PropTypes from "prop-types";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
+import Main from "../main/main.jsx";
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
 import FullPlayer from "../full-player/full-player.jsx";
+import SignIn from "../sign-in/sign-in.jsx";
+import ErrorMessage from "../error-message/error-message.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
 
-import {getPromoFilm, getFilms, getReviews} from "../../reducer/data/selectors.js";
+import {ActionCreator} from "../../reducer/app/app.js";
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
+
+import {getPromoFilm, getFilms, getReviews, getIsError} from "../../reducer/data/selectors.js";
 import {getCurrentFilmCard, getIsFullScreenOn} from "../../reducer/app/selectors.js";
+import {getAuthorizationStatus, getAuthorizationInfo, getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 import withActiveTab from "../../hocs/with-active-tab.jsx";
 import withFullPlayer from "../../hocs/with-active-full-player.jsx";
@@ -26,7 +32,13 @@ class App extends PureComponent {
   }
 
   _renderState() {
-    const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick} = this.props;
+    const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick, authInfo, authorizationStatus, login, onSignInClick, isSignedIn, isSignInError, isError} = this.props;
+
+    if (isError) {
+      return (
+        <ErrorMessage />
+      );
+    }
 
     if (extraInfoFilm && !isFullScreenOn) {
       return (
@@ -34,6 +46,10 @@ class App extends PureComponent {
           film={extraInfoFilm}
           films={films}
           onPlayButtonClick={handlePlayButtonClick}
+          authInfo={authInfo}
+          authorizationStatus={authorizationStatus}
+          isSignedIn={isSignedIn}
+          onSignInClick={onSignInClick}
         />
       );
     }
@@ -47,17 +63,30 @@ class App extends PureComponent {
       );
     }
 
+    if (isSignedIn) {
+      return (
+        <SignIn
+          onSubmit={login}
+          isSignInError={isSignInError}
+        />
+      );
+    }
+
     return (
       <Main
         film={films[0]}
         onFilmListItemClick={handleMovieCardClick}
         onPlayButtonClick={handlePlayButtonClick}
+        authInfo={authInfo}
+        isSignedIn={isSignedIn}
+        authorizationStatus={authorizationStatus}
+        onSignInClick={onSignInClick}
       />
     );
   }
 
   render() {
-    const {films, extraInfoFilm, handlePlayButtonClick} = this.props;
+    const {films, extraInfoFilm, handlePlayButtonClick, authorizationStatus, isSignedIn, authInfo, onSignInClick} = this.props;
 
     return (
       <BrowserRouter>
@@ -71,6 +100,10 @@ class App extends PureComponent {
               film={extraInfoFilm}
               films={films}
               onPlayButtonClick={handlePlayButtonClick}
+              authInfo={authInfo}
+              authorizationStatus={authorizationStatus}
+              isSignedIn={isSignedIn}
+              onSignInClick={onSignInClick}
             />
           </Route>
         </Switch>
@@ -87,6 +120,14 @@ App.propTypes = {
   handlePlayButtonClick: PropTypes.func.isRequired,
   handleExitButtonClick: PropTypes.func.isRequired,
   isFullScreenOn: PropTypes.bool.isRequired,
+
+  isError: PropTypes.bool.isRequired,
+  authorizationStatus: PropTypes.string.isRequired,
+  login: PropTypes.func.isRequired,
+  authInfo: PropTypes.object.isRequired,
+  onSignInClick: PropTypes.func.isRequired,
+  isSignedIn: PropTypes.bool.isRequired,
+  isSignInError: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -95,6 +136,12 @@ const mapStateToProps = (state) => ({
   reviews: getReviews(state),
   extraInfoFilm: getCurrentFilmCard(state),
   isFullScreenOn: getIsFullScreenOn(state),
+
+  isError: getIsError(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  authInfo: getAuthorizationInfo(state),
+  isSignedIn: getIsSignedIn(state),
+  isSignInError: getIsSignInError(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -107,6 +154,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   handleExitButtonClick() {
     dispatch(ActionCreator.toggleFullScreenPlayer(false));
+  },
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
+  onSignInClick() {
+    dispatch(UserActionCreator.signIn(true));
   }
 });
 

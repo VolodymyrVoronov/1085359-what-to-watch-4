@@ -118,12 +118,26 @@ const HANDLE_CLICK = () => {};
 
 const mockStore = configureStore([]);
 
+const userInfo = {
+  id: 1,
+  email: `test@mail.com`,
+  name: `test`,
+  avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
+};
+
+
 it(`render should be match markup`, () => {
 
   const store = mockStore({
     [NameSpace.DATA]: {
       films,
       reviews
+    },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+      authorizationInfo: {userInfo},
+      isSignedIn: false,
+      isSignInError: false,
     }
   });
 
@@ -136,6 +150,7 @@ it(`render should be match markup`, () => {
         onClick={HANDLE_CLICK}
         onTabClick={HANDLE_CLICK}
         reviews={reviews}
+        isSignedIn={false}
       />
     </Provider>, {
       createNodeMock: () => {

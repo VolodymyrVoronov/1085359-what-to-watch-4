@@ -51,9 +51,8 @@ Array [
           className="user-block__avatar"
         >
           <img
-            alt="User avatar"
+            alt="undefined avatar"
             height="63"
-            src="img/avatar.jpg"
             width="63"
           />
         </div>
@@ -226,7 +225,7 @@ Array [
         className="copyright"
       >
         <p>
-          © 2019 What to watch Ltd.
+          © 2020 What to watch Ltd.
         </p>
       </div>
     </footer>
