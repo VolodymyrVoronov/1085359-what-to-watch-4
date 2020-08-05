@@ -138,7 +138,11 @@ it(`render should be match markup`, () => {
       authorizationInfo: {userInfo},
       isSignedIn: false,
       isSignInError: false,
-    }
+
+    },
+    [NameSpace.APP]: {
+      isReviewOpen: false,
+    },
   });
 
   const result = renderer
@@ -151,6 +155,7 @@ it(`render should be match markup`, () => {
         onTabClick={HANDLE_CLICK}
         reviews={reviews}
         isSignedIn={false}
+        isReviewOpen={false}
       />
     </Provider>, {
       createNodeMock: () => {

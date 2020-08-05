@@ -34,7 +34,7 @@ class App extends PureComponent {
   _renderState() {
     const {films, extraInfoFilm, isFullScreenOn, handleMovieCardClick, handlePlayButtonClick, handleExitButtonClick, authInfo, authorizationStatus, login, onSignInClick, isSignedIn, isSignInError, isError} = this.props;
 
-    if (isError) {
+    if (isError && !extraInfoFilm) {
       return (
         <ErrorMessage />
       );
@@ -160,7 +160,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSignInClick() {
     dispatch(UserActionCreator.signIn(true));
-  }
+  },
 });
 
 export {App};

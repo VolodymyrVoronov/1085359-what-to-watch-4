@@ -3,10 +3,10 @@ import renderer from "react-test-renderer";
 import Footer from "./footer.jsx";
 
 it(`Footer should render correctly`, () => {
-  const tree = renderer
+  const result = renderer
     .create(<Footer
     />)
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+  expect(result).toMatchSnapshot();
 });

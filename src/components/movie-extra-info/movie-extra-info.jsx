@@ -8,14 +8,22 @@ import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import Header from "../header/header.jsx";
-
-import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
-import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
+import AddReview from "../add-review/add-review.jsx";
 
 import {Movie, Movies} from "../types-of-props.js";
 
+import {ActionCreator as UserActionCreator, AuthorizationStatus} from "../../reducer/user/user.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
+
+import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
 import {getReviews} from "../../reducer/data/selectors.js";
+import {getIsReviewOpen} from "../../reducer/app/selectors.js";
+
+import withAddReview from "../../hocs/with-active-add-review.jsx";
+
+const AddReviewWrapped = withAddReview(AddReview);
 
 class MovieExtraInfo extends PureComponent {
   constructor(props) {
@@ -54,13 +62,25 @@ class MovieExtraInfo extends PureComponent {
 
   render() {
 
-    const {film, activeTab, onTabClick, onPlayButtonClick, login, isSignInError, authInfo, authorizationStatus, onSignInClick, isSignedIn} = this.props;
+    const {film, activeTab, onTabClick, onPlayButtonClick, login, isSignInError, authInfo, authorizationStatus, onSignInClick, isSignedIn, isReviewOpen, onReviewSubmit, onAddReviewClick} = this.props;
 
     if (isSignedIn) {
       return (
         <SignIn
           onSubmit={login}
           isSignInError={isSignInError}
+        />
+      );
+    }
+
+    if (isReviewOpen) {
+      return (
+        <AddReviewWrapped
+          authorizationStatus={authorizationStatus}
+          authInfo={authInfo}
+          onSignInClick={onSignInClick}
+          film={film}
+          onReviewSubmit={onReviewSubmit}
         />
       );
     }
@@ -101,7 +121,16 @@ class MovieExtraInfo extends PureComponent {
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                {authorizationStatus === AuthorizationStatus.AUTH &&
+                <a
+                  href="add-review.html"
+                  className="btn movie-card__button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onAddReviewClick();
+                  }}
+                >Add review</a>
+                }
               </div>
             </div>
           </div>
@@ -141,6 +170,10 @@ MovieExtraInfo.propTypes = {
   login: PropTypes.func.isRequired,
   isSignInError: PropTypes.bool.isRequired,
 
+  onAddReviewClick: PropTypes.func.isRequired,
+  isReviewOpen: PropTypes.bool.isRequired,
+  onReviewSubmit: PropTypes.func.isRequired,
+
   authInfo: PropTypes.exact({
     id: PropTypes.number.isRequired,
     email: PropTypes.string.isRequired,
@@ -153,6 +186,7 @@ const mapStateToProps = (state) => ({
   reviews: getReviews(state),
   isSignedIn: getIsSignedIn(state),
   isSignInError: getIsSignInError(state),
+  isReviewOpen: getIsReviewOpen(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -161,7 +195,13 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onSignInClick() {
     dispatch(UserActionCreator.signIn(true));
-  }
+  },
+  onAddReviewClick() {
+    dispatch(AppActionCreator.addReview(true));
+  },
+  onReviewSubmit(filmId, review) {
+    dispatch(DataOperation.postReview(filmId, review));
+  },
 });
 
 export {MovieExtraInfo};

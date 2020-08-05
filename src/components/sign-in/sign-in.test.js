@@ -3,12 +3,12 @@ import renderer from "react-test-renderer";
 import SignIn from "./sign-in.jsx";
 
 it(`SignInScreen should render correctly`, () => {
-  const tree = renderer.create(
+  const result = renderer.create(
       <SignIn
         onSubmit={() => {}}
         isSignInError={false}
       />
   ).toJSON();
 
-  expect(tree).toMatchSnapshot();
+  expect(result).toMatchSnapshot();
 });

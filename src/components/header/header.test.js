@@ -10,7 +10,7 @@ const userInfo = {
 };
 
 it(`ErrorMessage should render correctly`, () => {
-  const tree = renderer
+  const result = renderer
     .create(<Header
       authorizationStatus={`AUTH`}
       authInfo={userInfo}
@@ -18,5 +18,5 @@ it(`ErrorMessage should render correctly`, () => {
     />)
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+  expect(result).toMatchSnapshot();
 });

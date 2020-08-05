@@ -1,4 +1,5 @@
 import {ALL_GENRE} from "../../components/const.js";
+import {extend} from "../../utils.js";
 
 const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
 
@@ -7,6 +8,8 @@ const initialState = {
   showCount: CATALOG_FILMS_PER_PAGE_LIMIT,
   extraInfoFilm: null,
   isFullScreenOn: false,
+  isReviewOpen: false,
+  isFormDisabled: false,
 };
 
 const ActionType = {
@@ -15,6 +18,8 @@ const ActionType = {
   SET_CURRENT_FILM: `SET_CURRENT_FILM`,
   GET_FILM_CARD: `GET_FILM_CARD`,
   SET_FULL_SCREEN: `SET_FULL_SCREEN`,
+  ADD_REVIEW: `ADD_REVIEW`,
+  TOGGLE_FORM_STATE: `TOGGLE_FORM_STATE`,
 };
 
 const ActionCreator = {
@@ -50,6 +55,14 @@ const ActionCreator = {
     type: ActionType.SET_FULL_SCREEN,
     payload: flag,
   }),
+  addReview: (bool) => ({
+    type: ActionType.ADD_REVIEW,
+    payload: bool,
+  }),
+  toggleFormState: (bool) => ({
+    type: ActionType.TOGGLE_FORM_STATE,
+    payload: bool,
+  })
 };
 
 const _setCurrentFilm = (state, film) => {
@@ -101,6 +114,18 @@ const reducer = (state = initialState, action) => {
 
   if (action.type === ActionType.SET_FULL_SCREEN) {
     return _setFullScreen(state, action.payload);
+  }
+
+  if (action.type === ActionType.ADD_REVIEW) {
+    return extend(state, {
+      isReviewOpen: action.payload,
+    });
+  }
+
+  if (action.type === ActionType.TOGGLE_FORM_STATE) {
+    return extend(state, {
+      isFormDisabled: action.payload,
+    });
   }
 
   return state;
