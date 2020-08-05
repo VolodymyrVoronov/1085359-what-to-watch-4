@@ -135,7 +135,7 @@ MovieExtraInfo.propTypes = {
   onPlayButtonClick: PropTypes.func,
   activeTab: PropTypes.number.isRequired,
 
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string,
   onSignInClick: PropTypes.func.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
   login: PropTypes.func.isRequired,
@@ -146,7 +146,7 @@ MovieExtraInfo.propTypes = {
     email: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
 };
 
 const mapStateToProps = (state) => ({

@@ -34,13 +34,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  authInfo: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
-  }).isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
+  authInfo: PropTypes.object,
+  authorizationStatus: PropTypes.string,
   onSignInClick: PropTypes.func.isRequired,
 };
 

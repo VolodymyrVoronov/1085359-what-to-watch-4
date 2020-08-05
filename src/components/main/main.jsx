@@ -84,9 +84,9 @@ Main.propTypes = {
 
   promoFilm: Movie,
 
-  authorizationStatus: PropTypes.string.isRequired,
+  authorizationStatus: PropTypes.string,
   onSignInClick: PropTypes.func.isRequired,
-  authInfo: PropTypes.object.isRequired,
+  authInfo: PropTypes.object,
 };
 
 Main.defaultProps = {

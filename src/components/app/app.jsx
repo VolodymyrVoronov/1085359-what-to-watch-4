@@ -121,10 +121,10 @@ App.propTypes = {
   handleExitButtonClick: PropTypes.func.isRequired,
   isFullScreenOn: PropTypes.bool.isRequired,
 
-  isError: PropTypes.bool.isRequired,
+  isError: PropTypes.bool,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
-  authInfo: PropTypes.object.isRequired,
+  authInfo: PropTypes.object,
   onSignInClick: PropTypes.func.isRequired,
   isSignedIn: PropTypes.bool.isRequired,
   isSignInError: PropTypes.bool.isRequired,
