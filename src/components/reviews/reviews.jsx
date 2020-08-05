@@ -28,7 +28,7 @@ class Reviews extends PureComponent {
                           <footer className="review__details">
                             <cite className="review__author">{review.user.name}</cite>
                             <time className="review__date" dateTime={date.toISOString()}>{
-                              date.toLocaleDateString(`en-GB`, {month: `long`, day: `numeric`, year: `numeric`, timeZone: `Europe/Moscow`})
+                              date.toLocaleDateString(`en-GB`, {month: `long`, day: `numeric`, year: `numeric`, timeZone: `Europe/Berlin`})
                             }</time>
                           </footer>
                         </blockquote>
