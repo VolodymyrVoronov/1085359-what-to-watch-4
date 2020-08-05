@@ -56,6 +56,13 @@ const CATALOG_FILMS_PER_PAGE_LIMIT = 8;
 
 const mockStore = configureStore([]);
 
+const userInfo = {
+  id: 1,
+  email: `test@mail.com`,
+  name: `test`,
+  avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
+};
+
 it(`render should be match markup`, () => {
 
   const store = mockStore({
@@ -66,6 +73,12 @@ it(`render should be match markup`, () => {
       shownMovieCards: CATALOG_FILMS_PER_PAGE_LIMIT,
       genre: `All genres`,
     },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+      authorizationInfo: {userInfo},
+      isSignedIn: false,
+      isSignInError: false,
+    }
   });
 
   const result = renderer
@@ -74,6 +87,7 @@ it(`render should be match markup`, () => {
         promoFilm={CURRENT_FILM}
         onFilmListItemClick={HANDLE_CLICK}
         onPlayButtonClick={HANDLE_CLICK}
+        isSignedIn={false}
       />
     </Provider>, {
       createNodeMock: () => {

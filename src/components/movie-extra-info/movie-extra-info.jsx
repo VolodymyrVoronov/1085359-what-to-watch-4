@@ -1,10 +1,17 @@
 import React, {PureComponent} from "react";
 import {connect} from "react-redux";
+import PropTypes from "prop-types";
+
 import Tabs from "../tabs/tabs.jsx";
 import Overview from "../overview/overview.jsx";
 import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
-import PropTypes from "prop-types";
+import SignIn from "../sign-in/sign-in.jsx";
+import Header from "../header/header.jsx";
+
+import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
+import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
+import {Operation as UserOperation} from "../../reducer/user/user.js";
 
 import {Movie, Movies} from "../types-of-props.js";
 
@@ -47,7 +54,16 @@ class MovieExtraInfo extends PureComponent {
 
   render() {
 
-    const {film, activeTab, onTabClick, onPlayButtonClick} = this.props;
+    const {film, activeTab, onTabClick, onPlayButtonClick, login, isSignInError, authInfo, authorizationStatus, onSignInClick, isSignedIn} = this.props;
+
+    if (isSignedIn) {
+      return (
+        <SignIn
+          onSubmit={login}
+          isSignInError={isSignInError}
+        />
+      );
+    }
 
     return (
       <section className="movie-card movie-card--full" style={{background: film.backgroundColor}}>
@@ -58,21 +74,11 @@ class MovieExtraInfo extends PureComponent {
 
           <h1 className="visually-hidden">WTW</h1>
 
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <a href="main.html" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </a>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
-          </header>
+          <Header
+            authorizationStatus={authorizationStatus}
+            authInfo={authInfo}
+            onSignInClick={onSignInClick}
+          />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -128,11 +134,35 @@ MovieExtraInfo.propTypes = {
   onTabClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func,
   activeTab: PropTypes.number.isRequired,
+
+  authorizationStatus: PropTypes.string,
+  onSignInClick: PropTypes.func.isRequired,
+  isSignedIn: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
+  isSignInError: PropTypes.bool.isRequired,
+
+  authInfo: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    avatarUrl: PropTypes.string.isRequired,
+  }),
 };
 
 const mapStateToProps = (state) => ({
   reviews: getReviews(state),
+  isSignedIn: getIsSignedIn(state),
+  isSignInError: getIsSignInError(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  login(authData) {
+    dispatch(UserOperation.login(authData));
+  },
+  onSignInClick() {
+    dispatch(UserActionCreator.signIn(true));
+  }
 });
 
 export {MovieExtraInfo};
-export default connect(mapStateToProps)(MovieExtraInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieExtraInfo);

@@ -73,6 +73,13 @@ const reviews = [
   },
 ];
 
+const userInfo = {
+  id: 1,
+  email: `test@mail.com`,
+  name: `test`,
+  avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
+};
+
 const HANDLE_CLICK = () => {};
 
 const mockStore = configureStore([]);
@@ -90,6 +97,12 @@ it(`render should be match markup`, () => {
       isFullScreenOn: false,
       isError: false,
     },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+      authorizationInfo: {userInfo},
+      isSignedIn: false,
+      isSignInError: false,
+    }
   });
 
   const result = renderer
@@ -99,6 +112,10 @@ it(`render should be match markup`, () => {
         films={films}
         isFullScreenOn={false}
         onPlayButtonClick={HANDLE_CLICK}
+        authInfo={userInfo}
+        isSignedIn={false}
+        authorizationStatus={`AUTH`}
+        onSignInClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {

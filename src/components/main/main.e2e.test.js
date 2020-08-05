@@ -63,6 +63,13 @@ Enzyme.configure({
 
 const mockStore = configureStore([]);
 
+const userInfo = {
+  id: 1,
+  email: `test@mail.com`,
+  name: `test`,
+  avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
+};
+
 it(`film card title should be clicked`, () => {
 
   const handleClick = jest.fn();
@@ -77,6 +84,12 @@ it(`film card title should be clicked`, () => {
       catalogGenre: `All genres`,
       extraInfoFilm: null,
     },
+    [NameSpace.USER]: {
+      authorizationStatus: `AUTH`,
+      authorizationInfo: {userInfo},
+      isSignedIn: false,
+      isSignInError: false,
+    }
   });
 
   const result = mount(<Provider store={store}>
@@ -84,6 +97,8 @@ it(`film card title should be clicked`, () => {
       promoFilm={CURRENT_FILM}
       onFilmListItemClick={handleClick}
       onPlayButtonClick={handleClick}
+      isSignedIn={false}
+      authInfo={userInfo}
     />
   </Provider>);
 

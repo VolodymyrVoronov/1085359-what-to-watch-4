@@ -1,8 +1,5 @@
 import {createFilm, createFilms} from "../../adapter.js";
-
-const extend = (a, b) => {
-  return Object.assign({}, a, b);
-};
+import {extend} from "../../utils.js";
 
 const initialState = {
   films: [],
