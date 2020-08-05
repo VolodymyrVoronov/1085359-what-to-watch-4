@@ -28,9 +28,9 @@ exports[`render should be match markup 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2015-11-17T23:00:00.000Z"
+            dateTime="2020-06-29T16:06:01.831Z"
           >
-            2015 M11 18
+            2020 M06 29
           </time>
         </footer>
       </blockquote>
@@ -65,9 +65,9 @@ exports[`render should be match markup 1`] = `
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-23T23:00:00.000Z"
+            dateTime="2020-06-29T16:06:01.831Z"
           >
-            2016 M12 24
+            2020 M06 29
           </time>
         </footer>
       </blockquote>
