@@ -16,7 +16,7 @@ exports[`render should be match markup 1`] = `
         <p
           className="review__text"
         >
-          The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.
+          Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
         </p>
         <footer
           className="review__details"
@@ -24,86 +24,20 @@ exports[`render should be match markup 1`] = `
           <cite
             className="review__author"
           >
-            Matthew Lickona
+            Bill Goodykoontz
           </cite>
           <time
             className="review__date"
-            dateTime="2016-12-19T23:00:00.000Z"
+            dateTime="2015-11-17T23:00:00.000Z"
           >
-            December 20, 2016
+            2015 M11 18
           </time>
         </footer>
       </blockquote>
       <div
         className="review__rating"
       >
-        7.2
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          >
-            Paula Fleri-Soler
-          </cite>
-          <time
-            className="review__date"
-            dateTime="2016-12-19T23:00:00.000Z"
-          >
-            December 20, 2016
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        7.6
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          >
-            Paula Fleri-Soler
-          </cite>
-          <time
-            className="review__date"
-            dateTime="2016-12-19T23:00:00.000Z"
-          >
-            December 20, 2016
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        7
+        8
       </div>
     </div>
   </div>
@@ -133,7 +67,7 @@ exports[`render should be match markup 1`] = `
             className="review__date"
             dateTime="2016-12-23T23:00:00.000Z"
           >
-            December 24, 2016
+            2016 M12 24
           </time>
         </footer>
       </blockquote>
@@ -141,72 +75,6 @@ exports[`render should be match markup 1`] = `
         className="review__rating"
       >
         8.9
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          Anderson's films are too precious for some, but for those of us willing to lose ourselves in them, they're a delight. "The Grand Budapest Hotel" is no different, except that he has added a hint of gravitas to the mix, improving the recipe.
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          >
-            Bill Goodykoontz
-          </cite>
-          <time
-            className="review__date"
-            dateTime="2015-11-17T23:00:00.000Z"
-          >
-            November 18, 2015
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        8
-      </div>
-    </div>
-    <div
-      className="review"
-    >
-      <blockquote
-        className="review__quote"
-      >
-        <p
-          className="review__text"
-        >
-          I didn't find it amusing, and while I can appreciate the creativity, it's an hour and 40 minutes I wish I could take back.
-        </p>
-        <footer
-          className="review__details"
-        >
-          <cite
-            className="review__author"
-          >
-            Amanda Greever
-          </cite>
-          <time
-            className="review__date"
-            dateTime="2015-11-17T23:00:00.000Z"
-          >
-            November 18, 2015
-          </time>
-        </footer>
-      </blockquote>
-      <div
-        className="review__rating"
-      >
-        8
       </div>
     </div>
   </div>
