@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 
 const DIVIDER = 2;
 
-// const getRatingScore = (score) => {
-//   return score.toFixed(1).replace(`.`, `,`);
-// }
-
 class Reviews extends PureComponent {
   render() {
     const {reviews} = this.props;
