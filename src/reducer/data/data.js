@@ -1,5 +1,6 @@
 import {createFilm, createFilms} from "../../adapter.js";
 import {extend} from "../../utils.js";
+import {ActionCreator as AppActionCreator} from "../app/app.js";
 
 const initialState = {
   films: [],
@@ -13,6 +14,7 @@ const ActionType = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   CATCH_ERROR: `CATCH_ERROR`,
+  POST_REVIEW: `POST_REVIEW`,
 };
 
 const ActionCreator = {
@@ -40,6 +42,12 @@ const ActionCreator = {
       payload: true,
     };
   },
+  postReview: (review) => {
+    return {
+      type: ActionType.POST_REVIEW,
+      payload: review,
+    };
+  }
 };
 
 const Operation = {
@@ -61,8 +69,8 @@ const Operation = {
       dispatch(ActionCreator.catchError());
     });
   },
-  loadReviews: (movieId) => (dispatch, getState, api) => {
-    return api.get(`/comments/${movieId}`)
+  loadReviews: (filmId) => (dispatch, getState, api) => {
+    return api.get(`/comments/${filmId}`)
     .then((response) => {
       dispatch(ActionCreator.loadReviews(response.data));
     })
@@ -70,6 +78,24 @@ const Operation = {
       dispatch(ActionCreator.catchError());
     });
   },
+  postReview: (filmId, review) => (dispatch, getState, api) => {
+    return api.post(`comments/${filmId}`, {
+      rating: review.rating,
+      comment: review.comment,
+    })
+    .then(() => {
+      dispatch(ActionCreator.postReview(review));
+      dispatch(AppActionCreator.toggleFormState(true));
+      dispatch(Operation.loadReviews(filmId));
+    }).
+    then(() => {
+      dispatch(AppActionCreator.addReview(false));
+      dispatch(AppActionCreator.toggleFormState(false));
+    })
+    .catch(() => {
+      dispatch(ActionCreator.catchError());
+    });
+  }
 };
 
 const reducer = (state = initialState, action) => {

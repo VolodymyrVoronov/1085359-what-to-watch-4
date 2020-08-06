@@ -3,9 +3,9 @@ import renderer from "react-test-renderer";
 import ErrorMessage from "./error-message.jsx";
 
 it(`ErrorMessage should render correctly`, () => {
-  const tree = renderer
+  const result = renderer
     .create(<ErrorMessage/>)
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+  expect(result).toMatchSnapshot();
 });

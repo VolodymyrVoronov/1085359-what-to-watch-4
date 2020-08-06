@@ -89,6 +89,28 @@ it(`Reducer should toggle full screen player`, () => {
   });
 });
 
+it(`Reducer should open Add Review page`, () => {
+  expect(reducer({
+    isReviewOpen: false,
+  }, {
+    type: ActionType.ADD_REVIEW,
+    payload: true,
+  })).toEqual({
+    isReviewOpen: true,
+  });
+});
+
+it(`Reducer should toggle form state`, () => {
+  expect(reducer({
+    isFormDisabled: false,
+  }, {
+    type: ActionType.TOGGLE_FORM_STATE,
+    payload: true,
+  })).toEqual({
+    isFormDisabled: true,
+  });
+});
+
 describe(`Action creators work correctly`, () => {
   it(`Action creator for changing genre returns correct genre`, () => {
     expect(ActionCreator.setCatalogGenre(Genres.COMEDY)).toEqual({
@@ -111,6 +133,18 @@ describe(`Action creators work correctly`, () => {
   it(`Action creator for toggling full screen player returns correct state`, () => {
     expect(ActionCreator.toggleFullScreenPlayer(false)).toEqual({
       type: ActionType.SET_FULL_SCREEN,
+      payload: false,
+    });
+  });
+  it(`Action creator for opening Add review page opens correct page`, () => {
+    expect(ActionCreator.addReview(false)).toEqual({
+      type: ActionType.ADD_REVIEW,
+      payload: false,
+    });
+  });
+  it(`Action creator for toggling form state returns correct state`, () => {
+    expect(ActionCreator.toggleFormState(false)).toEqual({
+      type: ActionType.TOGGLE_FORM_STATE,
       payload: false,
     });
   });
