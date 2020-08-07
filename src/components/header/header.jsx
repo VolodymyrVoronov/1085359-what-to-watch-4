@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {AppPages} from "../const.js";
 
 const Header = (props) => {
-  const {authorizationStatus, authInfo, onSignInClick} = props;
+  const {authorizationStatus, authInfo} = props;
   return (
     <header className="page-header movie-card__head">
       <div className="logo">
@@ -38,7 +38,6 @@ const Header = (props) => {
 Header.propTypes = {
   authInfo: PropTypes.object,
   authorizationStatus: PropTypes.string,
-  onSignInClick: PropTypes.func.isRequired,
 };
 
 export default Header;

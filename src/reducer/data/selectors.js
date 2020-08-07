@@ -19,7 +19,7 @@ export const getIsError = (state) => {
 };
 
 export const getFavoriteFilms = (state) => {
-  return state[NameSpace.DATA].favoriteFilms 
+  return state[NameSpace.DATA].favoriteFilms;
 };
 
 export const getGenresFromFilms = createSelector(

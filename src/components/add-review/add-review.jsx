@@ -4,7 +4,6 @@ import Header from "../header/header.jsx";
 import {connect} from "react-redux";
 import {getIsError} from "../../reducer/data/selectors.js";
 import {getIsFormDisabled} from "../../reducer/app/selectors.js";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 import {Link} from "react-router-dom";
 import {AppPages} from "../const.js";
@@ -19,7 +18,7 @@ const Review = {
 const AMOUNT_ON_START = 5;
 
 const AddReview = (props) => {
-  const {authorizationStatus, authInfo, onSignInClick, film, onRatingChange, onReviewChange, onReviewFormSubmit, isSubmitButtonDisabled, isError, isFormDisabled} = props;
+  const {authorizationStatus, authInfo, film, onRatingChange, onReviewChange, onReviewFormSubmit, isSubmitButtonDisabled, isError, isFormDisabled} = props;
 
   return (
     <React.Fragment>
@@ -34,7 +33,7 @@ const AddReview = (props) => {
           <Header
             authorizationStatus={authorizationStatus}
             authInfo={authInfo}
-            onSignInClick={onSignInClick}>
+            extraClassName={``}>
 
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
@@ -121,7 +120,6 @@ AddReview.propTypes = {
 
   authorizationStatus: PropTypes.string.isRequired,
   authInfo: PropTypes.object.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   onReviewChange: PropTypes.func.isRequired,
   onReviewFormSubmit: PropTypes.func.isRequired,
@@ -135,10 +133,4 @@ const mapStateToProps = (state) => ({
   isFormDisabled: getIsFormDisabled(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  onReviewSubmit(movieId, review) {
-    dispatch(DataOperation.postReview(movieId, review));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddReview);
+export default connect(mapStateToProps)(AddReview);

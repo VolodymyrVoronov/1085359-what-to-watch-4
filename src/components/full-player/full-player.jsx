@@ -19,7 +19,7 @@ const getTimeLeft = (duration) => {
 const FullPlayer = (props) => {
 
   const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, film, children} = props;
-  console.log(film);
+
   const timeLeft = getTimeLeft(duration - progress);
 
   return (
@@ -74,9 +74,8 @@ FullPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
   duration: PropTypes.number.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func,
   onFullScreenButtonClick: PropTypes.func.isRequired,
-  onExitButtonClick: PropTypes.func.isRequired,
   film: Movie.isRequired,
 
   children: PropTypes.oneOfType([

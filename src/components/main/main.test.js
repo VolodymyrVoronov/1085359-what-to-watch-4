@@ -87,6 +87,7 @@ it(`render should be match markup`, () => {
         promoFilm={CURRENT_FILM}
         onFilmListItemClick={HANDLE_CLICK}
         onPlayButtonClick={HANDLE_CLICK}
+        addFilmToFavorites={HANDLE_CLICK}
         isSignedIn={false}
       />
     </Provider>, {

@@ -27,7 +27,7 @@ const ErrorMessage = () => {
 
         <footer className="page-footer">
           <div className="logo">
-          <Link
+            <Link
               className="logo__link logo__link--light"
               to={AppPages.MAIN}
             >

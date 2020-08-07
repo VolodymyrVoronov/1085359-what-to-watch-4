@@ -6,6 +6,8 @@ import configureStore from "redux-mock-store";
 import MovieCard from "./../movie-card/movie-card.jsx";
 import Main from "./main.jsx";
 import NameSpace from '../../reducer/name-space.js';
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 const films = [
   {
@@ -92,21 +94,26 @@ it(`film card title should be clicked`, () => {
     }
   });
 
-  const result = mount(<Provider store={store}>
-    <Main
-      promoFilm={CURRENT_FILM}
-      onFilmListItemClick={handleClick}
-      onPlayButtonClick={handleClick}
-      isSignedIn={false}
-      authInfo={userInfo}
-    />
-  </Provider>);
+  const result = mount(
+      <Router history={history}>
+        <Provider store={store}>
+          <Main
+            promoFilm={CURRENT_FILM}
+            onFilmListItemClick={handleClick}
+            onPlayButtonClick={handleClick}
+            isSignedIn={false}
+            authInfo={userInfo}
+            addFilmToFavorites={handleClick}
+          />
+        </Provider>
+      </Router>
+  );
 
   result
     .find(MovieCard)
     .forEach((value) => {
       value
-        .find(`.small-movie-card`)
+        .find(`.small-movie-card__image`)
         .simulate(`click`);
     });
 

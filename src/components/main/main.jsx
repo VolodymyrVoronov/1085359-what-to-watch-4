@@ -19,8 +19,8 @@ import {Movie} from "../types-of-props.js";
 
 const Main = (props) => {
 
-  const {promoFilm, onFilmListItemClick, onPlayButtonClick, authorizationStatus, authInfo, onSignInClick, addFilmToFavorites} = props;
-  
+  const {promoFilm, onFilmListItemClick, authorizationStatus, authInfo, onSignInClick, addFilmToFavorites} = props;
+
   if (!promoFilm) {
     return null;
   }
@@ -60,15 +60,15 @@ const Main = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                    <Link
-                      to={`${AppPages.PLAYER}/${promoFilm.id}`}
-                      className="btn btn--play movie-card__button"
-                    >
-                      <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
-                      </svg>
-                      <span>Play</span>
-                    </Link>
+                <Link
+                  to={`${AppPages.PLAYER}/${promoFilm.id}`}
+                  className="btn btn--play movie-card__button"
+                >
+                  <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                  </svg>
+                  <span>Play</span>
+                </Link>
 
                 <button className="btn btn--list movie-card__button" type="button" onClick={handleMyListClick}>
                   {promoFilm.isFavorite ?
@@ -102,12 +102,12 @@ const Main = (props) => {
 
 Main.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
 
   promoFilm: Movie,
 
   authorizationStatus: PropTypes.string,
   onSignInClick: PropTypes.func.isRequired,
+  addFilmToFavorites: PropTypes.func.isRequired,
   authInfo: PropTypes.object,
 };
 

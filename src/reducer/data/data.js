@@ -1,6 +1,7 @@
 import {createFilm, createFilms} from "../../adapter.js";
 import {extend} from "../../utils.js";
 import {ActionCreator as AppActionCreator} from "../app/app.js";
+import history from "../../history.js";
 
 const initialState = {
   films: [],
@@ -98,12 +99,13 @@ const Operation = {
       comment: review.comment,
     })
     .then(() => {
+      dispatch(ActionCreator.catchError(false));
       dispatch(ActionCreator.postReview(review));
       dispatch(AppActionCreator.toggleFormState(true));
       dispatch(Operation.loadReviews(filmId));
     }).
     then(() => {
-      dispatch(AppActionCreator.addReview(false));
+      history.goBack();
       dispatch(AppActionCreator.toggleFormState(false));
     })
     .catch(() => {

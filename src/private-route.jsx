@@ -9,10 +9,6 @@ import Loader from "./components/loader/loader.jsx";
 
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
-  console.log(authorizationStatus);
-  console.log(render);
-  console.log(path);
-  console.log(authorizationStatus);
   return (
     <Route
       path={path}

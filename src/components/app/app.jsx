@@ -1,7 +1,7 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {BrowserRouter, Route, Switch, Redirect, Router} from "react-router-dom";
+import {Route, Switch, Redirect, Router} from "react-router-dom";
 
 import Main from "../main/main.jsx";
 import MovieExtraInfo from "../movie-extra-info/movie-extra-info.jsx";
@@ -18,11 +18,10 @@ import {AppPages} from "../const.js";
 import history from "../../history.js";
 
 import {ActionCreator} from "../../reducer/app/app.js";
-import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
 
-import {getPromoFilm, getFilms, getReviews, getFavoriteFilms, getIsError} from "../../reducer/data/selectors.js";
-import {getCurrentFilmCard, getIsFullScreenOn, getIsLoading} from "../../reducer/app/selectors.js";
-import {getAuthorizationStatus, getAuthorizationInfo, getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
+import {getPromoFilm, getFilms, getReviews, getFavoriteFilms} from "../../reducer/data/selectors.js";
+import {getCurrentFilmCard, getIsLoading} from "../../reducer/app/selectors.js";
+import {getAuthorizationStatus, getAuthorizationInfo, getIsSignInError} from "../../reducer/user/selectors.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {Operation as UserOperation, AuthorizationStatus} from "../../reducer/user/user.js";
 
@@ -36,99 +35,13 @@ const FullPlayerWrapped = withFullPlayer(FullPlayer);
 const MyListWrapped = withActiveCard(MyList);
 const AddReviewWrapped = withAddReview(AddReview);
 
-// class App extends PureComponent {
-//   constructor(props) {
-//     super(props);
-//   }
-
-//   _renderState() {
-//     const {films, extraInfoFilm, isFullScreenOn, onFilmListItemClick, handlePlayButtonClick, handleExitButtonClick, authInfo, authorizationStatus, login, onSignInClick, isSignedIn, isSignInError, isError} = this.props;
-
-//     if (isError && !extraInfoFilm) {
-//       return (
-//         <ErrorMessage />
-//       );
-//     }
-
-//     if (extraInfoFilm && !isFullScreenOn) {
-//       return (
-//         <MovieExtraInfoWrapped
-//           film={extraInfoFilm}
-//           films={films}
-//           onPlayButtonClick={handlePlayButtonClick}
-//           authInfo={authInfo}
-//           authorizationStatus={authorizationStatus}
-//           isSignedIn={isSignedIn}
-//           onSignInClick={onSignInClick}
-//         />
-//       );
-//     }
-
-//     if (isFullScreenOn) {
-//       return (
-//         <FullPlayerWrapped
-//           film={films[0]}
-//           onExitButtonClick={handleExitButtonClick}
-//         />
-//       );
-//     }
-
-//     if (isSignedIn) {
-//       return (
-//         <SignIn
-//           onSubmit={login}
-//           isSignInError={isSignInError}
-//         />
-//       );
-//     }
-
-//     return (
-//       <Main
-//         film={films[0]}
-//         onFilmListItemClick={onFilmListItemClick}
-//         onPlayButtonClick={handlePlayButtonClick}
-//         authInfo={authInfo}
-//         isSignedIn={isSignedIn}
-//         authorizationStatus={authorizationStatus}
-//         onSignInClick={onSignInClick}
-//       />
-//     );
-//   }
-
-//   render() {
-//     const {films, extraInfoFilm, handlePlayButtonClick, authorizationStatus, isSignedIn, authInfo, onSignInClick} = this.props;
-
-//     return (
-//       <BrowserRouter>
-//         <Switch>
-//           <Route exact path="/">
-//             {this._renderState()}
-//           </Route>
-
-//           <Route exact path="/movie-detail-info">
-//             <MovieExtraInfoWrapped
-//               film={extraInfoFilm}
-//               films={films}
-//               onPlayButtonClick={handlePlayButtonClick}
-//               authInfo={authInfo}
-//               authorizationStatus={authorizationStatus}
-//               isSignedIn={isSignedIn}
-//               onSignInClick={onSignInClick}
-//             />
-//           </Route>
-//         </Switch>
-//       </BrowserRouter>
-//     );
-//   }
-// }
-
 const getCurrentFilm = (films, params) => {
   return films.find((film) => film.id === parseInt(params, 10));
 };
 
 const App = (props) => {
-  const {films, promoFilm, isFullScreenOn, onFilmListItemClick, handlePlayButtonClick, handleExitButtonClick, authInfo, authorizationStatus, login, onSignInClick, isSignedIn, isSignInError, isError, isLoading, addFilmToFavorites, favoriteFilms} = props;
-  console.log(isLoading);
+  const {films, promoFilm, onFilmListItemClick, authInfo, authorizationStatus, login, isSignInError, isLoading, addFilmToFavorites, favoriteFilms, onReviewSubmit} = props;
+
   if (films.length === 0) {
     return <Loader />;
   }
@@ -136,28 +49,25 @@ const App = (props) => {
   return (
     <Router history={history}>
       <Switch>
-        <Route 
+        <Route
           exact path={`${AppPages.MAIN}`}
           render={() => {
 
             return (
               isLoading ? <Loader /> :
-                <Main 
+                <Main
                   film={films[0]}
                   promoMovie={promoFilm}
                   onFilmListItemClick={onFilmListItemClick}
-                  onPlayButtonClick={handlePlayButtonClick}
                   authInfo={authInfo}
-                  isSignedIn={isSignedIn}
                   authorizationStatus={authorizationStatus}
-                  onSignInClick={onSignInClick}
                   addFilmToFavorites={addFilmToFavorites}
                 />
             );
           }}
         />
 
-        <Route 
+        <Route
           exact path={`${AppPages.SIGN_IN}`}
           render={() => {
 
@@ -168,7 +78,7 @@ const App = (props) => {
                   onSubmit={login}
                   isSignInError={isSignInError}
                 />
-            ) 
+            );
           }}
         />
 
@@ -183,26 +93,23 @@ const App = (props) => {
                   routeProps={routeProps}
                   film={сurrentFilm}
                   films={films}
-                  onPlayButtonClick={handlePlayButtonClick}
                   authInfo={authInfo}
                   authorizationStatus={authorizationStatus}
-                  isSignedIn={isSignedIn}
-                  onSignInClick={onSignInClick}
+                  addFilmToFavorites={addFilmToFavorites}
                 />
             );
           }}
         />
 
-        <Route 
+        <Route
           exact path={`${AppPages.PLAYER}/:id/`}
           render={(routeProps) => {
             const сurrentFilm = getCurrentFilm(films, routeProps.match.params.id);
-            console.log(сurrentFilm);
+
             return (
               isLoading ? <Loader /> :
                 <FullPlayerWrapped
                   film={сurrentFilm ? сurrentFilm : promoFilm}
-                  onExitButtonClick={handleExitButtonClick}
                 />
             );
           }}
@@ -239,32 +146,29 @@ const App = (props) => {
           }}
         />
 
-      <Route 
-        component={ErrorMessage}
-      />
+        <Route
+          component={ErrorMessage}
+        />
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 App.propTypes = {
   films: Movies.isRequired,
+  favoriteFilms: Movies,
   extraInfoFilm: Movie,
+  promoFilm: Movie,
 
   onFilmListItemClick: PropTypes.func.isRequired,
-  handlePlayButtonClick: PropTypes.func.isRequired,
-  handleExitButtonClick: PropTypes.func.isRequired,
-  isFullScreenOn: PropTypes.bool.isRequired,
 
-  isError: PropTypes.bool,
   authorizationStatus: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
   authInfo: PropTypes.object,
-  onSignInClick: PropTypes.func.isRequired,
-  isSignedIn: PropTypes.bool.isRequired,
   isSignInError: PropTypes.bool.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  addMovieToFavorites: PropTypes.func.isRequired,
+  addFilmToFavorites: PropTypes.func.isRequired,
+  onReviewSubmit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -273,12 +177,9 @@ const mapStateToProps = (state) => ({
   favoriteFilms: getFavoriteFilms(state),
   reviews: getReviews(state),
   extraInfoFilm: getCurrentFilmCard(state),
-  isFullScreenOn: getIsFullScreenOn(state),
 
-  isError: getIsError(state),
   authorizationStatus: getAuthorizationStatus(state),
   authInfo: getAuthorizationInfo(state),
-  isSignedIn: getIsSignedIn(state),
   isSignInError: getIsSignInError(state),
   isLoading: getIsLoading(state),
 });
@@ -291,8 +192,8 @@ const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
   },
-  onReviewSubmit(filmID, review) {
-    dispatch(DataOperation.postReview(filmID, review));
+  onReviewSubmit(filmId, review) {
+    dispatch(DataOperation.postReview(filmId, review));
   },
   addFilmToFavorites(film) {
     dispatch(DataOperation.addFilmToFavorites(film));

@@ -13,7 +13,6 @@ class MovieCard extends PureComponent {
 
     this._handleFilmCardHover = this._handleFilmCardHover.bind(this);
     this._handleFilmCardLeave = this._handleFilmCardLeave.bind(this);
-    // this._handleFilmCardClick = this._handleFilmCardClick.bind(this);
   }
 
   _handleFilmCardHover() {
@@ -28,15 +27,6 @@ class MovieCard extends PureComponent {
     onLeave({film});
   }
 
-  // _handleFilmCardClick(e) {
-  //   const {film, onClick} = this.props;
-
-  //   e.preventDefault();
-  //   onClick(film);
-
-  //   history.push(`${AppPages.FILM}/${film.id}`);
-  // }
-
   render() {
     const {id, film, isPreviewActive, onFilmListItemClick} = this.props;
 
@@ -44,7 +34,6 @@ class MovieCard extends PureComponent {
       <article className="small-movie-card catalog__movies-card"
         onMouseEnter={this._handleFilmCardHover}
         onMouseLeave={this._handleFilmCardLeave}
-        // onClick={this._handleFilmCardClick}
       >
         <div className="small-movie-card__image"
           onClick={() => {
@@ -52,7 +41,6 @@ class MovieCard extends PureComponent {
             history.push(`${AppPages.FILM}/${film.id}`);
           }}
         >
-          
 
           <Player
             id={id}

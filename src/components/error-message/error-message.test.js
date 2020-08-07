@@ -1,11 +1,16 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import ErrorMessage from "./error-message.jsx";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 it(`ErrorMessage should render correctly`, () => {
-  const result = renderer
-    .create(<ErrorMessage/>)
+  const tree = renderer
+    .create(
+        <Router history={history}>
+          <ErrorMessage/>
+        </Router>)
     .toJSON();
 
-  expect(result).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
