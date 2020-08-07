@@ -8,11 +8,16 @@ import Details from "../details/details.jsx";
 import Reviews from "../reviews/reviews.jsx";
 import SignIn from "../sign-in/sign-in.jsx";
 import Header from "../header/header.jsx";
-import AddReview from "../add-review/add-review.jsx";
+// import AddReview from "../add-review/add-review.jsx";
 
 import {Movie, Movies} from "../types-of-props.js";
 
+import {Link} from "react-router-dom";
+import {AppPages} from "../const.js";
+import history from "../../history.js";
+
 import {ActionCreator as UserActionCreator, AuthorizationStatus} from "../../reducer/user/user.js";
+import {getAuthorizationStatus, getAuthorizationInfo} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import {ActionCreator as AppActionCreator} from "../../reducer/app/app.js";
@@ -21,9 +26,9 @@ import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
 import {getReviews} from "../../reducer/data/selectors.js";
 import {getIsReviewOpen} from "../../reducer/app/selectors.js";
 
-import withAddReview from "../../hocs/with-active-add-review.jsx";
+// import withAddReview from "../../hocs/with-active-add-review.jsx";
 
-const AddReviewWrapped = withAddReview(AddReview);
+// const AddReviewWrapped = withAddReview(AddReview);
 
 class MovieExtraInfo extends PureComponent {
   constructor(props) {
@@ -60,9 +65,30 @@ class MovieExtraInfo extends PureComponent {
     return null;
   }
 
+  componentDidMount() {
+    const {film, loadFilmData} = this.props;
+    loadFilmData(film);
+  }
+
+  componentDidUpdate() {
+    const {film, loadFilmData} = this.props;
+    loadFilmData(film);
+  }
+
+  _handleMyListClick() {
+    const {authorizationStatus, film, addFilmToFavorites} = this.props;
+
+    return authorizationStatus === AuthorizationStatus.AUTH ?
+      addFilmToFavorites(film) :
+      history.push(AppPages.SIGN_IN);
+  }
+
   render() {
 
-    const {film, activeTab, onTabClick, onPlayButtonClick, login, isSignInError, authInfo, authorizationStatus, onSignInClick, isSignedIn, isReviewOpen, onReviewSubmit, onAddReviewClick} = this.props;
+    
+    const {film, activeTab, onTabClick, onPlayButtonClick, login, isSignInError, authInfo, authorizationStatus, onSignInClick, isSignedIn, isReviewOpen, onReviewSubmit, onAddReviewClick, } = this.props;
+
+    console.log(film);
 
     if (isSignedIn) {
       return (
@@ -73,17 +99,17 @@ class MovieExtraInfo extends PureComponent {
       );
     }
 
-    if (isReviewOpen) {
-      return (
-        <AddReviewWrapped
-          authorizationStatus={authorizationStatus}
-          authInfo={authInfo}
-          onSignInClick={onSignInClick}
-          film={film}
-          onReviewSubmit={onReviewSubmit}
-        />
-      );
-    }
+    // if (isReviewOpen) {
+    //   return (
+    //     <AddReviewWrapped
+    //       authorizationStatus={authorizationStatus}
+    //       authInfo={authInfo}
+    //       onSignInClick={onSignInClick}
+    //       film={film}
+    //       onReviewSubmit={onReviewSubmit}
+    //     />
+    //   );
+    // }
 
     return (
       <section className="movie-card movie-card--full" style={{background: film.backgroundColor}}>
@@ -109,27 +135,37 @@ class MovieExtraInfo extends PureComponent {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayButtonClick}>
-                  <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
-                    <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
+                <Link
+                  to={`${AppPages.PLAYER}/${film.id}`}
+                  className="btn btn--play movie-card__button"
+                >
+                  <svg viewBox="0 0 19 19" width="19" height="19">
+                    <use xlinkHref="#play-s"></use>
                   </svg>
                   <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                </Link>
+
+                <button
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                  onClick={this._handleMyListClick}
+                >
+                  {film.isFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>}
                   <span>My list</span>
-                </button>
+                    </button>
+
                 {authorizationStatus === AuthorizationStatus.AUTH &&
-                <a
-                  href="add-review.html"
-                  className="btn movie-card__button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    onAddReviewClick();
-                  }}
-                >Add review</a>
+                  <Link
+                    to={`${AppPages.FILM}/${film.id}/review`}
+                    className="btn movie-card__button"
+                  >Add review
+                  </Link>
                 }
               </div>
             </div>
@@ -170,7 +206,7 @@ MovieExtraInfo.propTypes = {
   login: PropTypes.func.isRequired,
   isSignInError: PropTypes.bool.isRequired,
 
-  onAddReviewClick: PropTypes.func.isRequired,
+  // onAddReviewClick: PropTypes.func.isRequired,
   isReviewOpen: PropTypes.bool.isRequired,
   onReviewSubmit: PropTypes.func.isRequired,
 
@@ -180,6 +216,8 @@ MovieExtraInfo.propTypes = {
     name: PropTypes.string.isRequired,
     avatarUrl: PropTypes.string.isRequired,
   }),
+
+  addFilmToFavorites: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -187,6 +225,8 @@ const mapStateToProps = (state) => ({
   isSignedIn: getIsSignedIn(state),
   isSignInError: getIsSignInError(state),
   isReviewOpen: getIsReviewOpen(state),
+  authorizationStatus: getAuthorizationStatus(state),
+  authInfo: getAuthorizationInfo(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -196,12 +236,18 @@ const mapDispatchToProps = (dispatch) => ({
   onSignInClick() {
     dispatch(UserActionCreator.signIn(true));
   },
-  onAddReviewClick() {
-    dispatch(AppActionCreator.addReview(true));
+  // onAddReviewClick() {
+  //   dispatch(AppActionCreator.addReview(true));
+  // },
+  // onReviewSubmit(filmId, review) {
+  //   dispatch(DataOperation.postReview(filmId, review));
+  // },
+  addMovieToFavorites(film) {
+    dispatch(DataOperation.addFilmToFavorites(film));
   },
-  onReviewSubmit(filmId, review) {
-    dispatch(DataOperation.postReview(filmId, review));
-  },
+  loadFilmData(film) {
+    dispatch(ActionCreator.getFilmCard(film));
+  }
 });
 
 export {MovieExtraInfo};

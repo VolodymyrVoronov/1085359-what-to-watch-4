@@ -2,6 +2,7 @@ import {extend} from "../../utils.js";
 import {createAuthorizationInfo} from "../../authInfo.js";
 
 const AuthorizationStatus = {
+  UNKNOWN: `UNKNOWN`,
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
@@ -14,14 +15,14 @@ const initialState = {
     name: ``,
     avatarUrl: ``,
   },
-  isSignedIn: false,
+  // isSignedIn: false,
   isSignInError: false,
 };
 
 const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   GET_AUTHORIZATION_INFO: `GET_AUTHORIZATION_INFO`,
-  SIGN_IN: `SIGN_IN`,
+  // SIGN_IN: `SIGN_IN`,
   GET_SIGN_IN_ERROR: `GET_SIGN_IN_ERROR`,
 };
 
@@ -38,12 +39,12 @@ const ActionCreator = {
       payload: authInfo,
     };
   },
-  signIn: (bool) => {
-    return {
-      type: ActionType.SIGN_IN,
-      payload: bool,
-    };
-  },
+  // signIn: (bool) => {
+  //   return {
+  //     type: ActionType.SIGN_IN,
+  //     payload: bool,
+  //   };
+  // },
   getSignInError: () => {
     return {
       type: ActionType.GET_SIGN_IN_ERROR,
@@ -62,10 +63,10 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         authorizationInfo: action.payload,
       });
-    case ActionType.SIGN_IN:
-      return extend(state, {
-        isSignedIn: action.payload,
-      });
+    // case ActionType.SIGN_IN:
+    //   return extend(state, {
+    //     isSignedIn: action.payload,
+    //   });
     case ActionType.GET_SIGN_IN_ERROR:
       return extend(state, {
         isSignInError: action.payload,
@@ -94,7 +95,7 @@ const Operation = {
     })
     .then((response) => {
       dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
-      dispatch(ActionCreator.signIn(false));
+      // dispatch(ActionCreator.signIn(false));
       dispatch(ActionCreator.getAuthorizationInfo(createAuthorizationInfo(response.data)));
     })
     .catch(() => {

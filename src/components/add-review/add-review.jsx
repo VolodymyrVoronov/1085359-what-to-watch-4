@@ -4,6 +4,10 @@ import Header from "../header/header.jsx";
 import {connect} from "react-redux";
 import {getIsError} from "../../reducer/data/selectors.js";
 import {getIsFormDisabled} from "../../reducer/app/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
+
+import {Link} from "react-router-dom";
+import {AppPages} from "../const.js";
 
 import {Movie} from "../types-of-props.js";
 
@@ -35,7 +39,10 @@ const AddReview = (props) => {
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">{film.title}</a>
+                  <Link
+                    to={`${AppPages.FILM}/${film.id}`}
+                    className="breadcrumbs__link">{film.title}
+                  </Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -128,4 +135,10 @@ const mapStateToProps = (state) => ({
   isFormDisabled: getIsFormDisabled(state),
 });
 
-export default connect(mapStateToProps)(AddReview);
+const mapDispatchToProps = (dispatch) => ({
+  onReviewSubmit(movieId, review) {
+    dispatch(DataOperation.postReview(movieId, review));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

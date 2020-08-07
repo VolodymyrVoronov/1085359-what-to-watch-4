@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import history from '../../history.js';
 
 import {Movie} from "../types-of-props.js";
 
@@ -17,8 +18,8 @@ const getTimeLeft = (duration) => {
 
 const FullPlayer = (props) => {
 
-  const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, onExitButtonClick, film, children} = props;
-
+  const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, film, children} = props;
+  console.log(film);
   const timeLeft = getTimeLeft(duration - progress);
 
   return (
@@ -26,7 +27,7 @@ const FullPlayer = (props) => {
       <div className="player">
         {children}
 
-        <button onClick={onExitButtonClick} type="button" className="player__exit">Exit</button>
+        <button onClick={() => history.goBack()} type="button" className="player__exit">Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
