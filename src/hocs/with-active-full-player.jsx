@@ -23,8 +23,8 @@ const withFullPlayer = (Component) => {
       const video = this._videoRef.current;
       const {film} = this.props;
 
-      video.src = film.preview;
-      video.poster = film.backgroundImage;
+      video.src = film.videoLink;
+      video.poster = film.poster;
       video.play();
 
       video.oncanplaythrough = () => {
