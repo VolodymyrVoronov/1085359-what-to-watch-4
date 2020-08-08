@@ -69,7 +69,7 @@ const Operation = {
       dispatch(AppActionCreator.toggleLoadingState(false));
     })
     .catch(() => {
-      dispatch(ActionCreator.catchError());
+      dispatch(ActionCreator.catchError(true));
     });
   },
   loadPromoFilm: () => (dispatch, getState, api) => {
@@ -90,7 +90,7 @@ const Operation = {
       dispatch(ActionCreator.loadReviews(response.data));
     })
     .catch(() => {
-      dispatch(ActionCreator.catchError());
+      dispatch(ActionCreator.catchError(true));
     });
   },
   postReview: (filmId, review) => (dispatch, getState, api) => {
@@ -109,7 +109,7 @@ const Operation = {
       dispatch(AppActionCreator.toggleFormState(false));
     })
     .catch(() => {
-      dispatch(ActionCreator.catchError());
+      dispatch(ActionCreator.catchError(true));
     });
   },
   loadFavoriteFilms: () => (dispatch, getState, api) => {
@@ -118,7 +118,7 @@ const Operation = {
       dispatch(ActionCreator.loadFavoriteFilms(createFilms(response.data)));
     })
     .catch(() => {
-      dispatch(ActionCreator.catchError());
+      dispatch(ActionCreator.catchError(true));
     });
   },
   addFilmToFavorites: (film) => (dispatch, getState, api) => {
@@ -129,7 +129,7 @@ const Operation = {
       dispatch(Operation.loadFavoriteFilms());
     })
     .catch(() => {
-      dispatch(ActionCreator.catchError());
+      dispatch(ActionCreator.catchError(true));
     });
   }
 };

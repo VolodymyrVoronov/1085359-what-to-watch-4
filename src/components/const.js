@@ -30,7 +30,6 @@ export const ServerErrors = {
 };
 
 export const AppPages = {
-  ADD_REVIEW: `/review`,
   FILM: `/films`,
   MAIN: `/`,
   MY_LIST: `/mylist`,

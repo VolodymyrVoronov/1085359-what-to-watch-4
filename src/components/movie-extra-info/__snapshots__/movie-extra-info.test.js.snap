@@ -57,18 +57,11 @@ exports[`render should be match markup 1`] = `
         className="user-block"
       >
         <a
-          href="/mylist"
+          className="user-block__link"
+          href="/login"
           onClick={[Function]}
         >
-          <div
-            className="user-block__avatar"
-          >
-            <img
-              alt="undefined avatar"
-              height="63"
-              width="63"
-            />
-          </div>
+          Sign in
         </a>
       </div>
     </header>
@@ -140,13 +133,6 @@ exports[`render should be match markup 1`] = `
               My list
             </span>
           </button>
-          <a
-            className="btn movie-card__button"
-            href="/films/2/review"
-            onClick={[Function]}
-          >
-            Add review
-          </a>
         </div>
       </div>
     </div>

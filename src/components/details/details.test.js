@@ -69,12 +69,15 @@ const MOVIES = [
   },
 ];
 
+const HANDLE_CLICK = () => {};
+
 it(`render should be match markup`, () => {
 
   const result = renderer
     .create(<Details
       film={CURRENT_MOVIE}
       films={MOVIES}
+      onFilmListItemClick={HANDLE_CLICK}
     />)
     .toJSON();
 

@@ -12,10 +12,6 @@ export const getCurrentFilmCard = (state) => {
   return state[NameSpace.APP].extraInfoFilm;
 };
 
-export const getIsFullScreenOn = (state) => {
-  return state[NameSpace.APP].isFullScreenOn;
-};
-
 export const getIsReviewOpen = (state) => {
   return state[NameSpace.APP].isReviewOpen;
 };

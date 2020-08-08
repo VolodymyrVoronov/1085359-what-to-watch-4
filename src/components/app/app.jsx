@@ -10,7 +10,7 @@ import SignIn from "../sign-in/sign-in.jsx";
 import ErrorMessage from "../error-message/error-message.jsx";
 import Loader from "../loader/loader.jsx";
 import MyList from "../my-list/my-list.jsx";
-import PrivateRoute from "../../private-route.jsx";
+import PrivateRoute from "../private-route/private-route.jsx";
 import AddReview from "../add-review/add-review.jsx";
 
 import {Movies, Movie} from "../types-of-props.js";
@@ -50,7 +50,7 @@ const App = (props) => {
     <Router history={history}>
       <Switch>
         <Route
-          exact path={`${AppPages.MAIN}`}
+          exact path={AppPages.MAIN}
           render={() => {
 
             return (
@@ -68,7 +68,7 @@ const App = (props) => {
         />
 
         <Route
-          exact path={`${AppPages.SIGN_IN}`}
+          exact path={AppPages.SIGN_IN}
           render={() => {
 
             return (
@@ -96,6 +96,7 @@ const App = (props) => {
                   authInfo={authInfo}
                   authorizationStatus={authorizationStatus}
                   addFilmToFavorites={addFilmToFavorites}
+                  onFilmListItemClick={onFilmListItemClick}
                 />
             );
           }}

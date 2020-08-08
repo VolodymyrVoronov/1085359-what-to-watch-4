@@ -2,10 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
-import {AppPages} from "./components/const.js";
-import {AuthorizationStatus} from "./reducer/user/user.js";
-import {getAuthorizationStatus} from "./reducer/user/selectors.js";
-import Loader from "./components/loader/loader.jsx";
+import {AppPages} from "./../const.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import Loader from "./../loader/loader.jsx";
 
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
@@ -14,7 +14,6 @@ const PrivateRoute = (props) => {
       path={path}
       exact={exact}
       render={(routeProps) => {
-
 
         switch (authorizationStatus) {
           case (AuthorizationStatus.UNKNOWN):

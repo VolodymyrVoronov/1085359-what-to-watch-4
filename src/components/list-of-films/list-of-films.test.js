@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import FilmsList from "./list-of-films.jsx";
+import ListOfFilms from "./list-of-films.jsx";
 
 const MOVIES = [
   {
@@ -53,7 +53,7 @@ const HANDLE_CLICK = () => {};
 it(`render should be match markup`, () => {
 
   const result = renderer
-    .create(<FilmsList
+    .create(<ListOfFilms
       films={MOVIES}
       onFilmListItemClick={HANDLE_CLICK}
     />, {

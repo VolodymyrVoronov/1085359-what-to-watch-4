@@ -10,7 +10,7 @@ const PRVIEW_DALAY = 1000;
 
 const MovieCardWrapped = withActiveItemList(MovieCard, PRVIEW_DALAY);
 
-class FilmsList extends PureComponent {
+class ListOfFilms extends PureComponent {
 
   render() {
     const {films, onFilmListItemClick} = this.props;
@@ -34,10 +34,10 @@ class FilmsList extends PureComponent {
   }
 }
 
-FilmsList.propTypes = {
+ListOfFilms.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,
 
   films: Movies.isRequired,
 };
 
-export default FilmsList;
+export default ListOfFilms;

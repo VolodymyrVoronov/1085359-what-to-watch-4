@@ -109,6 +109,7 @@ Array [
       >
         <div
           className="small-movie-card__image"
+          onClick={[Function]}
         >
           <img
             alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -123,6 +124,7 @@ Array [
           <a
             className="small-movie-card__link"
             href="movie-page.html"
+            onClick={[Function]}
           >
             Bohemian Rhapsody
           </a>

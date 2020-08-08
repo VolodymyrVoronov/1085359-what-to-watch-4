@@ -127,7 +127,6 @@ const userInfo = {
   avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
 };
 
-
 it(`render should be match markup`, () => {
 
   const store = mockStore({
@@ -136,8 +135,8 @@ it(`render should be match markup`, () => {
       reviews
     },
     [NameSpace.USER]: {
-      authorizationStatus: `AUTH`,
-      authorizationInfo: {userInfo},
+      authorizationStatus: `UNKNOWN`,
+      authorizationInfo: userInfo,
       isSignedIn: false,
       isSignInError: false,
     },
@@ -160,6 +159,7 @@ it(`render should be match markup`, () => {
               isSignedIn={false}
               isReviewOpen={false}
               authInfo={userInfo}
+              onFilmListItemClick={HANDLE_CLICK}
             />
           </Provider>
         </Router>, {

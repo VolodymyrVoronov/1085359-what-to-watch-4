@@ -53,6 +53,7 @@ const ActionCreator = {
     type: ActionType.TOGGLE_FORM_STATE,
     payload: bool,
   }),
+
   toggleLoadingState: (bool) => ({
     type: ActionType.TOGGLE_LOADING_STATE,
     payload: bool,

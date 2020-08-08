@@ -119,6 +119,7 @@ it(`render should be match markup`, () => {
         authorizationStatus={`AUTH`}
         onSignInClick={HANDLE_CLICK}
         isLoading={false}
+        onFilmListItemClick={HANDLE_CLICK}
       />
     </Provider>, {
       createNodeMock: () => {

@@ -24,11 +24,14 @@ const CURRENT_MOVIE = {
   isFavorite: false,
 };
 
+const HANDLE_CLICK = () => {};
+
 it(`render should be match markup`, () => {
 
   const result = renderer
     .create(<Overview
       film={CURRENT_MOVIE}
+      onFilmListItemClick={HANDLE_CLICK}
     />)
     .toJSON();
 

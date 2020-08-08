@@ -33,7 +33,7 @@ class MovieExtraInfo extends PureComponent {
   }
 
   _renderState() {
-    const {film, films, reviews, activeTab} = this.props;
+    const {film, films, reviews, activeTab, onFilmListItemClick} = this.props;
     if (activeTab === 0) {
       return (
         <Overview
@@ -47,6 +47,7 @@ class MovieExtraInfo extends PureComponent {
         <Details
           film={film}
           films={films}
+          onFilmListItemClick={onFilmListItemClick}
         />
       );
     }
@@ -169,6 +170,7 @@ MovieExtraInfo.propTypes = {
   reviews: PropTypes.array,
   onTabClick: PropTypes.func.isRequired,
   onPlayButtonClick: PropTypes.func,
+  onFilmListItemClick: PropTypes.func,
   activeTab: PropTypes.number.isRequired,
 
   authorizationStatus: PropTypes.string,
@@ -181,10 +183,10 @@ MovieExtraInfo.propTypes = {
   onReviewSubmit: PropTypes.func,
 
   authInfo: PropTypes.exact({
-    id: PropTypes.number.isRequired,
-    email: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    avatarUrl: PropTypes.string.isRequired,
+    id: PropTypes.number,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    avatarUrl: PropTypes.string,
   }),
 
   addFilmToFavorites: PropTypes.func.isRequired,

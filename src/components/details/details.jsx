@@ -1,4 +1,6 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
+
 import MoviesLikeThis from "../movies-like-this/movies-like-this.jsx";
 
 import {Movie, Movies} from "../types-of-props.js";
@@ -18,7 +20,7 @@ class Details extends PureComponent {
 
   render() {
 
-    const {film, films} = this.props;
+    const {film, films, onFilmListItemClick} = this.props;
     const {actors} = film;
 
     return (
@@ -62,6 +64,7 @@ class Details extends PureComponent {
         </div>
 
         <MoviesLikeThis
+          onFilmListItemClick={onFilmListItemClick}
           films={films}
           film={film}
         />
@@ -74,6 +77,8 @@ class Details extends PureComponent {
 Details.propTypes = {
   film: Movie.isRequired,
   films: Movies.isRequired,
+
+  onFilmListItemClick: PropTypes.func,
 };
 
 export default Details;

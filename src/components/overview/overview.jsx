@@ -5,26 +5,42 @@ import {Movie} from "../types-of-props.js";
 const RATING_LEVELS = {
   BAD: `Bad`,
   NORMAL: `Normal`,
-  COOD: `Good`,
+  GOOD: `Good`,
   VERY_GOOD: `Very good`,
   AWESOME: `Awesome`,
 };
 
+const NUMBERS_OF_RATING = {
+  BAD_1: 0,
+  BAD_3: 3,
+
+  NORMAL_3: 3,
+  NORMAL_5: 5,
+
+  GOOD_5: 5,
+  GOOD_8: 8,
+
+  VERY_GOOD_8: 8,
+  VERY_GOOD_10: 10,
+
+  AWESOME_10: 10
+};
+
 const getRating = (points) => {
   let rating;
-  if (points <= 0 || points <= 3) {
+  if (points <= NUMBERS_OF_RATING.BAD_1 || points <= NUMBERS_OF_RATING.BAD_3) {
     rating = RATING_LEVELS.BAD;
   }
-  if (points <= 3 || points <= 5) {
+  if (points <= NUMBERS_OF_RATING.NORMAL_3 || points <= NUMBERS_OF_RATING.NORMAL_5) {
     rating = RATING_LEVELS.NORMAL;
   }
-  if (points <= 5 || points <= 8) {
-    rating = RATING_LEVELS.COOD;
+  if (points <= NUMBERS_OF_RATING.GOOD_5 || points <= NUMBERS_OF_RATING.GOOD_8) {
+    rating = RATING_LEVELS.GOOD;
   }
-  if (points <= 8 || points <= 10) {
+  if (points <= NUMBERS_OF_RATING.VERY_GOOD_8 || points <= NUMBERS_OF_RATING.VERY_GOOD_10) {
     rating = RATING_LEVELS.VERY_GOOD;
   }
-  if (points >= 10) {
+  if (points >= NUMBERS_OF_RATING.AWESOME_10) {
     rating = RATING_LEVELS.AWESOME;
   }
   return rating;

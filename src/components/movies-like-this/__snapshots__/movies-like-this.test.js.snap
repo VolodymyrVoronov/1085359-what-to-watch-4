@@ -17,6 +17,7 @@ exports[`render should be match markup 1`] = `
     >
       <div
         className="small-movie-card__image"
+        onClick={[Function]}
       >
         <img
           alt="Fantastic Beasts: The Crimes of Grindelwald"
@@ -31,6 +32,7 @@ exports[`render should be match markup 1`] = `
         <a
           className="small-movie-card__link"
           href="movie-page.html"
+          onClick={[Function]}
         >
           Bohemian Rhapsody
         </a>
