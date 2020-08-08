@@ -195,7 +195,7 @@ Array [
             href="#"
             onClick={[Function]}
           >
-            Dramas
+            Drama
           </a>
         </li>
       </ul>

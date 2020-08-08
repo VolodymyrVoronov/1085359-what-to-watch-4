@@ -12,7 +12,7 @@ exports[`render should be match markup 1`] = `
       href="#"
       onClick={[Function]}
     >
-      Comedies
+      Comedy
     </a>
   </li>
   <li
