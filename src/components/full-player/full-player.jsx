@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import history from '../../history.js';
 
 import {Movie} from "../types-of-props.js";
 
@@ -17,7 +18,7 @@ const getTimeLeft = (duration) => {
 
 const FullPlayer = (props) => {
 
-  const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, onExitButtonClick, film, children} = props;
+  const {isPlaying, progress, duration, onPlayButtonClick, onFullScreenButtonClick, film, children} = props;
 
   const timeLeft = getTimeLeft(duration - progress);
 
@@ -26,7 +27,7 @@ const FullPlayer = (props) => {
       <div className="player">
         {children}
 
-        <button onClick={onExitButtonClick} type="button" className="player__exit">Exit</button>
+        <button onClick={() => history.goBack()} type="button" className="player__exit">Exit</button>
 
         <div className="player__controls">
           <div className="player__controls-row">
@@ -48,8 +49,8 @@ const FullPlayer = (props) => {
                 </React.Fragment>
                 :
                 <React.Fragment>
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"/>
+                  <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
                   </svg>
                   <span>Play</span>
                 </React.Fragment>}
@@ -73,9 +74,8 @@ FullPlayer.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   progress: PropTypes.number.isRequired,
   duration: PropTypes.number.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func,
   onFullScreenButtonClick: PropTypes.func.isRequired,
-  onExitButtonClick: PropTypes.func.isRequired,
   film: Movie.isRequired,
 
   children: PropTypes.oneOfType([

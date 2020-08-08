@@ -32,7 +32,6 @@ it(`Full Player should render correctly`, () => {
       duration={99}
       onPlayButtonClick={() => {}}
       onFullScreenButtonClick={() => {}}
-      onExitButtonClick={() => {}}
       film={CURRENT_MOVIE}
     >
       <video />

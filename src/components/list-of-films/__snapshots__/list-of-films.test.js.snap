@@ -6,12 +6,12 @@ exports[`render should be match markup 1`] = `
 >
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <video
         className="player__video"
@@ -31,12 +31,12 @@ exports[`render should be match markup 1`] = `
   </article>
   <article
     className="small-movie-card catalog__movies-card"
-    onClick={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >
     <div
       className="small-movie-card__image"
+      onClick={[Function]}
     >
       <video
         className="player__video"

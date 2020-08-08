@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Header from "./header.jsx";
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 const userInfo = {
   id: 1,
@@ -9,14 +11,18 @@ const userInfo = {
   avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
 };
 
-it(`ErrorMessage should render correctly`, () => {
-  const result = renderer
-    .create(<Header
-      authorizationStatus={`AUTH`}
-      authInfo={userInfo}
-      onSignInClick={() => {}}
-    />)
+it(`Header should render correctly`, () => {
+  const tree = renderer
+    .create(
+        <Router history={history}>
+          <Header
+            authorizationStatus={`AUTH`}
+            authInfo={userInfo}
+          />
+        </Router>
+    )
     .toJSON();
 
-  expect(result).toMatchSnapshot();
+  expect(tree).toMatchSnapshot();
 });
+

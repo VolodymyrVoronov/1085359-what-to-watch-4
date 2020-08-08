@@ -24,7 +24,7 @@ class FilmsList extends PureComponent {
                 id={index}
                 key={film.title + index}
                 film={film}
-                onClick={onFilmListItemClick}
+                onFilmListItemClick={onFilmListItemClick}
               />
             );
           })

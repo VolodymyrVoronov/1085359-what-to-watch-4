@@ -1,11 +1,13 @@
 import {createFilm, createFilms} from "../../adapter.js";
 import {extend} from "../../utils.js";
 import {ActionCreator as AppActionCreator} from "../app/app.js";
+import history from "../../history.js";
 
 const initialState = {
   films: [],
   promoFilm: null,
   reviews: null,
+  favoriteFilms: [],
   isError: false,
 };
 
@@ -15,6 +17,7 @@ const ActionType = {
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   CATCH_ERROR: `CATCH_ERROR`,
   POST_REVIEW: `POST_REVIEW`,
+  LOAD_FAVORITE_FILMS: `LOAD_FAVORITE_FILMS`,
 };
 
 const ActionCreator = {
@@ -47,6 +50,12 @@ const ActionCreator = {
       type: ActionType.POST_REVIEW,
       payload: review,
     };
+  },
+  loadFavoriteFilms: (favoriteFilms) => {
+    return {
+      type: ActionType.LOAD_FAVORITE_FILMS,
+      payload: favoriteFilms,
+    };
   }
 };
 
@@ -56,6 +65,9 @@ const Operation = {
     .then((response) => {
       dispatch(ActionCreator.loadFilms(createFilms(response.data)));
     })
+    .then(() => {
+      dispatch(AppActionCreator.toggleLoadingState(false));
+    })
     .catch(() => {
       dispatch(ActionCreator.catchError());
     });
@@ -64,6 +76,9 @@ const Operation = {
     return api.get(`/films/promo`)
     .then((response) => {
       dispatch(ActionCreator.loadPromoFilm(createFilm(response.data)));
+    })
+    .then(() => {
+      dispatch(AppActionCreator.toggleLoadingState(false));
     })
     .catch(() => {
       dispatch(ActionCreator.catchError());
@@ -84,13 +99,34 @@ const Operation = {
       comment: review.comment,
     })
     .then(() => {
+      dispatch(ActionCreator.catchError(false));
       dispatch(ActionCreator.postReview(review));
       dispatch(AppActionCreator.toggleFormState(true));
       dispatch(Operation.loadReviews(filmId));
     }).
     then(() => {
-      dispatch(AppActionCreator.addReview(false));
+      history.goBack();
       dispatch(AppActionCreator.toggleFormState(false));
+    })
+    .catch(() => {
+      dispatch(ActionCreator.catchError());
+    });
+  },
+  loadFavoriteFilms: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`)
+    .then((response) => {
+      dispatch(ActionCreator.loadFavoriteFilms(createFilms(response.data)));
+    })
+    .catch(() => {
+      dispatch(ActionCreator.catchError());
+    });
+  },
+  addFilmToFavorites: (film) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${film.id}/${film.isFavorite ? 0 : 1}`)
+    .then(() => {
+      dispatch(Operation.loadFilms());
+      dispatch(Operation.loadPromoFilm());
+      dispatch(Operation.loadFavoriteFilms());
     })
     .catch(() => {
       dispatch(ActionCreator.catchError());
@@ -115,6 +151,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.CATCH_ERROR:
       return extend(state, {
         isError: action.payload,
+      });
+    case ActionType.LOAD_FAVORITE_FILMS:
+      return extend(state, {
+        favoriteFilms: action.payload,
       });
   }
 

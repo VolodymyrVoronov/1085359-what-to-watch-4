@@ -53,11 +53,15 @@ exports[`Full Player should render correctly 1`] = `
       >
         <svg
           height="19"
+          id="play-s"
           viewBox="0 0 19 19"
           width="19"
         >
-          <use
-            xlinkHref="#play-s"
+          <path
+            clipRule="evenodd"
+            d="M0 0L19 9.5L0 19V0Z"
+            fill="#EEE5B5"
+            fillRule="evenodd"
           />
         </svg>
         <span>

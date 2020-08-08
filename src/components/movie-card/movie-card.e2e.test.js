@@ -44,6 +44,7 @@ it(`component should be hovered`, () => {
     onHover={handleHover}
     onClick={handleClick}
     onLeave={handleLeave}
+    onFilmListItemClick={handleClick}
   />);
 
   result
@@ -66,6 +67,7 @@ it(`component should be leaved`, () => {
     onHover={handleHover}
     onClick={handleClick}
     onLeave={handleLeave}
+    onFilmListItemClick={handleClick}
   />);
 
   result
@@ -88,10 +90,11 @@ it(`title should be clicked`, () => {
     onHover={handleHover}
     onClick={handleClick}
     onLeave={handleLeave}
+    onFilmListItemClick={handleClick}
   />);
 
   result
-    .find(`.small-movie-card`)
+    .find(`.small-movie-card__image`)
     .simulate(`click`, {
       preventDefault() {}
     });

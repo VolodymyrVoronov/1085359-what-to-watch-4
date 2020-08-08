@@ -5,6 +5,9 @@ import {connect} from "react-redux";
 import {getIsError} from "../../reducer/data/selectors.js";
 import {getIsFormDisabled} from "../../reducer/app/selectors.js";
 
+import {Link} from "react-router-dom";
+import {AppPages} from "../const.js";
+
 import {Movie} from "../types-of-props.js";
 
 const Review = {
@@ -15,7 +18,7 @@ const Review = {
 const AMOUNT_ON_START = 5;
 
 const AddReview = (props) => {
-  const {authorizationStatus, authInfo, onSignInClick, film, onRatingChange, onReviewChange, onReviewFormSubmit, isSubmitButtonDisabled, isError, isFormDisabled} = props;
+  const {authorizationStatus, authInfo, film, onRatingChange, onReviewChange, onReviewFormSubmit, isSubmitButtonDisabled, isError, isFormDisabled} = props;
 
   return (
     <React.Fragment>
@@ -30,12 +33,15 @@ const AddReview = (props) => {
           <Header
             authorizationStatus={authorizationStatus}
             authInfo={authInfo}
-            onSignInClick={onSignInClick}>
+            extraClassName={``}>
 
             <nav className="breadcrumbs">
               <ul className="breadcrumbs__list">
                 <li className="breadcrumbs__item">
-                  <a href="movie-page.html" className="breadcrumbs__link">{film.title}</a>
+                  <Link
+                    to={`${AppPages.FILM}/${film.id}`}
+                    className="breadcrumbs__link">{film.title}
+                  </Link>
                 </li>
                 <li className="breadcrumbs__item">
                   <a className="breadcrumbs__link">Add review</a>
@@ -114,7 +120,6 @@ AddReview.propTypes = {
 
   authorizationStatus: PropTypes.string.isRequired,
   authInfo: PropTypes.object.isRequired,
-  onSignInClick: PropTypes.func.isRequired,
   onRatingChange: PropTypes.func.isRequired,
   onReviewChange: PropTypes.func.isRequired,
   onReviewFormSubmit: PropTypes.func.isRequired,

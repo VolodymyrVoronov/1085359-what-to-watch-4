@@ -18,6 +18,10 @@ export const getIsError = (state) => {
   return state[NameSpace.DATA].isError;
 };
 
+export const getFavoriteFilms = (state) => {
+  return state[NameSpace.DATA].favoriteFilms;
+};
+
 export const getGenresFromFilms = createSelector(
     getFilms,
     (getFilmsItem) => {

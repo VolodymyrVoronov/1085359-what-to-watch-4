@@ -1,5 +1,4 @@
 import React, {PureComponent, createRef} from "react";
-import PropTypes from "prop-types";
 
 import {Movie} from "../components/types-of-props.js";
 
@@ -24,8 +23,8 @@ const withFullPlayer = (Component) => {
       const video = this._videoRef.current;
       const {film} = this.props;
 
-      video.src = film.preview;
-      video.poster = film.backgroundImage;
+      video.src = film.videoLink;
+      video.poster = film.poster;
       video.play();
 
       video.oncanplaythrough = () => {
@@ -91,7 +90,7 @@ const withFullPlayer = (Component) => {
 
     render() {
       const {isPlaying, progress, duration} = this.state;
-      const {onExitButtonClick, film} = this.props;
+      const {film} = this.props;
 
       return (
         <Component
@@ -104,7 +103,6 @@ const withFullPlayer = (Component) => {
             this._handlePlayButtonClick();
           }}
           onFullScreenButtonClick={this._handleFullScreenButtonClick}
-          onExitButtonClick={onExitButtonClick}
         >
           <video
             className="player__video"
@@ -117,7 +115,6 @@ const withFullPlayer = (Component) => {
 
   WithFullPlayer.propTypes = {
     film: Movie.isRequired,
-    onExitButtonClick: PropTypes.func.isRequired,
   };
 
   return WithFullPlayer;

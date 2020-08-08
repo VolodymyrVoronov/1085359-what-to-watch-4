@@ -1,10 +1,18 @@
-import {AuthorizationStatus, ActionType, ActionCreator, reducer, initialState} from "./user.js";
+import {createAPI} from "../../api.js";
+import MockAdapter from "axios-mock-adapter";
+import {AuthorizationStatus, ActionType, ActionCreator, reducer, initialState, Operation} from "./user.js";
+import {createAuthorizationInfo} from "../../authInfo.js";
 
 const userInfo = {
   id: 1,
   email: `test@mail.com`,
   name: `test`,
-  avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
+  avatarUrl: `/wtw/static/avatar/5.jpg`,
+};
+
+const authInfo = {
+  email: `test@gmail.com`,
+  password: `123`,
 };
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -65,17 +73,6 @@ it(`Reducer should get authorization info`, () => {
   });
 });
 
-it(`Reducer should change sign in state`, () => {
-  expect(reducer({
-    isSignedIn: false,
-  }, {
-    type: ActionType.SIGN_IN,
-    payload: true
-  })).toEqual({
-    isSignedIn: true
-  });
-});
-
 it(`Reducer should get sign in error`, () => {
   expect(reducer({
     isSignInError: false,
@@ -107,17 +104,54 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for signing in returns correct action`, () => {
-    expect(ActionCreator.signIn(true)).toEqual({
-      type: ActionType.SIGN_IN,
-      payload: true,
-    });
-  });
-
   it(`Action creator for getting sign in error returns correct action`, () => {
     expect(ActionCreator.getSignInError(true)).toEqual({
       type: ActionType.GET_SIGN_IN_ERROR,
       payload: true,
     });
+  });
+});
+
+describe(`Operation works correctly`, () => {
+  it(`Should check authorization`, () => {
+    const api = createAPI(() => {});
+
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const checkAuthorization = Operation.checkAuth();
+
+    apiMock
+      .onGet(`/login`)
+      .reply(200, [{fake: true}]);
+
+    return checkAuthorization(dispatch, () => {}, api)
+          .then(() => {
+            expect(dispatch).toHaveBeenCalledTimes(2);
+            expect(dispatch).toHaveBeenCalledWith({
+              type: ActionType.REQUIRE_AUTHORIZATION,
+              payload: `AUTH`,
+            });
+          });
+  });
+
+  it(`Should post authorization info`, function () {
+    const api = createAPI(() => {});
+
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const login = Operation.login(authInfo);
+
+    apiMock
+      .onPost(`/login`)
+      .reply(200, [{fake: true}]);
+
+    return login(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(2);
+        expect(dispatch).toHaveBeenCalledWith({
+          type: ActionType.GET_AUTHORIZATION_INFO,
+          payload: createAuthorizationInfo({fake: true}),
+        });
+      });
   });
 });

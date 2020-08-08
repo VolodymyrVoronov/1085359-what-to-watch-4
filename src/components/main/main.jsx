@@ -5,17 +5,31 @@ import Catalog from "../catalog/catalog.jsx";
 import Header from "../header/header.jsx";
 import Footer from "../footer/footer.jsx";
 
+import {Link} from "react-router-dom";
+import {AppPages} from "../const.js";
+import history from "../../history.js";
+
 import {getPromoFilm} from "../../reducer/data/selectors.js";
 import {ActionCreator as UserActionCreator} from "../../reducer/user/user.js";
 import {getIsSignedIn, getIsSignInError} from "../../reducer/user/selectors.js";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 import {Movie} from "../types-of-props.js";
 
-const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick, authorizationStatus, authInfo, onSignInClick}) => {
+const Main = (props) => {
+
+  const {promoFilm, onFilmListItemClick, authorizationStatus, authInfo, onSignInClick, addFilmToFavorites} = props;
+
   if (!promoFilm) {
     return null;
   }
+
+  const handleMyListClick = () => {
+    return authorizationStatus === AuthorizationStatus.AUTH ?
+      addFilmToFavorites(promoFilm) :
+      history.push(AppPages.SIGN_IN);
+  };
 
   return (
     <React.Fragment>
@@ -46,16 +60,24 @@ const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick, authorizationS
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button" onClick={onPlayButtonClick}>
+                <Link
+                  to={`${AppPages.PLAYER}/${promoFilm.id}`}
+                  className="btn btn--play movie-card__button"
+                >
                   <svg id="play-s" viewBox="0 0 19 19" width="19" height="19">
                     <path fillRule="evenodd" clipRule="evenodd" d="M0 0L19 9.5L0 19V0Z" fill="#EEE5B5"/>
                   </svg>
                   <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                </Link>
+
+                <button className="btn btn--list movie-card__button" type="button" onClick={handleMyListClick}>
+                  {promoFilm.isFavorite ?
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg> :
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>}
                   <span>My list</span>
                 </button>
               </div>
@@ -80,12 +102,12 @@ const Main = ({promoFilm, onFilmListItemClick, onPlayButtonClick, authorizationS
 
 Main.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
 
   promoFilm: Movie,
 
   authorizationStatus: PropTypes.string,
   onSignInClick: PropTypes.func.isRequired,
+  addFilmToFavorites: PropTypes.func.isRequired,
   authInfo: PropTypes.object,
 };
 

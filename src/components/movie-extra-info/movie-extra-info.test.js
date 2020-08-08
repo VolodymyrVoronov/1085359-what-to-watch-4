@@ -4,6 +4,8 @@ import renderer from "react-test-renderer";
 import configureStore from 'redux-mock-store';
 import MovieExtraInfo from "./movie-extra-info.jsx";
 import NameSpace from '../../reducer/name-space.js';
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 const films = [
   {
@@ -119,7 +121,7 @@ const HANDLE_CLICK = () => {};
 const mockStore = configureStore([]);
 
 const userInfo = {
-  id: 1,
+  id: null,
   email: `test@mail.com`,
   name: `test`,
   avatarUrl: `https://instaturbo.ru/images/blog/5bbe622defe22.jpg`,
@@ -138,7 +140,6 @@ it(`render should be match markup`, () => {
       authorizationInfo: {userInfo},
       isSignedIn: false,
       isSignInError: false,
-
     },
     [NameSpace.APP]: {
       isReviewOpen: false,
@@ -146,22 +147,26 @@ it(`render should be match markup`, () => {
   });
 
   const result = renderer
-    .create(<Provider store={store}>
-      <MovieExtraInfo
-        film={films[1]}
-        films={films}
-        activeTab={ACTIVE_TAB}
-        onClick={HANDLE_CLICK}
-        onTabClick={HANDLE_CLICK}
-        reviews={reviews}
-        isSignedIn={false}
-        isReviewOpen={false}
-      />
-    </Provider>, {
-      createNodeMock: () => {
-        return {};
-      }
-    })
+    .create(
+        <Router history={history}>
+          <Provider store={store}>
+            <MovieExtraInfo
+              film={films[1]}
+              films={films}
+              activeTab={ACTIVE_TAB}
+              onClick={HANDLE_CLICK}
+              onTabClick={HANDLE_CLICK}
+              reviews={reviews}
+              isSignedIn={false}
+              isReviewOpen={false}
+              authInfo={userInfo}
+            />
+          </Provider>
+        </Router>, {
+          createNodeMock: () => {
+            return {};
+          }
+        })
     .toJSON();
 
   expect(result).toMatchSnapshot();

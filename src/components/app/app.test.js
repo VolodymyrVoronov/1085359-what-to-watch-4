@@ -96,6 +96,7 @@ it(`render should be match markup`, () => {
       currentMovieCard: films[0],
       isFullScreenOn: false,
       isError: false,
+      isLoading: false,
     },
     [NameSpace.USER]: {
       authorizationStatus: `AUTH`,
@@ -110,12 +111,14 @@ it(`render should be match markup`, () => {
       <App
         promoFilm={films[1]}
         films={films}
+        favoriteFilms={films}
         isFullScreenOn={false}
         onPlayButtonClick={HANDLE_CLICK}
         authInfo={userInfo}
         isSignedIn={false}
         authorizationStatus={`AUTH`}
         onSignInClick={HANDLE_CLICK}
+        isLoading={false}
       />
     </Provider>, {
       createNodeMock: () => {

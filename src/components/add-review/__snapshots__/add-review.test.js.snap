@@ -33,6 +33,8 @@ exports[`AddReview should render correctly 1`] = `
       >
         <a
           className="logo__link"
+          href="/"
+          onClick={[Function]}
         >
           <span
             className="logo__letter logo__letter--1"
@@ -54,16 +56,21 @@ exports[`AddReview should render correctly 1`] = `
       <div
         className="user-block"
       >
-        <div
-          className="user-block__avatar"
+        <a
+          href="/mylist"
+          onClick={[Function]}
         >
-          <img
-            alt="test avatar"
-            height="63"
-            src="https://instaturbo.ru/images/blog/5bbe622defe22.jpg"
-            width="63"
-          />
-        </div>
+          <div
+            className="user-block__avatar"
+          >
+            <img
+              alt="test avatar"
+              height="63"
+              src="https://instaturbo.ru/images/blog/5bbe622defe22.jpg"
+              width="63"
+            />
+          </div>
+        </a>
       </div>
     </header>
     <div

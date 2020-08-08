@@ -35,6 +35,7 @@ it(`render should be match markup`, () => {
       id={ID}
       film={CURRENT_MOVIE}
       isPreviewActive={IS_PREVIEW_ACTIVE}
+      onFilmListItemClick={HANDLE_EVENT}
       onHover={HANDLE_EVENT}
       onLeave={HANDLE_EVENT}
       onClick={HANDLE_EVENT}

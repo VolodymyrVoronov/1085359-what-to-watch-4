@@ -4,6 +4,8 @@ import AddReview from "./add-review.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import NameSpace from '../../reducer/name-space.js';
+import {Router} from "react-router-dom";
+import history from "../../history.js";
 
 const CURRENT_MOVIE = {
   id: 1,
@@ -47,21 +49,23 @@ it(`AddReview should render correctly`, () => {
   });
 
   const result = renderer
-    .create(
-        <Provider store={store}>
-          <AddReview
-            authorizationStatus={`AUTH`}
-            authInfo={userInfo}
-            onSignInClick={() => {}}
-            film={CURRENT_MOVIE}
-            onRatingChange={() => {}}
-            onReviewChange={() => {}}
-            onReviewFormSubmit={() => {}}
-            isSubmitButtonDisabled={false}
-            isError={false}
-            isFormDisabled={false}
-          />
-        </Provider>)
+      .create(
+          <Router history={history}>
+            <Provider store={store}>
+              <AddReview
+                authorizationStatus={`AUTH`}
+                authInfo={userInfo}
+                onSignInClick={() => {}}
+                film={CURRENT_MOVIE}
+                onRatingChange={() => {}}
+                onReviewChange={() => {}}
+                onReviewFormSubmit={() => {}}
+                isSubmitButtonDisabled={false}
+                isError={false}
+                isFormDisabled={false}
+              />
+            </Provider>
+          </Router>)
     .toJSON();
 
   expect(result).toMatchSnapshot();
