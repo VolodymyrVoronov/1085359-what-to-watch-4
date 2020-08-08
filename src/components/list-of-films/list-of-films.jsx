@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import MovieCard from "../movie-card/movie-card.jsx";
 
@@ -10,29 +10,27 @@ const PRVIEW_DALAY = 1000;
 
 const MovieCardWrapped = withActiveItemList(MovieCard, PRVIEW_DALAY);
 
-class ListOfFilms extends PureComponent {
+const ListOfFilms = (props) => {
 
-  render() {
-    const {films, onFilmListItemClick} = this.props;
+  const {films, onFilmListItemClick} = props;
 
-    return (
-      <div className="catalog__movies-list">
-        {
-          films.map((film, index) => {
-            return (
-              <MovieCardWrapped
-                id={index}
-                key={film.title + index}
-                film={film}
-                onFilmListItemClick={onFilmListItemClick}
-              />
-            );
-          })
-        }
-      </div>
-    );
-  }
-}
+  return (
+    <div className="catalog__movies-list">
+      {
+        films.map((film, index) => {
+          return (
+            <MovieCardWrapped
+              id={index}
+              key={film.title + index}
+              film={film}
+              onFilmListItemClick={onFilmListItemClick}
+            />
+          );
+        })
+      }
+    </div>
+  );
+};
 
 ListOfFilms.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,

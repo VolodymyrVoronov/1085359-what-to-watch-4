@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import MoviesLikeThis from "../movies-like-this/movies-like-this.jsx";
@@ -16,63 +16,60 @@ const getFilmDuration = (duration) => {
   }
 };
 
-class Details extends PureComponent {
+const Details = (props) => {
 
-  render() {
+  const {film, films, onFilmListItemClick} = props;
+  const {actors} = film;
 
-    const {film, films, onFilmListItemClick} = this.props;
-    const {actors} = film;
-
-    return (
-      <React.Fragment>
-        <div className="movie-card__text movie-card__row">
-          <div className="movie-card__text-col">
-            <p className="movie-card__details-item">
-              <strong className="movie-card__details-name">Director</strong>
-              <span className="movie-card__details-value">{film.director}</span>
-            </p>
-            <p className="movie-card__details-item">
-              <strong className="movie-card__details-name">Starring</strong>
-              <span className="movie-card__details-value">
-                {
-                  actors.map((actor, index) => {
-                    return (
-                      <React.Fragment key={actor}>
-                        {actor}{index < actors.length - 1 && <>, <br /></>}
-                      </React.Fragment>
-                    );
-                  })
-                }
-              </span>
-            </p>
-          </div>
-
-          <div className="movie-card__text-col">
-            <p className="movie-card__details-item">
-              <strong className="movie-card__details-name">Run Time</strong>
-              <span className="movie-card__details-value">{getFilmDuration(film.runtime)}</span>
-            </p>
-            <p className="movie-card__details-item">
-              <strong className="movie-card__details-name">Genre</strong>
-              <span className="movie-card__details-value">{film.genre}</span>
-            </p>
-            <p className="movie-card__details-item">
-              <strong className="movie-card__details-name">Released</strong>
-              <span className="movie-card__details-value">{film.releaseDate}</span>
-            </p>
-          </div>
+  return (
+    <React.Fragment>
+      <div className="movie-card__text movie-card__row">
+        <div className="movie-card__text-col">
+          <p className="movie-card__details-item">
+            <strong className="movie-card__details-name">Director</strong>
+            <span className="movie-card__details-value">{film.director}</span>
+          </p>
+          <p className="movie-card__details-item">
+            <strong className="movie-card__details-name">Starring</strong>
+            <span className="movie-card__details-value">
+              {
+                actors.map((actor, index) => {
+                  return (
+                    <React.Fragment key={actor}>
+                      {actor}{index < actors.length - 1 && <>, <br /></>}
+                    </React.Fragment>
+                  );
+                })
+              }
+            </span>
+          </p>
         </div>
 
-        <MoviesLikeThis
-          onFilmListItemClick={onFilmListItemClick}
-          films={films}
-          film={film}
-        />
+        <div className="movie-card__text-col">
+          <p className="movie-card__details-item">
+            <strong className="movie-card__details-name">Run Time</strong>
+            <span className="movie-card__details-value">{getFilmDuration(film.runtime)}</span>
+          </p>
+          <p className="movie-card__details-item">
+            <strong className="movie-card__details-name">Genre</strong>
+            <span className="movie-card__details-value">{film.genre}</span>
+          </p>
+          <p className="movie-card__details-item">
+            <strong className="movie-card__details-name">Released</strong>
+            <span className="movie-card__details-value">{film.releaseDate}</span>
+          </p>
+        </div>
+      </div>
 
-      </React.Fragment>
-    );
-  }
-}
+      <MoviesLikeThis
+        onFilmListItemClick={onFilmListItemClick}
+        films={films}
+        film={film}
+      />
+
+    </React.Fragment>
+  );
+};
 
 Details.propTypes = {
   film: Movie.isRequired,

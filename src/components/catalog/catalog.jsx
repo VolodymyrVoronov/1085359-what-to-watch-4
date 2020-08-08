@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../reducer/app/app.js";
 import PropTypes from "prop-types";
@@ -12,25 +12,23 @@ import {getGenre} from "../../reducer/app/selectors.js";
 
 import {Movies} from "../types-of-props.js";
 
-class Catalog extends PureComponent {
+const Catalog = (props) => {
 
-  render() {
-    const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilmsItem, onShowMore} = this.props;
-    return (
-      <React.Fragment>
-        <GenreFilterList
-          genres={genres}
-          currentGenre={currentGenre}
-        />
-        <ListOfFilms
-          films={films}
-          onFilmListItemClick={onFilmListItemClick}
-        />
-        {hasMoreFilmsItem && <BtnShowMore onClick={onShowMore} />}
-      </React.Fragment>
-    );
-  }
-}
+  const {onFilmListItemClick, genres, currentGenre, films, hasMoreFilmsItem, onShowMore} = props;
+  return (
+    <React.Fragment>
+      <GenreFilterList
+        genres={genres}
+        currentGenre={currentGenre}
+      />
+      <ListOfFilms
+        films={films}
+        onFilmListItemClick={onFilmListItemClick}
+      />
+      {hasMoreFilmsItem && <BtnShowMore onClick={onShowMore} />}
+    </React.Fragment>
+  );
+};
 
 Catalog.propTypes = {
   onFilmListItemClick: PropTypes.func.isRequired,

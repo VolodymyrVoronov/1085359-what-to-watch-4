@@ -1,4 +1,4 @@
-import React, {PureComponent} from "react";
+import React from "react";
 
 import {Movie} from "../types-of-props.js";
 
@@ -11,7 +11,7 @@ const RATING_LEVELS = {
 };
 
 const NUMBERS_OF_RATING = {
-  BAD_1: 0,
+  BAD_0: 0,
   BAD_3: 3,
 
   NORMAL_3: 3,
@@ -28,7 +28,7 @@ const NUMBERS_OF_RATING = {
 
 const getRating = (points) => {
   let rating;
-  if (points <= NUMBERS_OF_RATING.BAD_1 || points <= NUMBERS_OF_RATING.BAD_3) {
+  if (points <= NUMBERS_OF_RATING.BAD_0 || points <= NUMBERS_OF_RATING.BAD_3) {
     rating = RATING_LEVELS.BAD;
   }
   if (points <= NUMBERS_OF_RATING.NORMAL_3 || points <= NUMBERS_OF_RATING.NORMAL_5) {
@@ -46,29 +46,28 @@ const getRating = (points) => {
   return rating;
 };
 
-class Overview extends PureComponent {
-  render() {
-    const {film} = this.props;
+const Overview = (porps) => {
 
-    return (
-      <React.Fragment>
-        <div className="movie-rating">
-          <div className="movie-rating__score">{film.rating.score}</div>
-          <p className="movie-rating__meta">
-            <span className="movie-rating__level">{getRating(film.rating.score)}</span>
-            <span className="movie-rating__count">{`${film.rating.count} ratings`}</span>
-          </p>
-        </div>
+  const {film} = porps;
 
-        <div className="movie-card__text">
-          <p>{film.description}</p>
-          <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
-          <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `)}</strong></p>
-        </div>
-      </React.Fragment>
-    );
-  }
-}
+  return (
+    <React.Fragment>
+      <div className="movie-rating">
+        <div className="movie-rating__score">{film.rating.score}</div>
+        <p className="movie-rating__meta">
+          <span className="movie-rating__level">{getRating(film.rating.score)}</span>
+          <span className="movie-rating__count">{`${film.rating.count} ratings`}</span>
+        </p>
+      </div>
+
+      <div className="movie-card__text">
+        <p>{film.description}</p>
+        <p className="movie-card__director"><strong>Director: {film.director}</strong></p>
+        <p className="movie-card__starring"><strong>Starring: {film.actors.join(`, `)}</strong></p>
+      </div>
+    </React.Fragment>
+  );
+};
 
 Overview.propTypes = {
   film: Movie.isRequired,
